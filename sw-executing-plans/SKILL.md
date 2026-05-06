@@ -11,7 +11,7 @@ description: "Use when you have a written implementation plan to execute in a se
 
 **开始时声明：** "我正在使用执行计划技能来实现此计划。"
 
-**注意：** 告诉你的用户，如果有子 Agent 支持，Superpowers 的工作效果会更好。如果运行在支持子 Agent 的平台上（如 Claude Code 或 Codex），质量会显著提高。如果子 Agent 可用，请使用 `sw-subagent-development` 替代此技能。
+**强制判定：** 在步骤 2 中，如果子 Agent 可用且计划包含多个可并行任务，**必须**调用 `sw-subagent-development` 进行并行执行。不允许在可以并行的情况下选择串行。
 
 ## 流程
 
@@ -21,7 +21,46 @@ description: "Use when you have a written implementation plan to execute in a se
 3. 如果有顾虑：在开始前提出来与用户讨论
 4. 如果没有顾虑：创建 TodoWrite 并继续
 
-### 步骤 2：执行任务
+### 步骤 2：选择执行模式（强制判定）
+
+在创建 TodoWrite 后、开始任何编码前，必须执行以下判定：
+
+**判定逻辑：**
+
+```
+子 Agent 可用？ ──否──→ 路径 B：串行执行（步骤 3）
+     │
+    是
+     │
+任务数 ≥ 2？ ────否──→ 路径 B：串行执行（步骤 3）
+     │
+    是
+     │
+存在无依赖冲突的独立任务组？
+     │
+   是 ───────────────→ 路径 A：强制并行（调用 sw-subagent-development）
+     │
+    否
+     │
+所有任务强耦合（必须顺序执行）？
+     │
+   是 ───────────────→ 路径 B：串行执行（步骤 3）
+```
+
+**路径 A — 强制并行：**
+- 立即调用 `sw-subagent-development` Skill
+- 由该 Skill 负责扫描就绪任务、冲突检测、批量分派
+- **当前 Skill 的执行逻辑在此终止**，由 `sw-subagent-development` 接管
+
+**路径 B — 串行执行：**
+- 子 Agent 不可用，或
+- 只有 1 个任务，或
+- 所有任务强耦合（必须严格顺序执行）
+- 继续到步骤 3
+
+**严禁**：在子 Agent 可用且任务可并行时，选择串行执行路径。
+
+### 步骤 3：串行执行任务（仅路径 B）
 
 对每个任务：
 1. 标记为 in_progress
@@ -29,7 +68,7 @@ description: "Use when you have a written implementation plan to execute in a se
 3. 按指定运行验证
 4. 标记为 completed
 
-### 步骤 3：完成开发
+### 步骤 4：完成开发
 
 所有任务完成并验证后：
 - 声明："我正在使用 `sw-verification-before-completion` 技能来完成此工作。"
@@ -64,6 +103,9 @@ description: "Use when you have a written implementation plan to execute in a se
 | "直接在 main 上开始更快" | 未经明确同意，绝不在 main/master 上开始 |
 | "计划太小，不需要审查" | 小计划也有缺口。审查只需几分钟 |
 | "我差不多理解了" | 部分理解 = 错误实现。完全理解前不开始 |
+| "子 Agent 可用，但串行更稳妥" | 能并行时不并行 = 浪费时间。并行是强制路径，不是可选项 |
+| "任务好像有依赖，先串行吧" | 未做依赖分析就假设串行。必须检查 plan 中的任务依赖字段 |
+| "先串行做一两个，再考虑并行" | 违反强制判定。判定必须在任何编码前完成 |
 
 ## 常见借口表
 
@@ -74,6 +116,9 @@ description: "Use when you have a written implementation plan to execute in a se
 | "我差不多理解了" | 部分理解 = 错误实现。完全理解前不开始 |
 | "在 main 上更快" | 污染 main 的成本远高于创建分支 |
 | " deadline 紧，先做完" | 赶工引入的 bug 会让 deadline 更紧 |
+| "并行太复杂，串行更稳妥" | 冲突检测只需检查文件重叠。能并行时不并行 = 浪费时间 |
+| "先做几个任务看看，再并行剩下的" | 判定必须在开始前完成。中途切换 = 违反流程 |
+| "子 Agent 可能不稳定，我自己做更可靠" | 子 Agent 的不稳定可以通过审查循环控制。串行执行 = 慢且不可扩展 |
 
 ## 记住
 - 先批判性审查计划
@@ -87,4 +132,5 @@ description: "Use when you have a written implementation plan to execute in a se
 
 **必需工作流技能：**
 - **sw-writing-specs** - 创建此技能执行的计划
+- **sw-subagent-development** - 当判定为路径 A（并行）时强制调用
 - **sw-verification-before-completion** - 所有任务完成后验证并标记完成
