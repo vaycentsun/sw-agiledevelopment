@@ -241,6 +241,17 @@ flowchart TD
 
 **唯一出口**：调用 `sw-subagent-development` Skill 执行计划。
 
+**上下文压缩（交接前）**：
+
+设计阶段已结束，所有关键信息已写入文件：
+- 业务需求：`docs/sw-superpower/business-specs/YYYY-MM-DD--<feature>.md`
+- 技术设计：`docs/sw-superpower/technical-specs/YYYY-MM-DD--<feature>.md`
+- 实现计划：`docs/sw-superpower/plans/YYYY-MM-DD--<feature>-plan.md`
+
+**执行时以文件内容为准，不依赖本会话的对话历史。**
+
+> 如平台支持，在调用 `sw-subagent-development` 前执行上下文压缩，释放 brainstorming 和 planning 阶段的对话历史 token。
+
 **交接内容**：
 - 计划文件路径：`docs/sw-superpower/plans/YYYY-MM-DD--<feature>-plan.md`
 - Spec 文件路径：`docs/sw-superpower/technical-specs/YYYY-MM-DD--<feature>.md`
