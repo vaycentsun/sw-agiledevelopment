@@ -131,6 +131,6 @@ description: "Use when you have a written implementation plan to execute in a se
 ## 集成
 
 **必需工作流技能：**
-- **sw-writing-specs** - 创建此技能执行的计划
+- **sw-working-plan** - 创建此技能执行的计划
 - **sw-subagent-development** - 当判定为路径 A（并行）时强制调用
 - **sw-verification-before-completion** - 所有任务完成后验证并标记完成

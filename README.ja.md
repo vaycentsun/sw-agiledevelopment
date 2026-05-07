@@ -28,7 +28,8 @@ AI コーディングエージェントが、体系的かつ再現性のある�
 ```
 sw-superpower/
 ├── sw-brainstorming/              # ブレインストーミングと要件分析
-├── sw-writing-specs/              # 実装計画の作成
+├── sw-technical-spec/             # 技術仕様書の作成
+├── sw-working-plan/              # 実装計画の作成
 ├── sw-subagent-development/       # サブエージェント駆動開発
 ├── sw-test-driven-dev/            # テスト駆動開発
 ├── sw-requesting-code-review/     # コードレビューの依頼
@@ -52,8 +53,10 @@ sw-superpower/
 新機能の開始
     ↓
 sw-brainstorming (ブレインストーミングと設計)
-    ↓ 出力: docs/sw-superpower/specs/YYYY-MM-DD--feature.md
-sw-writing-specs (実装計画の作成)
+    ↓ 出力: docs/sw-superpower/business-specs/YYYY-MM-DD--feature.md
+sw-technical-spec (技術仕様書の作成)
+    ↓ 出力: docs/sw-superpower/technical-specs/YYYY-MM-DD--feature.md
+sw-working-plan (実装計画の作成)
     ↓ 出力: docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (サブエージェント駆動開発)
     ├── sw-test-driven-dev (各タスクの TDD)
@@ -72,7 +75,7 @@ sw-finishing-branch (ブランチ完了)
 | スキル | 目的 | トリガー条件 |
 |-------|------|-------------|
 | **sw-brainstorming** | アイデアを完全な設計と仕様に変換 | 新機能開発の開始 |
-| **sw-writing-specs** | 詳細な実装計画を作成 | 設計が完了し、実行計画が必要 |
+| **sw-working-plan** | 詳細な実装計画を作成 | 設計が完了し、実行計画が必要 |
 | **sw-subagent-development** | サブエージェントを使用して計画を実行 | 実装計画があり、タスクが独立している |
 | **sw-test-driven-dev** | RED-GREEN-REFACTOR サイクルを強制 | 機能の実装またはバグ修正 |
 | **sw-requesting-code-review** | コードレビュー依頼（レビューエージェント派遣） | タスク完了後、マージ前 |
@@ -149,8 +152,8 @@ OpenCode を再起動するか、スキルをリロードします。
       2. 明確化の質問をする...
       3. 2-3 つのアプローチを提案...
       4. セクションごとに設計を提示...
-      5. 仕様ドキュメントを作成 → docs/sw-superpower/specs/2026-04-18--user-auth.md
-      6. sw-writing-specs を呼び出して実装計画を作成...
+      5. 仕様ドキュメントを作成 → docs/sw-superpower/technical-specs/2026-04-18--user-auth.md
+      6. sw-working-plan を呼び出して実装計画を作成...
 ```
 
 ---

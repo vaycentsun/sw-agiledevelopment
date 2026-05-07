@@ -123,8 +123,9 @@ Agent: [自动应用 sw-brainstorming Skill]
       2. 提出澄清问题...
       3. 提出 2-3 种方案...
       4. 分节呈现设计...
-      5. 编写 Spec 文档 → docs/sw-superpower/specs/2026-04-18--user-auth.md
-      6. 调用 sw-writing-specs 创建实现计划...
+      5. 编写 business-spec → docs/sw-superpower/business-specs/2026-04-18--user-auth.md
+      6. 调用 sw-technical-spec 编写技术 Spec...
+      7. 调用 sw-working-plan 创建实现计划...
 ```
 
 完整工作流顺序：
@@ -132,9 +133,11 @@ Agent: [自动应用 sw-brainstorming Skill]
 ```
 开始新功能
     ↓
-sw-brainstorming (头脑风暴与设计)
-    ↓ 输出: docs/sw-superpower/specs/YYYY-MM-DD--feature.md
-sw-writing-specs (编写实现计划)
+sw-brainstorming (头脑风暴与需求分析)
+    ↓ 输出: docs/sw-superpower/business-specs/YYYY-MM-DD--feature.md
+sw-technical-spec (编写技术规格)
+    ↓ 输出: docs/sw-superpower/technical-specs/YYYY-MM-DD--feature.md
+sw-working-plan (编写实现计划)
     ↓ 输出: docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (子 Agent 驱动开发)
     ├── sw-test-driven-dev (每个任务遵循 TDD)

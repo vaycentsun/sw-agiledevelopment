@@ -5,7 +5,7 @@ description: "Use when starting software development of new feature in the proje
 
 # Brainstorming - 头脑风暴与需求分析
 
-将想法通过苏格拉底式对话转化为完整的设计和 Spec。
+将想法通过苏格拉底式对话转化为清晰的需求和方案决策。
 
 ## 何时跳过此技能
 
@@ -39,7 +39,7 @@ description: "Use when starting software development of new feature in the proje
 - 创建项目脚手架
 - 执行任何实现动作
 
-> 设计必须完整呈现（分节展示 + Spec 文档 + 两层自检），但无需在每个节点等待用户明确批准。Agent 自动推进，用户可随时打断。
+> 设计必须完整呈现（需求澄清 + 方案决策 + business-spec），但无需在每个节点等待用户明确批准。Agent 自动推进，用户可随时打断。
 
 > **反模式警示**："这个太简单了，不需要设计"
 >
@@ -53,11 +53,9 @@ description: "Use when starting software development of new feature in the proje
 - [ ] **提出澄清问题** — 每次一个问题，理解目的/约束/成功标准
 - [ ] **提出 2-3 种方案** — 包含权衡和你的推荐
 - [ ] **分节呈现设计** — 按复杂度调整每节长度，自动推进
-- [ ] **编写 Spec 文档** — 保存到 `docs/sw-superpower/specs/YYYY-MM-DD--<name>.md`
-- [ ] **Spec 自检（第一层）** — 调用 `spec-document-reviewer` 子 Agent 扫描完整性、一致性、清晰性、范围、YAGNI
-- [ ] **Spec 自检（第二层）** — 校准用户需求、技术约束、验收标准
-- [ ] **展示 Spec 摘要** — 向用户展示 Spec 要点，自动进入下一步
-- [ ] **自动调用 sw-writing-specs** — 创建实现计划
+- [ ] **编写 business-spec 文档** — 保存到 `docs/sw-superpower/business-specs/YYYY-MM-DD--<name>.md`
+- [ ] **展示方案摘要** — 向用户展示决策要点，自动进入下一步
+- [ ] **自动调用 sw-technical-spec** — 编写技术 Spec
 
 ## 流程图
 
@@ -69,15 +67,9 @@ flowchart TD
     Approaches --> Present[4. 分节呈现设计<br/>当前节]
     Present --> AllSectionsDone{所有节完成？}
     AllSectionsDone -->|否，下一节| Present
-    AllSectionsDone -->|是| WriteSpec[5. 编写 Spec 文档<br/>保存到 docs/sw-superpower/specs/]
-    WriteSpec --> Layer1Review[6a. 第一层自检<br/>spec-document-reviewer 子 Agent]
-    Layer1Review -->|发现问题| Layer1Fix[修复问题]
-    Layer1Fix --> Layer1Review
-    Layer1Review -->|通过| Layer2Review[6b. 第二层自检<br/>业务逻辑校准]
-    Layer2Review -->|发现问题| Layer2Fix[修复问题]
-    Layer2Fix -->|修改后重跑第一层| Layer1Review
-    Layer2Review -->|两层通过| ShowSummary[7. 展示 Spec 摘要]
-    ShowSummary --> InvokeWriting([8. 调用 sw-writing-specs<br/>唯一出口])
+    AllSectionsDone -->|是| WriteBusinessSpec[5. 编写 business-spec<br/>保存到 docs/sw-superpower/business-specs/]
+    WriteBusinessSpec --> ShowSummary[6. 展示方案摘要]
+    ShowSummary --> InvokeTechnical([7. 调用 sw-technical-spec<br/>唯一出口])
 ```
 
 ## 详细流程
@@ -96,7 +88,7 @@ flowchart TD
 1. 帮助用户分解为子项目
 2. 确定独立组件、依赖关系、构建顺序
 3. 对第一个子项目执行正常的头脑风暴流程
-4. 每个子项目有自己的 Spec → 计划 → 实现周期
+4. 每个子项目有自己的 business-spec → technical-spec → plan → 实现周期
 
 ### 2. 提出澄清问题
 
@@ -132,7 +124,7 @@ C) 外部服务（如 Firebase）
 
 - 每节长度根据复杂度调整：简单问题几句话，复杂问题 200-300 字
 - 每节后展示本节要点，**自动进入下一节**，不等待用户回复
-- 涵盖：架构、组件、数据流、错误处理、测试
+- 涵盖：目标、约束、关键组件、接口草案、验收标准初稿
 - 如果某部分不合理，准备好回去澄清
 
 > **自动推进说明**：Agent 展示每节设计后自动推进到下一节。用户如有根本性异议可随时打断。
@@ -141,7 +133,7 @@ C) 外部服务（如 Firebase）
 - 需求理解偏差 → 回到第 2 步（澄清问题），重新确认目标
 - 方案方向错误 → 回到第 3 步（提出方案），重新探索替代方案
 
-所有节展示完成后自动进入"编写 Spec 文档"。
+所有节展示完成后自动进入"编写 business-spec 文档"。
 
 **设计原则**：
 - 将系统分解为更小单元，每个单元有明确目的，通过定义良好的接口通信，可独立理解和测试
@@ -153,56 +145,74 @@ C) 外部服务（如 Firebase）
 - 现有代码存在影响工作的问题时（如文件过大、边界不清、职责纠缠），将针对性改进纳入设计——就像优秀开发者改进正在处理的代码一样
 - 不要提出无关的重构，专注于服务当前目标的内容
 
-### 5. 编写 Spec 文档
+### 5. 编写 business-spec 文档
 
 **文档规范**：
-- 将验证后的设计保存到 `docs/sw-superpower/specs/YYYY-MM-DD--<feature-name>.md`
-- 遵循 Spec 文档结构（见 subagent-prompts/spec-writer-prompt.md）
+- 将需求澄清结果保存到 `docs/sw-superpower/business-specs/YYYY-MM-DD--<feature-name>.md`
+- 内容轻量，聚焦业务层面：目标、非目标、方案决策、关键组件草案、验收标准初稿
+- 不展开详细的技术架构、数据流、错误处理（留给 `sw-technical-spec`）
 - 提交到 Git
 
-### 6. Spec 自检
+**business-spec 结构**：
 
-自检分为两层，必须依次完成。
+```markdown
+# {{Feature Name}} - 业务需求
 
-**第一层：结构化审查（子 Agent）**
-启动 `spec-document-reviewer` 子 Agent（见 `subagent-prompts/spec-document-reviewer-prompt.md`），对 Spec 进行自动化扫描：
-- 完整性：TODO、TBD、占位符、不完整部分
-- 一致性：内部矛盾、冲突的需求
-- 清晰性：模糊到可能导致构建错误的需求
-- 范围：是否聚焦到单一实现计划
-- YAGNI：未请求的功能、过度设计
+## 概述
+一句话描述这个功能是什么，解决什么问题。
 
-子 Agent 发现的问题必须修复后才能进入第二层。
+## 背景与动机
+为什么要做这个功能？用户痛点是什么？
 
-**第二层：业务逻辑自检（Agent）**
-用新鲜视角审视：
-1. **用户需求校准**：头脑风暴中的设计决策是否在 Spec 中被准确翻译？有无遗漏？
-2. **技术约束检查**：架构是否与功能描述匹配？依赖是否现实？
-3. **验收标准验证**：每个需求是否可验证？测试人员能否据此判断完成？
+## 目标
+- {{目标 1}}
+- {{目标 2}}
 
-**闭环**：如果第二层发现问题并对 Spec 进行了修改，必须**重新运行第一层**（子 Agent 审查），确保修改没有引入新的占位符、矛盾或歧义。
+## 非目标
+明确排除的范围，避免范围蔓延。
+- {{非目标 1}}
+- {{非目标 2}}
 
-两层都通过后，展示 Spec 摘要并自动调用 `sw-writing-specs`。
+## 方案决策
+**选定方案**: {{方案名称}}
+**原因**: {{选择此方案的理由}}
+**替代方案**: {{考虑过的其他方案及放弃原因}}
 
-### 7. 展示 Spec 摘要
+## 关键组件（草案）
+- {{组件 1}}: {{职责简述}}
+- {{组件 2}}: {{职责简述}}
 
-两层自检都通过后，向用户展示 Spec 摘要，然后**自动调用 `sw-writing-specs`**：
+## 验收标准（初稿）
+- [ ] {{验收标准 1}}
+- [ ] {{验收标准 2}}
 
-> "Spec 已编写并提交到 `docs/sw-superpower/specs/YYYY-MM-DD--<name>.md`。以下是 Spec 要点摘要：
-> - [设计概述一句话]
-> - [关键组件]
-> - [主要接口]
+## 风险与缓解
+
+| 风险 | 影响 | 缓解措施 |
+|------|------|---------|
+| {{风险 1}} | {{高/中/低}} | {{缓解措施}} |
+```
+
+### 6. 展示方案摘要
+
+编写完成后，向用户展示方案摘要，然后**自动调用 `sw-technical-spec`**：
+
+> "需求已澄清并保存到 `docs/sw-superpower/business-specs/YYYY-MM-DD--<name>.md`。以下是方案摘要：
+> - [目标概述]
+> - [选定方案及原因]
+> - [关键组件草案]
 > - [验收标准数量]
 >
-> 现在自动进入实现计划阶段。"
+> 现在自动进入技术 Spec 编写阶段。"
 
-**自动推进**：展示摘要后立即调用 `sw-writing-specs`，无需等待用户回复。用户如有修改需求可随时打断。
+**自动推进**：展示摘要后立即调用 `sw-technical-spec`，无需等待用户回复。用户如有修改需求可随时打断。
 
-### 8. 进入实现规划
+### 7. 进入技术 Spec 阶段
 
-**唯一出口**：调用 `sw-writing-specs` Skill 创建详细实现计划。
+**唯一出口**：调用 `sw-technical-spec` Skill 编写完整技术 Spec。
 
 **严禁**：
+- 调用 sw-working-plan
 - 调用 sw-subagent-development
 - 调用 sw-test-driven-dev
 - 直接开始编码
@@ -223,10 +233,10 @@ C) 外部服务（如 Firebase）
 | 想法 | 现实 |
 |------|------|
 | "用户大概会同意，先开始实现" | 未经完整设计流程，严禁开始实现。设计可以很短，但必须完整呈现 |
-| "跳过任一层 Spec 自检，看起来没问题" | 第一层（子 Agent）捕获占位符/矛盾/YAGNI，第二层（Agent）校准需求/约束/验收标准。跳过任一层 = 有缺陷的 Spec |
+| "跳过需求澄清直接写 Spec" | 需求不清 → 技术 Spec 方向错误。必须先澄清 |
 | "不需要替代方案，我知道最佳方案" | 未呈现替代方案就确定设计 = 未经验证的假设。总是提出 2-3 种方法 |
 | "把多个问题合并问更快" | 一次一个问题。合并会压倒用户，降低回答质量 |
-| "编写 Spec 后立即开始编码" | 必须通过两层自检。编码是唯一出口后的步骤 |
+| "编写 business-spec 后立即开始编码" | 必须先由 sw-technical-spec 编写完整技术 Spec。编码是更后方的步骤 |
 | "简单任务不需要 brainstorming" | 正确。简单任务走快速通道直接 TDD。不确定是否简单？走 brainstorming |
 
 ## 常见借口表
@@ -235,7 +245,6 @@ C) 外部服务（如 Firebase）
 |------|------|
 | "这个太简单了，不需要设计" | 单文件 <50 行的改动走快速通道。超出范围的"简单"必须设计 |
 | "用户不需要看设计过程" | 完整呈现设计是纪律。跳过 = 遗漏关键决策 |
-| "Spec 自检浪费时间" | 自检只需 2 分钟，发现的问题可能节省数小时返工 |
 | "先写代码再补设计" | 设计先行是纪律。代码先行 = 即兴开发 |
 | "问题太多用户会烦" | 每次一个问题比合并问题更快获得清晰答案 |
 | "简单任务不需要 brainstorming" | 正确。简单任务走快速通道直接 TDD |
@@ -253,20 +262,20 @@ C) 外部服务（如 Firebase）
 
 ## 输出示例
 
-**Spec 文件路径**: `docs/sw-superpower/specs/2026-04-08--user-authentication.md`
+**business-spec 文件路径**: `docs/sw-superpower/business-specs/2026-04-08--user-authentication.md`
 
 **返回摘要格式**：
 ```markdown
 ## 头脑风暴完成
 
-**Spec 文件**: `docs/sw-superpower/specs/2026-04-08--user-authentication.md`
+**business-spec 文件**: `docs/sw-superpower/business-specs/2026-04-08--user-authentication.md`
 **设计状态**: ✅ 已完成
 **主要决策**:
-- 使用 JWT 进行身份验证
-- 密码使用 bcrypt 哈希
-- 支持邮箱+密码和 OAuth 两种方式
+- 目标：为内部运营团队提供统一身份认证
+- 方案：JWT + bcrypt，支持邮箱和 OAuth
+- 关键组件：AuthService、UserStore、TokenManager
 
-**下一步**: 调用 sw-writing-specs 创建实现计划
+**下一步**: 调用 sw-technical-spec 编写技术 Spec
 ```
 
 ## 集成
@@ -274,7 +283,7 @@ C) 外部服务（如 Firebase）
 **前置 Skill**: 无（这是工作流起点）
 
 **后续 Skill**: 
-- **sw-writing-specs** - 必须调用的下一个 Skill
+- **sw-technical-spec** - 必须调用的下一个 Skill
 - 严禁直接调用实现类 Skill
 
 **相关 Skill**: 无

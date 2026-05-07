@@ -1,5 +1,9 @@
 # Spec Document Reviewer Subagent Prompt
 
+## 状态
+
+> **注意**：当前 `sw-brainstorming` 的 Spec 自检已由 Agent 自行完成快速扫描，**不再调用此子 Agent**。此 prompt 保留以备后续需要恢复深度审查时使用。
+
 ## 目的
 
 验证 Spec 是否完整、一致，并准备好进行实现规划。

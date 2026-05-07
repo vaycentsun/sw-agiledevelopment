@@ -28,7 +28,8 @@ Un ensemble complet de compétences de flux de travail d'ingénierie logicielle 
 ```
 sw-superpower/
 ├── sw-brainstorming/              # Brainstorming et analyse des besoins
-├── sw-writing-specs/              # Rédaction des plans d'implémentation
+├── sw-technical-spec/             # Rédaction des spécifications techniques
+├── sw-working-plan/              # Rédaction des plans d'implémentation
 ├── sw-subagent-development/       # Développement piloté par sous-agent
 ├── sw-test-driven-dev/            # Développement piloté par les tests
 ├── sw-requesting-code-review/     # Demander une révision de code
@@ -52,8 +53,10 @@ Le flux de travail complet de développement logiciel s'exécute dans l'ordre su
 Démarrer Nouvelle Fonctionnalité
     ↓
 sw-brainstorming (Brainstorming et Conception)
-    ↓ Sortie : docs/sw-superpower/specs/YYYY-MM-DD--feature.md
-sw-writing-specs (Rédaction du Plan d'Implémentation)
+    ↓ Sortie : docs/sw-superpower/business-specs/YYYY-MM-DD--feature.md
+sw-technical-spec (Rédaction des Spécifications Techniques)
+    ↓ Sortie : docs/sw-superpower/technical-specs/YYYY-MM-DD--feature.md
+sw-working-plan (Rédaction du Plan d'Implémentation)
     ↓ Sortie : docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (Développement Piloté par Sous-Agent)
     ├── sw-test-driven-dev (TDD pour chaque tâche)
@@ -72,7 +75,7 @@ sw-finishing-branch (Achèvement de Branche)
 | Compétence | Objectif | Condition de Déclenchement |
 |------------|----------|----------------------------|
 | **sw-brainstorming** | Transformer les idées en conception et spécifications complètes | Démarrage du développement d'une nouvelle fonctionnalité |
-| **sw-writing-specs** | Créer des plans d'implémentation détaillés | Conception terminée, besoin d'un plan d'exécution |
+| **sw-working-plan** | Créer des plans d'implémentation détaillés | Conception terminée, besoin d'un plan d'exécution |
 | **sw-subagent-development** | Exécuter les plans en utilisant des sous-agents | Avoir un plan d'implémentation, les tâches sont indépendantes |
 | **sw-test-driven-dev** | Appliquer le cycle RED-GREEN-REFACTOR | Implémenter toute fonctionnalité ou corriger des bogues |
 | **sw-requesting-code-review** | Dispatcher un sous-agent réviseur | Après tâche, avant merge |
@@ -149,8 +152,8 @@ Agent : [Applique automatiquement la Compétence sw-brainstorming]
       2. Poser des questions de clarification...
       3. Proposer 2-3 approches...
       4. Présenter la conception en sections...
-      5. Rédiger le document de spécification → docs/sw-superpower/specs/2026-04-18--user-auth.md
-      6. Invoquer sw-writing-specs pour créer le plan d'implémentation...
+      5. Rédiger le document de spécification → docs/sw-superpower/technical-specs/2026-04-18--user-auth.md
+      6. Invoquer sw-working-plan pour créer le plan d'implémentation...
 ```
 
 ---

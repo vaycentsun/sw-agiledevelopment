@@ -360,7 +360,7 @@ PASS
 
 ## 集成
 
-**前置 Skill**: sw-writing-specs（提供实现计划）
+**前置 Skill**: sw-working-plan（提供实现计划）
 
 **后续 Skill**: sw-subagent-development
 

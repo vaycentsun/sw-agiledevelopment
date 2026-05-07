@@ -28,7 +28,8 @@
 ```
 sw-superpower/
 ├── sw-brainstorming/              # 头脑风暴与需求分析
-├── sw-writing-specs/              # 编写实现计划
+├── sw-technical-spec/             # 编写技术规格文档
+├── sw-working-plan/              # 编写实现计划
 ├── sw-subagent-development/       # 子 Agent 驱动开发
 ├── sw-test-driven-dev/            # 测试驱动开发
 ├── sw-requesting-code-review/     # 请求代码审查
@@ -51,9 +52,11 @@ sw-superpower/
 ```
 开始新功能
     ↓
-sw-brainstorming (头脑风暴与设计)
-    ↓ 输出: docs/sw-superpower/specs/YYYY-MM-DD--feature.md
-sw-writing-specs (编写实现计划)
+sw-brainstorming (头脑风暴与需求分析)
+    ↓ 输出: docs/sw-superpower/business-specs/YYYY-MM-DD--feature.md
+sw-technical-spec (编写技术规格)
+    ↓ 输出: docs/sw-superpower/technical-specs/YYYY-MM-DD--feature.md
+sw-working-plan (编写实现计划)
     ↓ 输出: docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (子 Agent 驱动开发)
     ├── sw-test-driven-dev (每个任务遵循 TDD)
@@ -71,8 +74,9 @@ sw-finishing-branch (完成分支)
 
 | Skill | 用途 | 触发条件 |
 |-------|------|----------|
-| **sw-brainstorming** | 将想法转化为完整设计和 Spec | 开始新功能开发 |
-| **sw-writing-specs** | 创建详细的实现计划 | 设计已完成，需要执行计划 |
+| **sw-brainstorming** | 将想法转化为业务需求和方案决策 | 开始新功能开发 |
+| **sw-technical-spec** | 编写结构化的技术规格文档 | 需求已澄清，需要技术设计 |
+| **sw-working-plan** | 创建详细的实现计划 | 技术 Spec 已完成，需要执行计划 |
 | **sw-subagent-development** | 使用子 Agent 执行计划 | 有实现计划，任务相对独立 |
 | **sw-test-driven-dev** | 强制 RED-GREEN-REFACTOR 循环 | 实现任何功能或修复 Bug |
 | **sw-requesting-code-review** | 请求代码审查（分派审查 Agent） | 完成任务、实现主要功能、合并前 |
@@ -149,8 +153,8 @@ Agent: [自动应用 sw-brainstorming Skill]
       2. 提出澄清问题...
       3. 提出 2-3 种方案...
       4. 分节呈现设计...
-      5. 编写 Spec 文档 → docs/sw-superpower/specs/2026-04-18--user-auth.md
-      6. 调用 sw-writing-specs 创建实现计划...
+      5. 编写 Spec 文档 → docs/sw-superpower/technical-specs/2026-04-18--user-auth.md
+      6. 调用 sw-working-plan 创建实现计划...
 ```
 
 ---

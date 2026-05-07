@@ -12,7 +12,8 @@
   - `experimental.chat.messages.transform` — 在每个会话的第一条用户消息前，插入 `sw-using-superpowers/SKILL.md` 内容（加上工具映射）。
 
 ### 文件路径约定
-- **Spec 文件**: `docs/sw-superpower/specs/YYYY-MM-DD--<feature-name>-design.md`
+- **Business Spec 文件**: `docs/sw-superpower/business-specs/YYYY-MM-DD--<feature-name>.md`
+- **Technical Spec 文件**: `docs/sw-superpower/technical-specs/YYYY-MM-DD--<feature-name>.md`
 - **计划文件**: `docs/sw-superpower/plans/YYYY-MM-DD--<feature-name>-plan.md`
 - **Skill 目录**: `sw-<skill-name>/`
 - **子 Agent 提示词**: `subagent-prompts/<name>-prompt.md`
