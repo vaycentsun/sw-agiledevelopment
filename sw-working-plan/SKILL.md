@@ -5,7 +5,7 @@ description: "Use when technical spec is complete and need to create detailed im
 
 # Working Plan - 编写实现计划
 
-将完整的设计转化为详细的实现计划，包含可执行的小任务（每个 2-5 分钟）。
+将完整的设计转化为详细的实现计划，包含可执行的小任务（每个 10 分钟以内）。
 
 ## 检查清单
 
@@ -13,7 +13,7 @@ description: "Use when technical spec is complete and need to create detailed im
 - [ ] **读取 Spec** — 理解设计概述、组件接口、数据流、验收标准
 - [ ] **提取组件** — 列出需要创建/修改的文件和函数/类接口
 - [ ] **识别任务类型** — 创建、修改、测试、配置、文档
-- [ ] **拆解为小任务** — 每个任务 2-5 分钟，成对安排实现+测试任务
+- [ ] **拆解为小任务** — 每个任务 10 分钟以内，成对安排实现+测试任务
 - [ ] **排序任务** — 按依赖关系排序，基础优先，测试紧随
 - [ ] **编写详细计划** — 每个任务包含确切文件路径、完整代码、验证步骤
 - [ ] **深度自检** — 执行整合自检清单：完整性、Spec 对齐、任务分解、可构建性、验收标准覆盖、粒度、明确性、可验证性、顺序合理性
@@ -28,7 +28,7 @@ description: "Use when technical spec is complete and need to create detailed im
 - 完整的代码（或代码结构）
 - 验证步骤
 
-**任务大小：** 每个任务应该能在 2-5 分钟内完成。
+**任务大小：** 每个任务应该能在 10 分钟以内完成。
 
 **TDD 集成：** 每个实现任务后必须紧跟对应的测试任务。测试验证必须包含 RED（先失败）→ GREEN（实现后通过）。
 
@@ -56,7 +56,7 @@ flowchart TD
     Gate -->|是| ReadSpec[1. 读取 Spec 文件]
     ReadSpec --> Extract[2. 提取组件和接口]
     Extract --> Identify[3. 识别实现任务]
-    Identify --> BreakDown[4. 拆解为小任务<br/>2-5 分钟每个]
+    Identify --> BreakDown[4. 拆解为小任务<br/>10 分钟以内每个]
     BreakDown --> Order[5. 排序任务<br/>依赖关系]
     Order --> WritePlan[6. 编写详细计划]
     WritePlan --> SelfReview[7. 深度自检<br/>整合自检清单]
@@ -107,7 +107,7 @@ flowchart TD
 
 ### 4. 拆解为小任务
 
-**任务大小标准：** 每个任务 2-5 分钟
+**任务大小标准：** 每个任务 10 分钟以内
 
 **TDD 成对要求：** 每个实现任务后必须紧跟对应的测试任务，不允许累积多个实现后再统一测试。
 
@@ -192,7 +192,7 @@ flowchart TD
 |---|--------|----------|
 | 1 | **完整性** | 无 TODO、无占位符（如 "TODO: 补充"、"后续再定"）、无空任务描述 |
 | 2 | **Spec 对齐** | 计划中每个 Spec 需求都有对应任务，无重大范围蔓延或遗漏 |
-| 3 | **任务分解** | 每个任务边界清晰，能在 2-5 分钟内完成 |
+| 3 | **任务分解** | 每个任务边界清晰，能在 10 分钟以内完成 |
 | 4 | **可构建性** | 工程师能按此计划执行而不卡住（文件路径明确、详情足够判断如何实现） |
 | 5 | **验收标准覆盖** | Spec 中的每条验收标准都有对应的验证任务或测试任务 |
 | 6 | **明确性** | 每个任务有确切的文件路径、足够的详情（创建写代码、修改写描述、测试写场景）、清晰的验证步骤 |
@@ -240,6 +240,17 @@ flowchart TD
 ### 10. 进入实现阶段
 
 **唯一出口**：调用 `sw-subagent-development` Skill 执行计划。
+
+**上下文压缩（交接前）**：
+
+设计阶段已结束，所有关键信息已写入文件：
+- 业务需求：`docs/sw-superpower/business-specs/YYYY-MM-DD--<feature>.md`
+- 技术设计：`docs/sw-superpower/technical-specs/YYYY-MM-DD--<feature>.md`
+- 实现计划：`docs/sw-superpower/plans/YYYY-MM-DD--<feature>-plan.md`
+
+**执行时以文件内容为准，不依赖本会话的对话历史。**
+
+> 如平台支持，在调用 `sw-subagent-development` 前执行上下文压缩，释放 brainstorming 和 planning 阶段的对话历史 token。
 
 **交接内容**：
 - 计划文件路径：`docs/sw-superpower/plans/YYYY-MM-DD--<feature>-plan.md`
