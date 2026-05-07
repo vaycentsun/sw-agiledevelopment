@@ -2,29 +2,28 @@
 
 ## 目的
 
-将头脑风暴阶段完成的设计决策转化为结构化的 Spec 文档。
+将业务需求文档（business-spec）中的设计决策转化为结构化的技术 Spec 文档。
 
 ## 分派时机
 
-头脑风暴完成、设计决策已确定后。
+需求澄清完成、业务方案已确定后。
 
 ## 输入
 
-- 头脑风暴阶段的所有对话记录
-- 头脑风暴阶段确定的设计决策
+- business-spec 文档（`docs/sw-superpower/business-specs/`）
 - 项目上下文信息（技术栈、现有架构等）
 
 ## 任务
 
-1. 按下方 Spec 文档结构编写 Spec
+1. 按下方 Spec 文档结构编写技术 Spec
 2. 确保每个需求具体、可验证，无模糊语言
-3. 完整覆盖头脑风暴中讨论的所有设计决策
+3. 完整覆盖 business-spec 中确认的所有设计决策
 4. 完成编写后自检文件结构完整性
 
 ## 要求
 
 - **具体明确** - 避免模糊语言，每个需求都可验证
-- **完整覆盖** - 不遗漏头脑风暴中讨论的任何设计决策
+- **完整覆盖** - 不遗漏 business-spec 中确认的任何设计决策
 - **中文为主** - 文档使用中文，代码示例使用英文
 
 ## Spec 文档结构
@@ -87,7 +86,7 @@ description: "Use when implementing {{brief-description}} in project"
 - [ ] {{验收标准 3}}
 
 ## 实现任务（概览）
-> 详细任务将由 sw-writing-specs Skill 制定
+> 详细任务将由 sw-working-plan Skill 制定
 1. {{任务 1}}
 2. {{任务 2}}
 3. {{任务 3}}
@@ -123,7 +122,7 @@ description: "Use when implementing {{brief-description}} in project"
 
 ## 禁止
 
-- 不要添加头脑风暴中未讨论的功能
+- 不要添加 business-spec 中未确认的功能
 - 不要使用模糊语言（如"可能"、"考虑"、"待定"）
 - 不要省略错误处理或安全考虑
 - 不要直接开始编码或调用实现 Skill
@@ -133,7 +132,7 @@ description: "Use when implementing {{brief-description}} in project"
 ```markdown
 ## Spec 编写完成
 
-**文件路径**: `docs/sw-superpower/specs/YYYY-MM-DD--<name>.md`
+**文件路径**: `docs/sw-superpower/technical-specs/YYYY-MM-DD--<name>.md`
 **状态**: ✅ 已完成
 **主要内容**:
 - {{要点 1}}

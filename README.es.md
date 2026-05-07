@@ -28,7 +28,8 @@ Un conjunto completo de habilidades de flujo de trabajo de ingeniería de softwa
 ```
 sw-superpower/
 ├── sw-brainstorming/              # Lluvia de ideas y análisis de requisitos
-├── sw-writing-specs/              # Escritura de planes de implementación
+├── sw-technical-spec/             # Escritura de especificaciones técnicas
+├── sw-working-plan/              # Escritura de planes de implementación
 ├── sw-subagent-development/       # Desarrollo impulsado por subagentes
 ├── sw-test-driven-dev/            # Desarrollo dirigido por pruebas
 ├── sw-requesting-code-review/     # Solicitar revisión de código
@@ -52,8 +53,10 @@ El flujo de trabajo completo de desarrollo de software se ejecuta en el siguient
 Iniciar Nueva Función
     ↓
 sw-brainstorming (Lluvia de Ideas y Diseño)
-    ↓ Salida: docs/sw-superpower/specs/YYYY-MM-DD--feature.md
-sw-writing-specs (Escritura del Plan de Implementación)
+    ↓ Salida: docs/sw-superpower/business-specs/YYYY-MM-DD--feature.md
+sw-technical-spec (Escritura de Especificaciones Técnicas)
+    ↓ Salida: docs/sw-superpower/technical-specs/YYYY-MM-DD--feature.md
+sw-working-plan (Escritura del Plan de Implementación)
     ↓ Salida: docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (Desarrollo Impulsado por Subagentes)
     ├── sw-test-driven-dev (TDD para cada tarea)
@@ -72,7 +75,7 @@ sw-finishing-branch (Finalización de Rama)
 | Habilidad | Propósito | Condición de Activación |
 |-----------|-----------|-------------------------|
 | **sw-brainstorming** | Transformar ideas en diseño y especificaciones completas | Iniciando desarrollo de nueva función |
-| **sw-writing-specs** | Crear planes de implementación detallados | Diseño completado, se necesita plan de ejecución |
+| **sw-working-plan** | Crear planes de implementación detallados | Diseño completado, se necesita plan de ejecución |
 | **sw-subagent-development** | Ejecutar planes usando subagentes | Tener plan de implementación, las tareas son independientes |
 | **sw-test-driven-dev** | Aplicar ciclo RED-GREEN-REFACTOR | Implementar cualquier función o corregir errores |
 | **sw-requesting-code-review** | Despachar subagente revisor de código | Después de tarea, antes de merge |
@@ -149,8 +152,8 @@ Agente: [Aplica automáticamente la Habilidad sw-brainstorming]
       2. Hacer preguntas de aclaración...
       3. Proponer 2-3 enfoques...
       4. Presentar diseño en secciones...
-      5. Escribir documento de especificación → docs/sw-superpower/specs/2026-04-18--user-auth.md
-      6. Invocar sw-writing-specs para crear plan de implementación...
+      5. Escribir documento de especificación → docs/sw-superpower/technical-specs/2026-04-18--user-auth.md
+      6. Invocar sw-working-plan para crear plan de implementación...
 ```
 
 ---

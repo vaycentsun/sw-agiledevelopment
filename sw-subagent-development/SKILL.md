@@ -456,7 +456,7 @@ OpenCode 子 Agent 每次分派都是全新上下文。重新分派实现者时�
 ## 集成
 
 **必需工作流 Skill：**
-- **sw-writing-specs** - 创建此 Skill 执行的计划
+- **sw-working-plan** - 创建此 Skill 执行的计划
 - **sw-verification-before-completion** - 所有任务完成后验证并标记完成
 
 **子 Agent 应使用：**

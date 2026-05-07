@@ -30,7 +30,8 @@ This is a Chinese-localized adaptation of the [obra/superpowers](https://github.
 ```
 sw-superpower/
 ├── sw-brainstorming/              # Brainstorming & requirements analysis
-├── sw-writing-specs/              # Writing implementation plans
+├── sw-technical-spec/             # Writing technical specifications
+├── sw-working-plan/              # Writing implementation plans
 ├── sw-subagent-development/       # Subagent-driven development
 ├── sw-test-driven-dev/            # Test-driven development
 ├── sw-requesting-code-review/     # Requesting code review
@@ -53,9 +54,11 @@ The complete software development workflow executes in the following order:
 ```
 Start New Feature
     ↓
-sw-brainstorming (Brainstorming & Design)
-    ↓ Output: docs/sw-superpower/specs/YYYY-MM-DD--feature-design.md
-sw-writing-specs (Writing Implementation Plan)
+sw-brainstorming (Brainstorming & Requirements)
+    ↓ Output: docs/sw-superpower/business-specs/YYYY-MM-DD--feature-design.md
+sw-technical-spec (Writing Technical Specifications)
+    ↓ Output: docs/sw-superpower/technical-specs/YYYY-MM-DD--feature-design.md
+sw-working-plan (Writing Implementation Plan)
     ↓ Output: docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (Subagent-Driven Development)
     ├── sw-test-driven-dev (TDD for each task)
@@ -77,8 +80,9 @@ sw-finishing-branch (Finishing Branch)
 
 | Skill | Purpose | Trigger Condition |
 |-------|---------|-------------------|
-| **sw-brainstorming** | Transform ideas into complete design and specs | Starting new feature development |
-| **sw-writing-specs** | Create detailed implementation plans | Design completed, need execution plan |
+| **sw-brainstorming** | Transform ideas into business requirements and decisions | Starting new feature development |
+| **sw-technical-spec** | Write structured technical specification | Requirements clarified, need technical design |
+| **sw-working-plan** | Create detailed implementation plans | Technical spec completed, need execution plan |
 | **sw-subagent-development** | Execute plans using subagents | Have implementation plan, tasks are independent |
 | **sw-executing-plans** | Batch execute plans in same session | Have plan, not using subagents |
 | **sw-test-driven-dev** | Enforce RED-GREEN-REFACTOR cycle | Implementing any feature or fixing bugs |
@@ -138,8 +142,8 @@ Agent: [Automatically applies sw-brainstorming Skill]
       2. Ask clarifying questions...
       3. Propose 2-3 approaches...
       4. Present design in sections...
-      5. Write spec document → docs/sw-superpower/specs/2026-04-18--user-auth-design.md
-      6. Invoke sw-writing-specs to create implementation plan...
+      5. Write spec document → docs/sw-superpower/technical-specs/2026-04-18--user-auth-design.md
+      6. Invoke sw-working-plan to create implementation plan...
 ```
 
 ---

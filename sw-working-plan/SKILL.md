@@ -1,9 +1,9 @@
 ---
-name: sw-writing-specs
-description: "Use when creating detailed implementation plan for the project with bite-sized tasks after design is completed"
+name: sw-working-plan
+description: "Use when technical spec is complete and need to create detailed implementation plan with bite-sized tasks"
 ---
 
-# Writing Specs - 编写实现计划
+# Working Plan - 编写实现计划
 
 将完整的设计转化为详细的实现计划，包含可执行的小任务（每个 2-5 分钟）。
 
@@ -43,7 +43,7 @@ description: "Use when creating detailed implementation plan for the project wit
 flowchart TD
     A{设计已完成？} -->|是| B{有书面 Spec？}
     A -->|否| C[先执行 sw-brainstorming]
-    B -->|是| D[sw-writing-specs]
+    B -->|是| D[sw-working-plan]
     B -->|否| C
 ```
 
@@ -52,7 +52,7 @@ flowchart TD
 ```mermaid
 flowchart TD
     Start([开始]) --> Gate{0. 入口门控<br/>Spec 存在？设计完整？}
-    Gate -->|否| NeedDesign[返回<br/>sw-brainstorming]
+    Gate -->|否| NeedDesign[返回<br/>sw-technical-spec]
     Gate -->|是| ReadSpec[1. 读取 Spec 文件]
     ReadSpec --> Extract[2. 提取组件和接口]
     Extract --> Identify[3. 识别实现任务]
@@ -72,17 +72,17 @@ flowchart TD
 ### 0. 入口门控
 
 在开始前检查：
-1. **Spec 文件存在性**：`docs/sw-superpower/specs/YYYY-MM-DD--<feature>.md` 是否存在？
-2. **设计已完成**：该 Spec 是否已通过 `sw-brainstorming` 的两层自检？
+1. **Spec 文件存在性**：`docs/sw-superpower/technical-specs/YYYY-MM-DD--<feature>.md` 是否存在？
+2. **设计已完成**：该 Spec 是否已通过 `sw-technical-spec` 的快速自检？
 
 如果任一检查失败：
-- **Spec 不存在** → 告知用户："未找到 Spec 文件。请先执行 sw-brainstorming 完成设计阶段。"
-- **设计不完整** → 告知用户："设计尚未完成两层自检。请返回 sw-brainstorming 完成自检流程。"
+- **Spec 不存在** → 告知用户："未找到技术 Spec 文件。请先执行 sw-technical-spec 完成技术设计阶段。"
+- **设计不完整** → 告知用户："技术 Spec 尚未完成快速自检。请返回 sw-technical-spec 完成自检流程。"
 - **两者都通过** → 继续执行第 1 步
 
 ### 1. 读取 Spec 文件
 
-读取 `docs/sw-superpower/specs/YYYY-MM-DD--<feature>.md` 文件，理解：
+读取 `docs/sw-superpower/technical-specs/YYYY-MM-DD--<feature>.md` 文件，理解：
 - 设计概述
 - 组件和接口
 - 数据流
@@ -220,7 +220,7 @@ flowchart TD
 **自动推进**：展示摘要后自动保存文件并调用 `sw-subagent-development`，无需等待用户回复。用户如有修改需求可随时打断。
 
 **根本性异议回退**：如果用户对计划方向有**根本性异议**（如"这个方案完全不行"、"Spec 本身有问题"、"需要重新设计"），不要在本计划中反复修改。立即回退到：
-- **Spec 缺陷** → 回到 `sw-brainstorming`，重新审查或修改 Spec
+- **Spec 缺陷** → 回到 `sw-technical-spec`，重新审查或修改 Spec
 - **设计方向错误** → 回到 `sw-brainstorming`，重新提出方案
 
 ### 9. 保存计划
@@ -243,7 +243,7 @@ flowchart TD
 
 **交接内容**：
 - 计划文件路径：`docs/sw-superpower/plans/YYYY-MM-DD--<feature>-plan.md`
-- Spec 文件路径：`docs/sw-superpower/specs/YYYY-MM-DD--<feature>.md`
+- Spec 文件路径：`docs/sw-superpower/technical-specs/YYYY-MM-DD--<feature>.md`
 - 任务总数和依赖关系摘要
 
 **大规模计划**：如果任务数 > 20，建议分批调用子 Agent（每批 5-10 个无依赖或同层依赖的任务），避免单个子 Agent 上下文溢出。
@@ -411,7 +411,7 @@ def login(username: str, password: str) -> User | None
 
 ## 集成
 
-**前置 Skill**: sw-brainstorming（提供完整的 Spec）
+**前置 Skill**: sw-technical-spec（提供完整的技术 Spec）
 
 **后续 Skill**: sw-subagent-development（执行计划）
 
