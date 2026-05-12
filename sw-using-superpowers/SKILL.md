@@ -142,6 +142,24 @@ flowchart TD
 
 技能本身会告诉你属于哪种。
 
+## 术语规范
+
+本框架使用特定的中英文术语约定，所有 SKILL.md 文件和对用户输出必须遵循 `docs/terminology.md` 中的规范。关键术语摘要：
+
+| 中文 | 英文（保留） | 说明 |
+|------|-------------|------|
+| 技能 | **Skill** | 框架核心概念，但 sw-using-superpowers 等少数引导文件中保留英文 |
+| 智能体 | **Agent** | AI 编程助手 |
+| 子智能体 | **Subagent** | 被分派执行任务的 Agent 实例 |
+| 业务规范 | **business-spec** | `docs/sw-superpower/business-specs/` 中的文档 |
+| 技术规范 | **technical-spec** | `docs/sw-superpower/technical-specs/` 中的文档 |
+| 实施计划 | **working-plan** | `docs/sw-superpower/plans/` 中的文档 |
+| 规范（泛指） | **spec** | 泛指 business-spec 或 technical-spec |
+| 待办事项 | **TODO** | 也可写 TODO |
+| 令牌 | **token** | 上下文令牌 |
+
+**规则**：首次出现时标注 `英文（中文）`，后续直接使用英文。严禁同一文档内混用。
+
 ## 用户指令
 
 指令说的是 WHAT，不是 HOW。"添加 X" 或 "修复 Y" 并不意味着跳过工作流。
