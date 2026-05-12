@@ -63,16 +63,23 @@ Superpowers 技能覆盖默认系统提示行为，但**用户指令始终优先
 
 ### 简单任务快速通道
 
-**满足以下任一条件的任务，跳过 brainstorming 和 writing-specs，直接调用 `sw-test-driven-dev`：**
+**只有满足以下条件的任务，才能跳过 brainstorming 和 writing-specs，直接调用 `sw-test-driven-dev`：**
 
-- 改动范围明显小（Agent 通过快速代码扫描即可确认，如单函数修改、参数调整、局部逻辑修复）
-- 纯 Bug 修复（问题明确、修复方案清晰、且**不涉及**新增组件/接口变更/多模块影响）
-- 配置/文档/注释修改
-- 用户明确说"直接改"或"别走流程"
+- 纯配置/环境变更（如 `.env`、CI 配置、依赖版本号）
+- 纯文档/注释更新（README、API 文档、代码注释）
 - 拼写、格式、命名等表面层修复
-- 已有明确 Spec 或计划的任务执行
+- 单一文件内的单函数逻辑修复，且**用户已提供具体修复方案**
+- 用户明确说"直接改"或"别走流程"
 
-**不满足快速通道条件？** 走完整流程：brainstorming → writing-specs → TDD。
+**以下情况一律不走快速通道，必须走完整流程：**
+- 新增功能、组件、接口、模块
+- 涉及多文件修改或跨模块影响
+- Bug 根因不明确，需要调试/排查才能定位
+- 涉及数据库 schema、API 契约、配置结构变更
+- 删除或重构现有代码
+- 任何需要 Agent 自行判断"范围大小"的任务
+
+**不满足快速通道条件？** 走完整流程：sw-brainstorming → sw-technical-spec → sw-working-plan → sw-subagent-development。
 
 ```mermaid
 flowchart TD
@@ -81,8 +88,11 @@ flowchart TD
     Brainstormed -->|否| Simple{简单任务？}
     Brainstormed -->|是| Check
     Simple -->|是| InvokeTDD[直接调用 sw-test-driven-dev]
-    Simple -->|否| CallBrain[调用 brainstorming 技能]
-    CallBrain --> Check
+    Simple -->|否| CallBrain[调用 sw-brainstorming]
+    CallBrain --> WriteSpec[调用 sw-technical-spec]
+    WriteSpec --> CreatePlan[调用 sw-working-plan]
+    CreatePlan --> Dev[调用 sw-subagent-development]
+    Dev --> Check
     InvokeTDD --> Announce
     Check -->|是，哪怕 1%| Invoke[调用 Skill 工具]
     Check -->|绝对不是| Respond[回应（包括澄清问题）]
