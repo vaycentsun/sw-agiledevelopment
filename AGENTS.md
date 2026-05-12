@@ -63,7 +63,7 @@ description: "Use when [specific trigger condition]"
 
 ```
 sw-superpower/
-├── sw-*/                  # 13 个技能目录，每个含 SKILL.md（+ 可选的 subagent-prompts/）
+├── sw-*/                  # 14 个技能目录，每个含 SKILL.md（+ 可选的 subagent-prompts/）
 ├── .opencode/plugins/      # OpenCode 插件：sw-superpowers.js（自动注册技能 + 注入引导内容）
 ├── tests/opencode/         # Bash 测试套件（3 个测试：插件加载、技能结构、工具映射）
 ├── hooks/                  # Git 钩子（pre-push 验证）
@@ -107,5 +107,6 @@ git submodule add http://192.168.1.100:53000/vaycent/sw-superpower.git
 
 ## 相关文档
 - `docs/install-opencode.md` —— 面向人类的 OpenCode 安装指南
+- `docs/terminology.md` —— sw-superpower 术语规范（中英文术语统一对照表）
 - `sw-writing-skills/SKILL.md` —— 编写新技能的元技能
 - `tests/README.md` —— 测试套件文档
