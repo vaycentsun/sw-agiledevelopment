@@ -88,9 +88,9 @@ Spec 审查者: ✅ 现在 Spec 合规
 最终审查者: 所有需求满足，准备合并
 
 [完成阶段摘要]
-你: "所有 5 个任务已完成。整体审查通过。自动调用 sw-verification-before-completion 进行最终验证。"
+你: "所有 5 个任务已完成。整体审查通过。自动调用 sw-task-verification 进行最终验证。"
 
-[自动调用 sw-verification-before-completion]
+[自动调用 sw-task-verification]
 
 完成！
 ```

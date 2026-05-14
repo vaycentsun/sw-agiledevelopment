@@ -1,5 +1,5 @@
 ---
-name: sw-executing-plans
+name: sw-execute-plan
 description: "Use when you have a written implementation plan to execute in a separate session with review checkpoints"
 ---
 
@@ -71,8 +71,8 @@ description: "Use when you have a written implementation plan to execute in a se
 ### 步骤 4：完成开发
 
 所有任务完成并验证后：
-- 声明："我正在使用 `sw-verification-before-completion` 技能来完成此工作。"
-- **必需子技能：** 使用 `sw-verification-before-completion`
+- 声明："我正在使用 `sw-task-verification` 技能来完成此工作。"
+- **必需子技能：** 使用 `sw-task-verification`
 - 遵循该技能验证测试、呈现选项、执行选择
 
 ## 何时停止并寻求帮助
@@ -133,4 +133,4 @@ description: "Use when you have a written implementation plan to execute in a se
 **必需工作流技能：**
 - **sw-working-plan** - 创建此技能执行的计划
 - **sw-subagent-development** - 当判定为路径 A（并行）时强制调用
-- **sw-verification-before-completion** - 所有任务完成后验证并标记完成
+- **sw-task-verification** - 所有任务完成后验证并标记完成

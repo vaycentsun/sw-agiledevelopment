@@ -1,21 +1,27 @@
 ---
-name: sw-verification-before-completion
-description: "Use when marking development task or implementation as complete, done, finished, or ready to merge to verify it works and meets requirements"
+name: sw-task-verification
+description: "Use after code review passes to verify the task actually works and meets requirements before marking it complete"
 ---
 
-# Verification Before Completion - 完成前验证
+# Task Verification - 任务验证
 
-在标记任何任务或项目为完成之前，验证它实际工作并符合需求。
+在代码审查通过后，验证任务实际工作并符合需求，然后标记完成。
 
-## 核心原则
+**核心原则：** 证据 > 声称。代码审查验证"写得好不好"，本 Skill 验证"能不能用"。
 
-**证据 > 声称**
+## 调用顺序
 
-- 不要假设它工作——证明它工作
-- 验证所有需求
-- 检查边界情况
-- 测试失败场景
-- **子 Agent 说完成了 ≠ 验证完成** — 亲自运行验证，不要采信未经验证的完成报告
+```
+sw-code-review（代码质量审查通过）
+    ↓ 自动进入
+sw-task-verification（功能验证）
+    ↓ 通过
+标记任务完成 → 进入下一任务
+
+所有任务完成后：
+    ↓ 自动进入
+sw-finishing-branch（分支收尾决策）
+```
 
 ## 铁律
 
@@ -32,12 +38,13 @@ NO COMPLETION WITHOUT VERIFICATION
 
 ## 何时使用
 
-```mermaid
-flowchart TD
-    A[任务完成？] -->|是| D[sw-verification-before-completion]
-    B[测试通过？] -->|是| D
-    C[准备标记完成？] -->|是| D
-```
+**自动触发：**
+- `sw-code-review` 审查通过后自动进入
+- 子 Agent 报告任务完成时
+
+**不调用本 Skill 当：**
+- 代码审查未通过（先修复，重新审查）
+- 任务被标记为"无需验证"（用户明确豁免）
 
 ## 验证流程
 
@@ -54,7 +61,7 @@ flowchart TD
     AllPass -->|否| FixIssues[3. 修复问题]
     FixIssues --> Checklist
     AllPass -->|是| Document[4. 记录证据<br/>截图、日志、测试结果]
-    Document --> MarkComplete[5. 标记完成]
+    Document --> MarkComplete[5. 标记任务完成]
     MarkComplete --> Done([结束])
 ```
 
@@ -86,9 +93,9 @@ flowchart TD
 
 ## 验证检查清单
 
-完整验证检查清单（含按任务类型的专项验证）参见 [verification-checklists.md](verification-checklists.md)。
+完整验证检查清单（含按任务类型的专项验证）参见 [checklists.md](checklists.md)。
 
-**验证优先级摘要**：
+**验证优先级摘要：**
 
 | 优先级 | 检查项 | 说明 |
 |--------|--------|------|
@@ -114,9 +121,9 @@ flowchart TD
 - [ ] 用户可以修改个人信息 ← 未完成
 ```
 
-验证设计方法论与常见陷阱参见 [verification-methodology.md](verification-methodology.md)。
+验证设计方法论与常见陷阱参见 [methodology.md](methodology.md)。
 
-验证文档模板与报告示例参见 [verification-reporting.md](verification-reporting.md)。
+验证文档模板与报告示例参见 [reporting.md](reporting.md)。
 
 ## 红旗 - 停止标记完成
 
@@ -161,7 +168,7 @@ flowchart TD
 
 **TDD 验证代码行为** — 单元测试验证函数行为，确保写代码前有测试
 
-**完成前验证验证功能完整** — 集成测试验证整体功能，验收测试验证需求满足，确保标记完成前有证据
+**本 Skill 验证功能完整** — 集成测试验证整体功能，验收测试验证需求满足，确保标记完成前有证据
 
 **两者都需要**
 
@@ -174,45 +181,28 @@ flowchart TD
 | 测试通过了，但未对照 Spec 验收标准 | 测试通过 | ❌ 未验证 | 可能遗漏了隐性需求 |
 | 新增功能测试通过，但破坏了原有功能 | 新测试通过 | ❌ 未验证 | 缺少回归验证 |
 
-## 输出示例
+## 与 sw-code-review 的边界
 
-输出示例参见 [verification-reporting.md](verification-reporting.md)。
+| 维度 | sw-code-review | sw-task-verification（本 Skill） |
+|------|---------------|---------------------------------|
+| **关注点** | 代码质量（静态） | 功能正确性（动态） |
+| **核心问题** | "代码写得好吗？" | "功能正常工作吗？" |
+| **验证方式** | 代码审查、架构评估 | 运行测试、手动验证、集成测试 |
+| **触发时机** | 代码完成后 | 代码审查通过后 |
+| **不通过时** | 修复代码，重新审查 | 修复问题，重新验证 |
 
-## 集成
+**调用链：sw-code-review → sw-task-verification**
 
-**前置 Skill**: 
-- sw-subagent-development - 完成任务
-- sw-test-driven-dev - 确保代码质量
+## 与 sw-finishing-branch 的边界
 
-**后续 Skill**: 
-- 无（工作流终点）
+| 维度 | sw-task-verification（本 Skill） | sw-finishing-branch |
+|------|---------------------------------|---------------------|
+| **粒度** | 任务级别（单个任务/功能完成后） | 分支级别（所有任务完成后） |
+| **触发时机** | 每次任务完成后（代码审查后） | 整个分支所有任务完成后 |
+| **验证范围** | 当前任务的功能正确性和完整性 | 整个分支的测试套件 + 合并决策 |
+| **决策输出** | 通过 → 标记任务完成；不通过 → 修复 | 合并 / PR / 保留 / 丢弃分支 |
 
-**相关 Skill**:
-- sw-systematic-debugging - 如果发现问题
-
-### 与 sw-finishing-branch 的边界
-
-两个 Skill 都涉及"验证"，但职责和时机不同：
-
-| 维度 | sw-verification-before-completion（本 Skill） | sw-finishing-branch |
-|------|-------------------------------------------|---------------------|
-| **粒度** | 任务级别（单个任务/功能完成后） | 分支级别（所有任务完成后，合并前） |
-| **触发时机** | 每次标记"任务完成"时 | 整个分支开发结束后 |
-| **验证范围** | 当前任务的正确性和完整性 | 整个分支的测试套件 + 代码审查 + 合并准备 |
-| **决策输出** | 通过 → 标记任务完成；不通过 → 修复 | 通过 → 合并/PR/保留/丢弃分支 |
-
-**调用关系**：
-```
-sw-subagent-development 完成单个任务
-        ↓
-sw-verification-before-completion（任务级别验证）
-        ↓
-    所有任务完成？
-        ↓
-sw-finishing-branch（分支级别验证 + 合并决策）
-```
-
-**示例**：每完成一个子任务后调用 **本 Skill** 验证；所有子任务完成后调用 **sw-finishing-branch** 决定合并策略
+**调用链：本 Skill（每个任务）→ ... → sw-finishing-branch（所有任务完成后）**
 
 ## 最小可执行检查
 

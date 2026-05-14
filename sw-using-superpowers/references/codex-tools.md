@@ -18,7 +18,7 @@ Skills 使用 Claude Code 工具名称。遇到这些时，使用你的平台等
 
 ## 无子 Agent 支持
 
-Codex CLI 没有 Claude Code `Task` 工具的等效项。依赖子 Agent 分派的 Skills（`subagent-driven-development`、`dispatching-parallel-agents`）将回退到通过 `executing-plans` 的单会话执行。
+Codex CLI 没有 Claude Code `Task` 工具的等效项。依赖子 Agent 分派的 Skills（`sw-subagent-development`、`parallel-debugging`）将回退到通过 `sw-execute-plan` 的单会话执行。
 
 ## 其他 Codex CLI 工具
 

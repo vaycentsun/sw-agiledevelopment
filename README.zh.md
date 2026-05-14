@@ -32,12 +32,11 @@ sw-superpower/
 ├── sw-working-plan/              # 编写实现计划
 ├── sw-subagent-development/       # 子 Agent 驱动开发
 ├── sw-test-driven-dev/            # 测试驱动开发
-├── sw-requesting-code-review/     # 请求代码审查
-├── sw-receiving-code-review/      # 接收代码审查
+├── sw-code-review/                  # 代码审查（自动触发）
 ├── sw-systematic-debugging/       # 系统化调试
-├── sw-dispatching-parallel-agents/# 并行分派 Agent
-├── sw-executing-plans/            # 执行计划
-├── sw-verification-before-completion/  # 完成前验证
+├── sw-parallel-debugging/  # 并行调试
+├── sw-execute-plan/            # 执行计划
+├── sw-task-verification/  # 任务验证
 ├── sw-finishing-branch/           # 完成开发分支
 ├── sw-using-superpowers/          # 技能系统引导（核心入口）
 └── sw-writing-skills/             # 编写新技能（元 Skill）
@@ -60,10 +59,9 @@ sw-working-plan (编写实现计划)
     ↓ 输出: docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (子 Agent 驱动开发)
     ├── sw-test-driven-dev (每个任务遵循 TDD)
-    ├── sw-requesting-code-review (任务后审查)
-    └── sw-receiving-code-review (处理审查反馈)
+    ├── sw-code-review (任务后审查)
     ↓
-sw-verification-before-completion (完成前验证)
+sw-task-verification (任务验证)
     ↓
 sw-finishing-branch (完成分支)
 ```
@@ -79,12 +77,11 @@ sw-finishing-branch (完成分支)
 | **sw-working-plan** | 创建详细的实现计划 | 技术 Spec 已完成，需要执行计划 |
 | **sw-subagent-development** | 使用子 Agent 执行计划 | 有实现计划，任务相对独立 |
 | **sw-test-driven-dev** | 强制 RED-GREEN-REFACTOR 循环 | 实现任何功能或修复 Bug |
-| **sw-requesting-code-review** | 请求代码审查（分派审查 Agent） | 完成任务、实现主要功能、合并前 |
-| **sw-receiving-code-review** | 接收并处理代码审查反馈 | 收到代码审查反馈时 |
+| **sw-code-review** | 请求代码审查（分派审查 Agent） | 完成任务、实现主要功能、合并前 |
 | **sw-systematic-debugging** | 系统化 Bug 调查 | 发现 Bug 或测试失败 |
-| **sw-dispatching-parallel-agents** | 并行分派多个 Agent | 2+ 独立任务，无共享状态 |
-| **sw-executing-plans** | 同会话中批量执行计划 | 有实现计划，不使用子 Agent |
-| **sw-verification-before-completion** | 标记完成前验证 | 准备标记任务完成 |
+| **sw-parallel-debugging** | 并行调试 | 2+ 独立失败，无共享状态 |
+| **sw-execute-plan** | 同会话中批量执行计划 | 有实现计划，不使用子 Agent |
+| **sw-task-verification** | 任务验证 | 准备标记任务完成 |
 | **sw-finishing-branch** | 验证、决策、清理分支 | 所有任务完成 |
 | **sw-writing-skills** | 创建和验证新 Skill | 需要创建新技能 |
 | **sw-using-superpowers** | 技能系统引导（核心入口） | 任何对话开始时 |

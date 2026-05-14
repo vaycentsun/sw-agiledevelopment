@@ -32,12 +32,11 @@ sw-superpower/
 ├── sw-working-plan/              # Escritura de planes de implementación
 ├── sw-subagent-development/       # Desarrollo impulsado por subagentes
 ├── sw-test-driven-dev/            # Desarrollo dirigido por pruebas
-├── sw-requesting-code-review/     # Solicitar revisión de código
-├── sw-receiving-code-review/      # Recibir revisión de código
+├── sw-code-review/                  # Revisión de código (auto-ejecutada)
 ├── sw-systematic-debugging/       # Depuración sistemática
-├── sw-dispatching-parallel-agents/# Despacho paralelo de agentes
-├── sw-executing-plans/            # Ejecución de planes
-├── sw-verification-before-completion/  # Verificación previa a la finalización
+├── sw-parallel-debugging/  # Depuración paralela
+├── sw-execute-plan/            # Ejecución de planes
+├── sw-task-verification/  # Verificación de tareas
 ├── sw-finishing-branch/           # Finalización de rama de desarrollo
 ├── sw-using-superpowers/          # Bootstrap del sistema de habilidades (entrada principal)
 └── sw-writing-skills/             # Escritura de nuevas habilidades (meta-habilidad)
@@ -60,10 +59,9 @@ sw-working-plan (Escritura del Plan de Implementación)
     ↓ Salida: docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (Desarrollo Impulsado por Subagentes)
     ├── sw-test-driven-dev (TDD para cada tarea)
-    ├── sw-requesting-code-review (Revisión después de tareas)
-    └── sw-receiving-code-review (Manejar feedback de revisión)
+    ├── sw-code-review (Revisión después de tareas)
     ↓
-sw-verification-before-completion (Verificación Previa a la Finalización)
+sw-task-verification (Verificación de Tareas)
     ↓
 sw-finishing-branch (Finalización de Rama)
 ```
@@ -78,12 +76,11 @@ sw-finishing-branch (Finalización de Rama)
 | **sw-working-plan** | Crear planes de implementación detallados | Diseño completado, se necesita plan de ejecución |
 | **sw-subagent-development** | Ejecutar planes usando subagentes | Tener plan de implementación, las tareas son independientes |
 | **sw-test-driven-dev** | Aplicar ciclo RED-GREEN-REFACTOR | Implementar cualquier función o corregir errores |
-| **sw-requesting-code-review** | Despachar subagente revisor de código | Después de tarea, antes de merge |
-| **sw-receiving-code-review** | Manejar feedback de revisión externa | Al recibir comentarios de revisión |
+| **sw-code-review** | Despachar subagente revisor de código | Después de tarea, antes de merge |
 | **sw-systematic-debugging** | Investigación sistemática de errores | Errores encontrados o pruebas fallando |
-| **sw-dispatching-parallel-agents** | Flujos de trabajo concurrentes de subagentes | 2+ tareas independientes |
-| **sw-executing-plans** | Ejecutar planes en lote en misma sesión | Tener plan, no usar subagentes |
-| **sw-verification-before-completion** | Verificación previa a la finalización | Listo para marcar tarea como completada |
+| **sw-parallel-debugging** | Depuración paralela | 2+ fallos independientes |
+| **sw-execute-plan** | Ejecutar planes en lote en misma sesión | Tener plan, no usar subagentes |
+| **sw-task-verification** | Verificación de tareas | Listo para marcar tarea como completada |
 | **sw-finishing-branch** | Verificar, decidir y limpiar rama | Todas las tareas completadas |
 | **sw-writing-skills** | Crear y validar nuevas habilidades | Necesidad de crear una nueva habilidad |
 | **sw-using-superpowers** | Bootstrap del sistema de habilidades | Inicio de cada conversación |

@@ -1,9 +1,9 @@
 ---
-name: sw-dispatching-parallel-agents
+name: sw-parallel-debugging
 description: "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies"
 ---
 
-# 并行分派 Agent
+# 并行调试
 
 ## 概述
 
@@ -18,10 +18,10 @@ description: "Use when facing 2+ independent tasks that can be worked on without
 ```mermaid
 flowchart TD
     A{多个失败？} -->|是| B{它们是独立的吗？}
-    B -->|否 - 相关| C[单个 Agent 调查所有]
+    B -->|否 - 相关| C[sw-systematic-debugging<br/>单个 Agent 调查所有]
     B -->|是| D{能并行工作吗？}
-    D -->|是| E[并行分派]
-    D -->|否 - 共享状态| F[顺序 Agent]
+    D -->|是| E[sw-parallel-debugging<br/>并行分派]
+    D -->|否 - 共享状态| F[sw-systematic-debugging<br/>顺序调查]
 ```
 
 **使用时机：**
@@ -34,6 +34,22 @@ flowchart TD
 - 失败是相关的（修复一个可能修复其他）
 - 需要理解完整系统状态
 - Agent 会相互干扰
+
+## 与 sw-subagent-development 的边界
+
+两者都涉及并行分派 Agent，但使用场景完全不同：
+
+| 维度 | sw-parallel-debugging（本技能） | sw-subagent-development |
+|------|------------------------------|------------------------|
+| **触发方式** | 用户直接触发，面对突发问题 | 被 sw-execute-plan 内部调用，有计划 |
+| **是否有计划** | 无结构化计划，问题刚暴露 | 有书面实施计划，任务已定义 |
+| **Agent 提示** | 主 Agent 人工设计聚焦提示 | 基于计划任务自动生成 |
+| **输出处理** | 主 Agent 手动审查摘要、检查冲突 | 自动合并结果到计划进度 |
+| **典型场景** | 并行调查多个独立 Bug | 按计划并行开发多个模块 |
+
+**简单判断：**
+- 你有 `docs/sw-superpower/plans/` 下的计划文件 → 走 `sw-execute-plan`，它会自动调用 `sw-subagent-development`
+- 你没有计划，只是多个独立失败需要并行排查 → 使用本技能
 
 ## 模式
 
@@ -167,6 +183,15 @@ Agent 3 → 修复 tool-approval-race-conditions.test.ts
 **集成：** 所有修复独立，无冲突，完整套件通过
 
 **节省时间：** 3 个问题并行解决 vs 顺序解决
+
+## 集成
+
+**协同 Skill**:
+- **sw-systematic-debugging** - 本技能的"兜底"路径：
+  - 失败相关时 → 用 `sw-systematic-debugging` 一起调查
+  - 独立失败但共享状态时 → 用 `sw-systematic-debugging` 顺序调查
+  - 每个并行 Agent **内部**也可以使用 `sw-systematic-debugging` 的方法论进行单问题深度排查
+- **sw-execute-plan** - 当修复需要按 plan 执行时，修复阶段可调用
 
 ## 关键收益
 

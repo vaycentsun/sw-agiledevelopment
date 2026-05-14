@@ -32,12 +32,11 @@ sw-superpower/
 ├── sw-working-plan/              # 実装計画の作成
 ├── sw-subagent-development/       # サブエージェント駆動開発
 ├── sw-test-driven-dev/            # テスト駆動開発
-├── sw-requesting-code-review/     # コードレビューの依頼
-├── sw-receiving-code-review/      # コードレビューの受信
+├── sw-code-review/                  # コードレビュー（自動実行）
 ├── sw-systematic-debugging/       # 体系的なデバッグ
-├── sw-dispatching-parallel-agents/# 並列エージェント派遣
-├── sw-executing-plans/            # 計画の実行
-├── sw-verification-before-completion/  # 完了前検証
+├── sw-parallel-debugging/  # 並列デバッグ
+├── sw-execute-plan/            # 計画の実行
+├── sw-task-verification/  # タスク検証
 ├── sw-finishing-branch/           # 開発ブランチの完了
 ├── sw-using-superpowers/          # スキルシステムブートストラップ（コアエントリ）
 └── sw-writing-skills/             # 新しいスキルの作成（メタスキル）
@@ -60,10 +59,9 @@ sw-working-plan (実装計画の作成)
     ↓ 出力: docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (サブエージェント駆動開発)
     ├── sw-test-driven-dev (各タスクの TDD)
-    ├── sw-requesting-code-review (タスク後のレビュー)
-    └── sw-receiving-code-review (レビューフィードバックの処理)
+    ├── sw-code-review (タスク後のレビュー)
     ↓
-sw-verification-before-completion (完了前検証)
+sw-task-verification (タスク検証)
     ↓
 sw-finishing-branch (ブランチ完了)
 ```
@@ -78,12 +76,11 @@ sw-finishing-branch (ブランチ完了)
 | **sw-working-plan** | 詳細な実装計画を作成 | 設計が完了し、実行計画が必要 |
 | **sw-subagent-development** | サブエージェントを使用して計画を実行 | 実装計画があり、タスクが独立している |
 | **sw-test-driven-dev** | RED-GREEN-REFACTOR サイクルを強制 | 機能の実装またはバグ修正 |
-| **sw-requesting-code-review** | コードレビュー依頼（レビューエージェント派遣） | タスク完了後、マージ前 |
-| **sw-receiving-code-review** | コードレビューフィードバックの処理 | コードレビューコメント受信時 |
+| **sw-code-review** | コードレビュー依頼（レビューエージェント派遣） | タスク完了後、マージ前 |
 | **sw-systematic-debugging** | 体系的なバグ調査 | バグ発見またはテスト失敗 |
-| **sw-dispatching-parallel-agents** | 並列サブエージェントワークフロー | 2+ 独立したタスク |
-| **sw-executing-plans** | 同じセッションで計画をバッチ実行 | 計画あり、サブエージェント不使用 |
-| **sw-verification-before-completion** | 完了前の検証 | タスクを完了としてマークする準備完了 |
+| **sw-parallel-debugging** | 並列デバッグ | 2+ 独立した失敗 |
+| **sw-execute-plan** | 同じセッションで計画をバッチ実行 | 計画あり、サブエージェント不使用 |
+| **sw-task-verification** | タスク検証 | タスクを完了としてマークする準備完了 |
 | **sw-finishing-branch** | 検証、判断、ブランチのクリーンアップ | すべてのタスクが完了 |
 | **sw-writing-skills** | 新しいスキルを作成・検証 | 新しいスキルの作成が必要 |
 | **sw-using-superpowers** | スキルシステムブートストラップ | すべての会話の開始時 |
