@@ -141,17 +141,16 @@ sw-working-plan (编写实现计划)
     ↓ 输出: docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (子 Agent 驱动开发)
     ├── sw-test-driven-dev (每个任务遵循 TDD)
-    ├── sw-requesting-code-review (任务后审查)
-    └── sw-receiving-code-review (处理审查反馈)
+    └── sw-code-review (任务后审查与反馈处理)
     ↓
-sw-verification-before-completion (完成前验证)
+sw-task-verification (任务验证)
     ↓
 sw-finishing-branch (完成分支)
 ```
 
 替代路径：
-- **sw-executing-plans** — 不使用子 Agent 时，在同一会话中批量执行计划
-- **sw-dispatching-parallel-agents** — 多个独立任务需要并行处理时
+- **sw-execute-plan** — 不使用子 Agent 时，在同一会话中批量执行计划
+- **sw-parallel-debugging** — 多个独立 Bug 需要并行调查时
 
 ---
 

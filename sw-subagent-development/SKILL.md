@@ -55,7 +55,7 @@ flowchart TD
     FinalReview --> ShowFinal[展示整体摘要<br/>自动调用验证]
     ShowFinal --> FixFinal[根据反馈<br/>修复或调整]
     FixFinal --> ScanReady
-    ShowFinal --> Finish([调用 sw-verification-before-completion])
+    ShowFinal --> Finish([调用 sw-task-verification])
 ```
 
 ## 执行检查清单
@@ -69,7 +69,7 @@ flowchart TD
 - [ ] 主 Agent 执行 `git commit`（每次提交前询问用户，子 Agent 只准备摘要）
 - [ ] Spec 审查 → 代码质量审查 → **自动推进下一任务/批次**（顺序不可变）
 - [ ] 每轮审查最多 3 次迭代，超限上报用户
-- [ ] 所有任务完成后自动调用 `sw-verification-before-completion`
+- [ ] 所有任务完成后自动调用 `sw-task-verification`
 
 ## 详细步骤
 
@@ -341,9 +341,9 @@ OpenCode 子 Agent 每次分派都是全新上下文。重新分派实现者时�
 > - 审查迭代：X 次
 > - 提交记录：[SHA 列表]
 >
-> 自动调用 `sw-verification-before-completion` 进行最终验证。"
+> 自动调用 `sw-task-verification` 进行最终验证。"
 
-展示摘要后**自动调用 `sw-verification-before-completion`**，无需等待用户回复。
+展示摘要后**自动调用 `sw-task-verification`**，无需等待用户回复。
 
 - **如果用户主动提出跨任务问题**：
   - 记录反馈，确定涉及哪些任务
@@ -352,7 +352,7 @@ OpenCode 子 Agent 每次分派都是全新上下文。重新分派实现者时�
     - 如涉及多个任务，依次修复
   - 主 Agent 执行各任务的 `git commit`（**每次提交前询问**）
   - 修复完成后**重新进行最终审查**（回到 3.1）
-- **正常流程**：自动调用 `sw-verification-before-completion` Skill
+- **正常流程**：自动调用 `sw-task-verification` Skill
 
 ## 实现者状态处理
 
@@ -457,7 +457,7 @@ OpenCode 子 Agent 每次分派都是全新上下文。重新分派实现者时�
 
 **必需工作流 Skill：**
 - **sw-working-plan** - 创建此 Skill 执行的计划
-- **sw-verification-before-completion** - 所有任务完成后验证并标记完成
+- **sw-task-verification** - 所有任务完成后验证并标记完成
 
 **子 Agent 应使用：**
 - **sw-test-driven-dev** - 子 Agent 对每个任务遵循 TDD
@@ -491,5 +491,5 @@ OpenCode 子 Agent 每次分派都是全新上下文。重新分派实现者时�
 - ...
 
 ### 下一步
-调用 sw-verification-before-completion 标记完成
+调用 sw-task-verification 标记完成
 ```

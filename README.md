@@ -34,13 +34,12 @@ sw-superpower/
 ├── sw-working-plan/              # Writing implementation plans
 ├── sw-subagent-development/       # Subagent-driven development
 ├── sw-test-driven-dev/            # Test-driven development
-├── sw-requesting-code-review/     # Requesting code review
-├── sw-receiving-code-review/      # Receiving code review feedback
+├── sw-code-review/                  # Code review (auto-triggered)
 ├── sw-systematic-debugging/       # Systematic debugging
-├── sw-verification-before-completion/  # Pre-completion verification
+├── sw-task-verification/  # Task verification
 ├── sw-finishing-branch/           # Finishing development branch
-├── sw-dispatching-parallel-agents/# Parallel agent dispatch
-├── sw-executing-plans/            # Executing plans (same session)
+├── sw-parallel-debugging/  # Parallel debugging
+├── sw-execute-plan/            # Executing plans (same session)
 ├── sw-using-superpowers/          # Skill system bootstrap (core entry)
 └── sw-writing-skills/             # Writing new skills (meta skill)
 ```
@@ -62,17 +61,16 @@ sw-working-plan (Writing Implementation Plan)
     ↓ Output: docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (Subagent-Driven Development)
     ├── sw-test-driven-dev (TDD for each task)
-    ├── sw-requesting-code-review (Review after tasks)
-    └── sw-receiving-code-review (Handle review feedback)
+    ├── sw-code-review (Review after tasks & handle feedback)
     ↓
-sw-verification-before-completion (Pre-Completion Verification)
+sw-task-verification (Task Verification)
     ↓
 sw-finishing-branch (Finishing Branch)
 ```
 
 **Alternative paths:**
-- `sw-executing-plans` — Execute plans in the same session without subagents
-- `sw-dispatching-parallel-agents` — Dispatch multiple agents in parallel for independent tasks
+- `sw-execute-plan` — Execute plans in the same session without subagents
+- `sw-parallel-debugging` — Parallel debugging for independent failures
 
 ---
 
@@ -84,13 +82,12 @@ sw-finishing-branch (Finishing Branch)
 | **sw-technical-spec** | Write structured technical specification | Requirements clarified, need technical design |
 | **sw-working-plan** | Create detailed implementation plans | Technical spec completed, need execution plan |
 | **sw-subagent-development** | Execute plans using subagents | Have implementation plan, tasks are independent |
-| **sw-executing-plans** | Batch execute plans in same session | Have plan, not using subagents |
+| **sw-execute-plan** | Batch execute plans in same session | Have plan, not using subagents |
 | **sw-test-driven-dev** | Enforce RED-GREEN-REFACTOR cycle | Implementing any feature or fixing bugs |
-| **sw-requesting-code-review** | Dispatch code reviewer subagent | After task, before merge |
-| **sw-receiving-code-review** | Handle external review feedback | Receiving code review comments |
+| **sw-code-review** | Request & handle code review feedback | After task, before merge, receiving feedback |
 | **sw-systematic-debugging** | Systematic bug investigation | Bugs found or tests failing |
-| **sw-dispatching-parallel-agents** | Concurrent subagent workflows | 2+ independent tasks |
-| **sw-verification-before-completion** | Pre-completion verification | Ready to mark task as complete |
+| **sw-parallel-debugging** | Parallel debugging | 2+ independent failures to debug |
+| **sw-task-verification** | Task verification | Ready to mark task as complete |
 | **sw-finishing-branch** | Verify, decide, and clean up branch | All tasks completed |
 | **sw-writing-skills** | Create and validate new skills | Need to create a new skill |
 | **sw-using-superpowers** | Skill system bootstrap | Every conversation start |

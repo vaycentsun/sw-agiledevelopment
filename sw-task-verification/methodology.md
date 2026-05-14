@@ -1,4 +1,4 @@
-> 本文件是 `sw-verification-before-completion/SKILL.md` 的补充文档。请先阅读主文件了解完整执行流程。
+> 本文件是 `sw-task-verification/SKILL.md` 的补充文档。请先阅读主文件了解完整执行流程。
 
 ## 验证设计方法论
 
