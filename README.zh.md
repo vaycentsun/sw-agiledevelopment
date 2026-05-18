@@ -4,91 +4,13 @@
 
 # sw-agiledevelopment 🦸
 
-> 为 AI 编程 Agent 设计的软件工程技能集 (Agile Development 风格)
+> 为 AI 编程 Agent 设计的 Agile Development 技能集 — 从需求澄清到代码审查的结构化软件工程工作流。
 
-这是一套完整的软件开发工作流指导技能，帮助 AI 编程 Agent 以系统化、可复现的方式完成从需求分析到代码审查的每个环节。
-
----
-
-## 📦 项目概述
-
-`sw-agiledevelopment` 是一套为 [OpenCode](https://opencode.ai) 等 AI 编程平台设计的 Superpowers 风格技能集。它将成熟的软件工程实践（TDD、代码审查、系统化调试）封装成结构化、可复用的 Agent 技能。
-
-### 核心理念
-
-- **流程驱动**: 每个 Skill 定义明确的触发条件和执行流程
-- **铁律优先**: 不可违反的规则放在最前面
-- **压力测试**: 通过 TDD 方式创建和验证 Skill
-- **渐进交付**: 从需求澄清到代码交付的完整工作流
+一套完整的软件开发工作流技能，帮助 AI 编程 Agent 以系统化、可复现的方式完成从需求分析到代码审查的每个环节。
 
 ---
 
-## 🗂️ 项目结构
-
-```
-sw-agiledevelopment/
-├── sw-requirements-clarification/              # 需求澄清与分析
-├── sw-technical-spec/             # 编写技术规格文档
-├── sw-working-plan/              # 编写实现计划
-├── sw-subagent-development/       # 子 Agent 驱动开发
-├── sw-test-driven-dev/            # 测试驱动开发
-├── sw-code-review/                  # 代码审查（自动触发）
-├── sw-systematic-debugging/       # 系统化调试
-├── sw-parallel-debugging/  # 并行调试
-├── sw-execute-plan/            # 执行计划
-├── sw-task-verification/  # 任务验证
-├── sw-finishing-branch/           # 完成开发分支
-├── sw-using-agiledevelopment/          # 技能系统引导（核心入口）
-└── sw-writing-skills/             # 编写新技能（元 Skill）
-```
-
----
-
-## 🚀 核心工作流
-
-完整的软件开发工作流按以下顺序执行：
-
-```
-开始新功能
-    ↓
-sw-requirements-clarification (需求澄清与分析)
-    ↓ 输出: docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--feature.md
-sw-technical-spec (编写技术规格)
-    ↓ 输出: docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--feature.md
-sw-working-plan (编写实现计划)
-    ↓ 输出: docs/sw-agiledevelopment/plans/YYYY-MM-DD--feature-plan.md
-sw-subagent-development (子 Agent 驱动开发)
-    ├── sw-test-driven-dev (每个任务遵循 TDD)
-    ├── sw-code-review (任务后审查)
-    ↓
-sw-task-verification (任务验证)
-    ↓
-sw-finishing-branch (完成分支)
-```
-
----
-
-## 📋 Skill 一览
-
-| Skill | 用途 | 触发条件 |
-|-------|------|----------|
-| **sw-requirements-clarification** | 将想法转化为业务需求和方案决策 | 开始新功能开发 |
-| **sw-technical-spec** | 编写结构化的技术规格文档 | 需求已澄清，需要技术设计 |
-| **sw-working-plan** | 创建详细的实现计划 | 技术 Spec 已完成，需要执行计划 |
-| **sw-subagent-development** | 使用子 Agent 执行计划 | 有实现计划，任务相对独立 |
-| **sw-test-driven-dev** | 强制 RED-GREEN-REFACTOR 循环 | 实现任何功能或修复 Bug |
-| **sw-code-review** | 请求代码审查（分派审查 Agent） | 完成任务、实现主要功能、合并前 |
-| **sw-systematic-debugging** | 系统化 Bug 调查 | 发现 Bug 或测试失败 |
-| **sw-parallel-debugging** | 并行调试 | 2+ 独立失败，无共享状态 |
-| **sw-execute-plan** | 同会话中批量执行计划 | 有实现计划，不使用子 Agent |
-| **sw-task-verification** | 任务验证 | 准备标记任务完成 |
-| **sw-finishing-branch** | 验证、决策、清理分支 | 所有任务完成 |
-| **sw-writing-skills** | 创建和验证新 Skill | 需要创建新技能 |
-| **sw-using-agiledevelopment** | 技能系统引导（核心入口） | 任何对话开始时 |
-
----
-
-## 🎯 快速开始
+## 🚀 快速开始
 
 ### 安装
 
@@ -99,7 +21,7 @@ sw-finishing-branch (完成分支)
 ```json
 {
   "plugin": [
-    "sw-agiledevelopment@git+http://192.168.1.100:53000/vaycent/sw-agiledevelopment.git#main"
+    "sw-agiledevelopment@git+https://github.com/vaycentsun/sw-agiledevelopment.git#main"
   ],
   "permission": {
     "skill": {
@@ -119,146 +41,53 @@ git submodule add https://github.com/vaycentsun/sw-agiledevelopment.git
 git submodule update --init --recursive
 ```
 
-后续更新：
-
-```bash
-cd <你的项目>/skills/sw-agiledevelopment
-git pull origin main
-cd <你的项目>
-git add skills/sw-agiledevelopment
-git commit -m "Update sw-agiledevelopment submodule"
-```
-
-或直接克隆（不推荐用于版本控制的项目）：
-
-```bash
-cd <你的项目>/skills/
-git clone https://github.com/vaycentsun/sw-agiledevelopment.git
-```
-
 重启 OpenCode 或重新加载技能。
 
-### 使用示例
+---
 
-当你开始一个新功能时，Agent 会自动识别并应用相应 Skill：
+## 🗺️ 核心工作流
 
 ```
-用户: 我要开发一个用户认证功能
-
-Agent: [自动应用 sw-requirements-clarification Skill]
-      1. 探索项目上下文...
-      2. 提出澄清问题...
-      3. 提出 2-3 种方案...
-      4. 分节呈现设计...
-      5. 编写 Spec 文档 → docs/sw-agiledevelopment/technical-specs/2026-04-18--user-auth.md
-      6. 调用 sw-working-plan 创建实现计划...
+开始新功能
+    ↓
+sw-requirements-clarification (需求澄清与分析)
+    ↓ 输出: business-specs/YYYY-MM-DD--feature.md
+sw-technical-spec (编写技术规格)
+    ↓ 输出: technical-specs/YYYY-MM-DD--feature.md
+sw-working-plan (编写实现计划)
+    ↓ 输出: plans/YYYY-MM-DD--feature-plan.md
+sw-subagent-development (子 Agent 驱动开发)
+    ├── sw-test-driven-dev (每个任务遵循 TDD)
+    ├── sw-code-review (任务后审查)
+    ↓
+sw-task-verification (任务验证)
+    ↓
+sw-finishing-branch (完成分支)
 ```
+
+**替代路径：**
+- `sw-execute-plan` — 同会话中批量执行计划（不使用子 Agent）
+- `sw-parallel-debugging` — 并行调试多个独立失败
 
 ---
 
-## 🏗️ Skill 结构
+## 📋 技能一览
 
-每个 Skill 是自包含的目录，遵循统一结构：
-
-```
-sw-<skill-name>/
-├── SKILL.md                    # 主技能文件（必需）
-├── subagent-prompts/           # 子 Agent 提示词（可选）
-│   └── <name>-prompt.md
-
-```
-
-### SKILL.md 格式
-
-```markdown
----
-name: skill-name
-description: "Use when [具体触发条件]"
----
-
-# Skill 名称
-
-## 铁律
-关键规则，不可违反
-
-## 流程
-流程图和详细步骤
-
-## 红旗 - 立即停止
-违规迹象列表
-
-## 常见借口表
-| 借口 | 现实 |
-|------|------|
-
-## 集成
-前置和后续 Skill
-
-## 输出示例
-期望的输出格式
-```
-
----
-
-## 🔑 关键原则
-
-### YAGNI 原则
-
-> You Aren't Gonna Need It
-
-- 不要添加 Spec 未要求的功能
-- 不要过度设计
-- 不要假设未来需求
-
-### 子 Agent 开发原则
-
-- 每个任务使用全新子 Agent
-- 子 Agent 不应继承会话上下文
-- 提供完整任务文本和上下文
-
-### 审查原则
-
-- **客观公正**: 基于规范，不是个人偏好
-- **建设性**: 提供具体改进建议
-- **优先级**: 关注严重问题
-
----
-
-## 🧪 测试策略
-
-本项目采用 TDD 方式开发 Skill：
-
-1. **先测试，后 Skill** - 没有例外
-2. **创建压力场景** - 3+ 种压力组合测试
-3. **记录基线失败** - 观察无 Skill 时的失败行为
-4. **编写 Skill 解决失败** - 针对观察到的失败
-5. **验证合规性** - 带 Skill 重新测试
-6. **关闭漏洞** - 找到新借口，添加对策
-
----
-
-## 🤝 贡献指南
-
-### 创建新 Skill
-
-1. 使用 `sw-writing-skills` Skill 指导创建流程
-2. 遵循 TDD 方式：先测试，后编写
-3. 创建 3+ 压力场景测试
-4. 记录基线失败行为
-5. 编写 Skill 解决特定失败
-6. 验证合规性，关闭漏洞
-
-### 提交规范
-
-```bash
-# 创建新 Skill
-feat: add sw-<skill-name> for <purpose>
-
-# 更新现有 Skill
-fix: resolve <issue> in sw-<skill-name>
-
-docs: update <section> in sw-<skill-name>
-```
+| 技能 | 用途 | 触发条件 |
+|------|------|----------|
+| **sw-requirements-clarification** | 将想法转化为业务需求 | 开始新功能开发 |
+| **sw-technical-spec** | 编写结构化的技术规格文档 | 需求已澄清 |
+| **sw-working-plan** | 创建详细的实现计划 | 需要执行计划 |
+| **sw-subagent-development** | 使用子 Agent 执行计划 | 任务相对独立 |
+| **sw-execute-plan** | 同会话中批量执行计划 | 不使用子 Agent |
+| **sw-test-driven-dev** | 强制 RED-GREEN-REFACTOR 循环 | 实现功能或修复 Bug |
+| **sw-code-review** | 请求并处理代码审查反馈 | 任务完成后、合并前 |
+| **sw-systematic-debugging** | 系统化 Bug 调查 | 发现 Bug 或测试失败 |
+| **sw-parallel-debugging** | 并行调试 | 2+ 独立失败 |
+| **sw-task-verification** | 验证任务完成度 | 准备标记任务完成 |
+| **sw-finishing-branch** | 验证、决策、清理分支 | 所有任务完成 |
+| **sw-writing-skills** | 创建和验证新技能 | 需要创建新技能 |
+| **sw-using-agiledevelopment** | 技能系统引导（核心入口） | 任何对话开始时 |
 
 ---
 
@@ -270,13 +99,5 @@ docs: update <section> in sw-<skill-name>
 
 ## 🙏 致谢
 
-- 基于 [Superpowers](https://github.com/anthropics/superpowers) 技能格式
+- 基于 Agile Development 方法论，灵感源自 [Superpowers](https://github.com/anthropics/superpowers) 技能格式
 - 灵感来源于成熟的软件工程实践
-
----
-
-<div align="center">
-
-**让 AI 编程更系统化、可预测、高质量** 🚀
-
-</div>
