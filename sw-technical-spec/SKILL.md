@@ -9,7 +9,7 @@ description: "Use when business requirements are clarified and need to write a s
 
 ## 何时使用
 
-- 需求已通过 `sw-brainstorming` 澄清并确定方案后
+- 需求已通过 `sw-requirements-clarification` 澄清并确定方案后
 - 需要编写可供工程师直接参考的技术文档时
 - 需要明确接口定义、数据流、错误处理策略时
 
@@ -31,9 +31,9 @@ description: "Use when business requirements are clarified and need to write a s
 
 必须按顺序完成以下任务：
 
-- [ ] **读取 business-spec** — 从 `docs/sw-superpower/business-specs/` 读取需求澄清结果
+- [ ] **读取 business-spec** — 从 `docs/sw-agiledevelopment/business-specs/` 读取需求澄清结果
 - [ ] **扩展技术细节** — 基于业务决策补充架构、组件、接口、数据流、错误处理
-- [ ] **编写 technical-spec** — 保存到 `docs/sw-superpower/technical-specs/YYYY-MM-DD--<name>.md`
+- [ ] **编写 technical-spec** — 保存到 `docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--<name>.md`
 - [ ] **technical-spec 快速自检** — 检查 TODO、占位符、内部矛盾
 - [ ] **展示 spec 摘要** — 向用户展示 spec 要点，随后自动进入下一步
 - [ ] **自动调用 sw-working-plan** — 创建实现计划
@@ -42,9 +42,9 @@ description: "Use when business requirements are clarified and need to write a s
 
 ```mermaid
 flowchart TD
-    Start([开始]) --> ReadBusiness[1. 读取 business-spec<br/>从 docs/sw-superpower/business-specs/]
+    Start([开始]) --> ReadBusiness[1. 读取 business-spec<br/>从 docs/sw-agiledevelopment/business-specs/]
     ReadBusiness --> Expand[2. 扩展技术细节<br/>架构、组件、接口、数据流]
-    Expand --> WriteSpec[3. 编写 technical-spec<br/>保存到 docs/sw-superpower/technical-specs/]
+    Expand --> WriteSpec[3. 编写 technical-spec<br/>保存到 docs/sw-agiledevelopment/technical-specs/]
     WriteSpec --> QuickReview[4. 快速自检<br/>检查待办、占位符、内部矛盾]
     QuickReview -->|发现问题| Fix[修复问题]
     Fix --> QuickReview
@@ -57,17 +57,17 @@ flowchart TD
 ### 0. 入口检查
 
 在开始前检查以下两项：
-1. **business-spec 是否存在**：`docs/sw-superpower/business-specs/YYYY-MM-DD--<feature>.md` 是否存在？
-2. **需求是否已澄清**：该文档是否已通过 `sw-brainstorming` 完成需求澄清？
+1. **business-spec 是否存在**：`docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--<feature>.md` 是否存在？
+2. **需求是否已澄清**：该文档是否已通过 `sw-requirements-clarification` 完成需求澄清？
 
 如果任一检查未通过：
-- **business-spec 不存在** → 告知用户："未找到 business-spec 文档。请先执行 sw-brainstorming 完成需求澄清阶段。"
-- **需求未澄清** → 告知用户："需求尚未澄清。请返回 sw-brainstorming 完成需求分析流程。"
+- **business-spec 不存在** → 告知用户："未找到 business-spec 文档。请先执行 sw-requirements-clarification 完成需求澄清阶段。"
+- **需求未澄清** → 告知用户："需求尚未澄清。请返回 sw-requirements-clarification 完成需求分析流程。"
 - **两项均通过** → 继续执行第 1 步
 
 ### 1. 读取 business-spec
 
-读取 `docs/sw-superpower/business-specs/YYYY-MM-DD--<feature>.md`，理解以下内容：
+读取 `docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--<feature>.md`，理解以下内容：
 - 业务目标和背景
 - 选定的方案及原因
 - 关键组件和接口草案
@@ -102,7 +102,7 @@ flowchart TD
 ### 3. 编写 technical-spec
 
 **文档规范**：
-- 将完整技术设计保存到 `docs/sw-superpower/technical-specs/YYYY-MM-DD--<feature-name>.md`
+- 将完整技术设计保存到 `docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--<feature-name>.md`
 - 遵循 technical-spec 文档结构（参考 subagent-prompts/spec-writer-prompt.md）
 - 编写完成后提交到 Git
 
@@ -129,7 +129,7 @@ Agent 自行快速扫描 spec，**不调用 Subagent**，仅检查以下三类�
 
 快速自检通过后，向用户展示规范摘要，然后**自动调用 `sw-working-plan`**：
 
-> "technical-spec 已编写并提交到 `docs/sw-superpower/technical-specs/YYYY-MM-DD--<name>.md`。以下是 spec 要点摘要：
+> "technical-spec 已编写并提交到 `docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--<name>.md`。以下是 spec 要点摘要：
 > - [设计概述一句话]
 > - [关键组件]
 > - [主要接口]
@@ -154,14 +154,14 @@ Agent 自行快速扫描 spec，**不调用 Subagent**，仅检查以下三类�
 |------|------|
 | **基于业务决策** | 不偏离 business-spec 中已确认的方案和范围 |
 | **具体明确** | 每个接口、数据结构、错误类型都必须明确定义 |
-| **不新增需求** | 不在 technical-spec 中引入头脑风暴阶段未讨论的功能 |
+| **不新增需求** | 不在 technical-spec 中引入需求澄清阶段未讨论的功能 |
 | **快速自检** | 只查致命问题，不追求完美文档 |
 
 ## 红旗 —— 立即停止
 
 | 危险想法 | 真相 |
 |------|------|
-| "business-spec 不清楚，我先按自己的理解写" | business-spec 不清楚 → 回到 sw-brainstorming 重新澄清 |
+| "business-spec 不清楚，我先按自己的理解写" | business-spec 不清楚 → 回到 sw-requirements-clarification 重新澄清 |
 | "跳过规范快速自检" | 快速自检能捕获待办、占位符、内部矛盾。跳过 = 有缺陷的规范进入实现阶段 |
 | "在 spec 里补充业务背景" | business-spec 已包含背景，technical-spec 聚焦技术实现 |
 | "编写规范后立即开始编码" | 必须通过快速自检。编码是唯一出口后的步骤 |
@@ -187,13 +187,13 @@ Agent 自行快速扫描 spec，**不调用 Subagent**，仅检查以下三类�
 
 ## 输出示例
 
-**规范文件路径**: `docs/sw-superpower/technical-specs/2026-04-08--user-authentication.md`
+**规范文件路径**: `docs/sw-agiledevelopment/technical-specs/2026-04-08--user-authentication.md`
 
 **返回摘要格式**：
 ```markdown
 ## technical-spec 完成
 
-**规范文件**: `docs/sw-superpower/technical-specs/2026-04-08--user-authentication.md`
+**规范文件**: `docs/sw-agiledevelopment/technical-specs/2026-04-08--user-authentication.md`
 **设计状态**: ✅ 已完成
 **主要决策**:
 - 使用 JWT 进行身份验证
@@ -205,7 +205,7 @@ Agent 自行快速扫描 spec，**不调用 Subagent**，仅检查以下三类�
 
 ## 与其他技能的集成
 
-**前置 Skill**: sw-brainstorming（提供业务需求文档）
+**前置 Skill**: sw-requirements-clarification（提供业务需求文档）
 
 **后续 Skill**: 
 - **sw-working-plan** - 必须调用的下一个技能

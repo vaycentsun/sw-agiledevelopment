@@ -48,7 +48,7 @@ flowchart TD
 | **典型场景** | 并行调查多个独立 Bug | 按计划并行开发多个模块 |
 
 **简单判断：**
-- 你有 `docs/sw-superpower/plans/` 下的计划文件 → 走 `sw-execute-plan`，它会自动调用 `sw-subagent-development`
+- 你有 `docs/sw-agiledevelopment/plans/` 下的计划文件 → 走 `sw-execute-plan`，它会自动调用 `sw-subagent-development`
 - 你没有计划，只是多个独立失败需要并行排查 → 使用本技能
 
 ## 模式

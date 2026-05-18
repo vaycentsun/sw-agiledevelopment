@@ -29,7 +29,7 @@ echo "  2. Use prompt with OpenCode Agent"
 echo "  3. Verify correct skill is triggered"
 echo ""
 echo "Expected triggers:"
-echo "  brainstorming.txt                -> sw-brainstorming"
+echo "  requirements-clarification.txt   -> sw-requirements-clarification"
 echo "  test-driven-development.txt      -> sw-test-driven-dev"
 echo "  systematic-debugging.txt         -> sw-systematic-debugging"
 echo "  technical-spec.txt               -> sw-technical-spec

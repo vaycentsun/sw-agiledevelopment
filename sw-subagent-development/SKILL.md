@@ -18,7 +18,7 @@ description: "Use when executing implementation plans with independent tasks in 
 ```mermaid
 flowchart TD
     A{有实现计划？} -->|是| B{任务大部分独立？}
-    A -->|否| C[手动执行或先头脑风暴]
+    A -->|否| C[手动执行或先需求澄清]
     B -->|是| D{保持此会话？}
     B -->|否 - 紧密耦合| C
     D -->|是| E[sw-subagent-development]
@@ -96,7 +96,7 @@ flowchart TD
 **读取计划文件**：
 ```bash
 # 一次性读取完整计划
-cat docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
+cat docs/sw-agiledevelopment/plans/YYYY-MM-DD--feature-plan.md
 ```
 
 **提取任务**：
@@ -472,7 +472,7 @@ OpenCode 子 Agent 每次分派都是全新上下文。重新分派实现者时�
 ```markdown
 ## 子 Agent 驱动开发完成
 
-**计划文件**: `docs/sw-superpower/plans/2026-04-08--auth-plan.md`
+**计划文件**: `docs/sw-agiledevelopment/plans/2026-04-08--auth-plan.md`
 **任务数**: 5
 **完成**: 5/5
 

@@ -2,9 +2,9 @@
   <a href="./README.md">🇺🇸 English</a> | <a href="./README.zh.md">🇨🇳 中文</a> | <a href="./README.ja.md">🇯🇵 日本語</a> | <a href="./README.es.md">🇪🇸 Español</a> | <strong>🇫🇷 Français</strong>
 </div>
 
-# sw-superpower 🦸
+# sw-agiledevelopment 🦸
 
-> Un ensemble de compétences style Superpowers pour agents de codage AI — flux de travail d'ingénierie logicielle structurés du brainstorming à la révision de code.
+> Un ensemble de compétences style Agile Development pour agents de codage AI — flux de travail d'ingénierie logicielle structurés de la clarification des besoins à la révision de code.
 
 Un ensemble complet de compétences de flux de travail d'ingénierie logicielle qui aide les agents de codage AI à accomplir chaque étape de l'analyse des besoins à la révision de code de manière systématique et reproductible.
 
@@ -12,22 +12,22 @@ Un ensemble complet de compétences de flux de travail d'ingénierie logicielle 
 
 ## 📦 Vue d'Ensemble
 
-`sw-superpower` est un ensemble de compétences style Superpowers conçu pour [OpenCode](https://opencode.ai) et d'autres plateformes de codage AI. Il encapsule les pratiques matures d'ingénierie logicielle (TDD, révision de code, débogage systématique) en compétences d'agent structurées et réutilisables.
+`sw-agiledevelopment` est un ensemble de compétences style Superpowers conçu pour [OpenCode](https://opencode.ai) et d'autres plateformes de codage AI. Il encapsule les pratiques matures d'ingénierie logicielle (TDD, révision de code, débogage systématique) en compétences d'agent structurées et réutilisables.
 
 ### Principes Fondamentaux
 
 - **Piloté par le Processus** : Chaque compétence définit des conditions de déclenchement claires et des flux de travail d'exécution
 - **Règles d'Abord** : Les règles non négociables sont placées en premier plan
 - **Testé sous Pression** : Les compétences sont créées et validées via TDD
-- **Livraison Incrémentale** : Flux de travail complet du brainstorming à la livraison de code
+- **Livraison Incrémentale** : Flux de travail complet de la clarification des besoins à la livraison de code
 
 ---
 
 ## 🗂️ Structure du Projet
 
 ```
-sw-superpower/
-├── sw-brainstorming/              # Brainstorming et analyse des besoins
+sw-agiledevelopment/
+├── sw-requirements-clarification/              # Analyse et clarification des besoins
 ├── sw-technical-spec/             # Rédaction des spécifications techniques
 ├── sw-working-plan/              # Rédaction des plans d'implémentation
 ├── sw-subagent-development/       # Développement piloté par sous-agent
@@ -38,7 +38,7 @@ sw-superpower/
 ├── sw-execute-plan/            # Exécution de plans
 ├── sw-task-verification/  # Vérification des tâches
 ├── sw-finishing-branch/           # Achèvement de branche de développement
-├── sw-using-superpowers/          # Bootstrap du système de compétences (entrée principale)
+├── sw-using-agiledevelopment/          # Bootstrap du système de compétences (entrée principale)
 └── sw-writing-skills/             # Rédaction de nouvelles compétences (méta-compétence)
 ```
 
@@ -51,12 +51,12 @@ Le flux de travail complet de développement logiciel s'exécute dans l'ordre su
 ```
 Démarrer Nouvelle Fonctionnalité
     ↓
-sw-brainstorming (Brainstorming et Conception)
-    ↓ Sortie : docs/sw-superpower/business-specs/YYYY-MM-DD--feature.md
+sw-requirements-clarification (Clarification et Conception)
+    ↓ Sortie : docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--feature.md
 sw-technical-spec (Rédaction des Spécifications Techniques)
-    ↓ Sortie : docs/sw-superpower/technical-specs/YYYY-MM-DD--feature.md
+    ↓ Sortie : docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--feature.md
 sw-working-plan (Rédaction du Plan d'Implémentation)
-    ↓ Sortie : docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
+    ↓ Sortie : docs/sw-agiledevelopment/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (Développement Piloté par Sous-Agent)
     ├── sw-test-driven-dev (TDD pour chaque tâche)
     ├── sw-code-review (Révision après tâches)
@@ -72,7 +72,7 @@ sw-finishing-branch (Achèvement de Branche)
 
 | Compétence | Objectif | Condition de Déclenchement |
 |------------|----------|----------------------------|
-| **sw-brainstorming** | Transformer les idées en conception et spécifications complètes | Démarrage du développement d'une nouvelle fonctionnalité |
+| **sw-requirements-clarification** | Transformer les idées en conception et spécifications complètes | Démarrage du développement d'une nouvelle fonctionnalité |
 | **sw-working-plan** | Créer des plans d'implémentation détaillés | Conception terminée, besoin d'un plan d'exécution |
 | **sw-subagent-development** | Exécuter les plans en utilisant des sous-agents | Avoir un plan d'implémentation, les tâches sont indépendantes |
 | **sw-test-driven-dev** | Appliquer le cycle RED-GREEN-REFACTOR | Implémenter toute fonctionnalité ou corriger des bogues |
@@ -83,7 +83,7 @@ sw-finishing-branch (Achèvement de Branche)
 | **sw-task-verification** | Vérification des tâches | Prêt à marquer la tâche comme terminée |
 | **sw-finishing-branch** | Vérifier, décider et nettoyer la branche | Toutes les tâches terminées |
 | **sw-writing-skills** | Créer et valider de nouvelles compétences | Besoin de créer une nouvelle compétence |
-| **sw-using-superpowers** | Bootstrap du système de compétences | Début de chaque conversation |
+| **sw-using-agiledevelopment** | Bootstrap du système de compétences | Début de chaque conversation |
 
 ---
 
@@ -98,7 +98,7 @@ Ajoutez à votre `~/.config/opencode/opencode.json` :
 ```json
 {
   "plugin": [
-    "sw-superpower@git+http://192.168.1.100:53000/vaycent/sw-superpower.git#main"
+    "sw-agiledevelopment@git+http://192.168.1.100:53000/vaycent/sw-agiledevelopment.git#main"
   ],
   "permission": {
     "skill": {
@@ -114,25 +114,25 @@ Redémarrez OpenCode. Le plugin sera installé automatiquement via Bun.
 
 ```bash
 cd <votre-projet>/skills/
-git submodule add https://github.com/vaycentsun/sw-superpower.git
+git submodule add https://github.com/vaycentsun/sw-agiledevelopment.git
 git submodule update --init --recursive
 ```
 
 Pour mettre à jour le sous-module plus tard :
 
 ```bash
-cd <votre-projet>/skills/sw-superpower
+cd <votre-projet>/skills/sw-agiledevelopment
 git pull origin main
 cd <votre-projet>
-git add skills/sw-superpower
-git commit -m "Update sw-superpower submodule"
+git add skills/sw-agiledevelopment
+git commit -m "Update sw-agiledevelopment submodule"
 ```
 
 Ou clonez directement (non recommandé pour les projets utilisant le contrôle de version) :
 
 ```bash
 cd <votre-projet>/skills/
-git clone https://github.com/vaycentsun/sw-superpower.git
+git clone https://github.com/vaycentsun/sw-agiledevelopment.git
 ```
 
 Redémarrez OpenCode ou rechargez les compétences.
@@ -144,12 +144,12 @@ Lorsque vous démarrez une nouvelle fonctionnalité, l'agent reconnaît automati
 ```
 Utilisateur : Je veux développer une fonctionnalité d'authentification utilisateur
 
-Agent : [Applique automatiquement la Compétence sw-brainstorming]
+Agent : [Applique automatiquement la Compétence sw-requirements-clarification]
       1. Explorer le contexte du projet...
       2. Poser des questions de clarification...
       3. Proposer 2-3 approches...
       4. Présenter la conception en sections...
-      5. Rédiger le document de spécification → docs/sw-superpower/technical-specs/2026-04-18--user-auth.md
+      5. Rédiger le document de spécification → docs/sw-agiledevelopment/technical-specs/2026-04-18--user-auth.md
       6. Invoquer sw-working-plan pour créer le plan d'implémentation...
 ```
 

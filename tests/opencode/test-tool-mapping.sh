@@ -8,13 +8,13 @@ FAILED=0
 
 echo "Testing tool mapping..."
 
-REFERENCES_DIR="$REPO_ROOT/sw-using-superpowers/references"
+REFERENCES_DIR="$REPO_ROOT/sw-using-agiledevelopment/references"
 
 # Test 1: References directory exists
 if [ -d "$REFERENCES_DIR" ]; then
     echo "  [PASS] References directory exists"
 else
-    echo "  [FAIL] References directory not found: sw-using-superpowers/references"
+    echo "  [FAIL] References directory not found: sw-using-agiledevelopment/references"
     FAILED=1
 fi
 
@@ -35,11 +35,11 @@ for file in "${REQUIRED_FILES[@]}"; do
     fi
 done
 
-# Test 3: OpenCode tool mapping in using-superpowers SKILL.md
-USING_SUPERPOWERS="$REPO_ROOT/sw-using-superpowers/SKILL.md"
-if [ -f "$USING_SUPERPOWERS" ]; then
+# Test 3: OpenCode tool mapping in using-agiledevelopment SKILL.md
+USING_AGILEDEVELOPMENT="$REPO_ROOT/sw-using-agiledevelopment/SKILL.md"
+if [ -f "$USING_AGILEDEVELOPMENT" ]; then
     # Check for table format
-    if grep -q '| Claude Code 工具 | OpenCode 等效项 |' "$USING_SUPERPOWERS"; then
+    if grep -q '| Claude Code 工具 | OpenCode 等效项 |' "$USING_AGILEDEVELOPMENT"; then
         echo "  [PASS] OpenCode tool mapping uses table format"
     else
         echo "  [FAIL] OpenCode tool mapping not in table format"
@@ -50,7 +50,7 @@ if [ -f "$USING_SUPERPOWERS" ]; then
     REQUIRED_TOOLS=("Read" "Write" "Edit" "Bash" "Grep" "Glob")
     MISSING_TOOLS=0
     for tool in "${REQUIRED_TOOLS[@]}"; do
-        if ! grep -q "\`$tool\`" "$USING_SUPERPOWERS"; then
+        if ! grep -q "\`$tool\`" "$USING_AGILEDEVELOPMENT"; then
             echo "  [FAIL] Missing tool mapping for: $tool"
             MISSING_TOOLS=1
             FAILED=1
@@ -60,7 +60,7 @@ if [ -f "$USING_SUPERPOWERS" ]; then
         echo "  [PASS] All required tools mapped"
     fi
 else
-    echo "  [FAIL] sw-using-superpowers/SKILL.md not found"
+    echo "  [FAIL] sw-using-agiledevelopment/SKILL.md not found"
     FAILED=1
 fi
 

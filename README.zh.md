@@ -2,9 +2,9 @@
   <a href="./README.md">🇺🇸 English</a> | <strong>🇨🇳 中文</strong> | <a href="./README.ja.md">🇯🇵 日本語</a> | <a href="./README.es.md">🇪🇸 Español</a> | <a href="./README.fr.md">🇫🇷 Français</a>
 </div>
 
-# sw-superpower 🦸
+# sw-agiledevelopment 🦸
 
-> 为 AI 编程 Agent 设计的软件工程技能集 (Superpowers 风格)
+> 为 AI 编程 Agent 设计的软件工程技能集 (Agile Development 风格)
 
 这是一套完整的软件开发工作流指导技能，帮助 AI 编程 Agent 以系统化、可复现的方式完成从需求分析到代码审查的每个环节。
 
@@ -12,22 +12,22 @@
 
 ## 📦 项目概述
 
-`sw-superpower` 是一套为 [OpenCode](https://opencode.ai) 等 AI 编程平台设计的 Superpowers 风格技能集。它将成熟的软件工程实践（TDD、代码审查、系统化调试）封装成结构化、可复用的 Agent 技能。
+`sw-agiledevelopment` 是一套为 [OpenCode](https://opencode.ai) 等 AI 编程平台设计的 Superpowers 风格技能集。它将成熟的软件工程实践（TDD、代码审查、系统化调试）封装成结构化、可复用的 Agent 技能。
 
 ### 核心理念
 
 - **流程驱动**: 每个 Skill 定义明确的触发条件和执行流程
 - **铁律优先**: 不可违反的规则放在最前面
 - **压力测试**: 通过 TDD 方式创建和验证 Skill
-- **渐进交付**: 从头脑风暴到代码交付的完整工作流
+- **渐进交付**: 从需求澄清到代码交付的完整工作流
 
 ---
 
 ## 🗂️ 项目结构
 
 ```
-sw-superpower/
-├── sw-brainstorming/              # 头脑风暴与需求分析
+sw-agiledevelopment/
+├── sw-requirements-clarification/              # 需求澄清与分析
 ├── sw-technical-spec/             # 编写技术规格文档
 ├── sw-working-plan/              # 编写实现计划
 ├── sw-subagent-development/       # 子 Agent 驱动开发
@@ -38,7 +38,7 @@ sw-superpower/
 ├── sw-execute-plan/            # 执行计划
 ├── sw-task-verification/  # 任务验证
 ├── sw-finishing-branch/           # 完成开发分支
-├── sw-using-superpowers/          # 技能系统引导（核心入口）
+├── sw-using-agiledevelopment/          # 技能系统引导（核心入口）
 └── sw-writing-skills/             # 编写新技能（元 Skill）
 ```
 
@@ -51,12 +51,12 @@ sw-superpower/
 ```
 开始新功能
     ↓
-sw-brainstorming (头脑风暴与需求分析)
-    ↓ 输出: docs/sw-superpower/business-specs/YYYY-MM-DD--feature.md
+sw-requirements-clarification (需求澄清与分析)
+    ↓ 输出: docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--feature.md
 sw-technical-spec (编写技术规格)
-    ↓ 输出: docs/sw-superpower/technical-specs/YYYY-MM-DD--feature.md
+    ↓ 输出: docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--feature.md
 sw-working-plan (编写实现计划)
-    ↓ 输出: docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
+    ↓ 输出: docs/sw-agiledevelopment/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (子 Agent 驱动开发)
     ├── sw-test-driven-dev (每个任务遵循 TDD)
     ├── sw-code-review (任务后审查)
@@ -72,7 +72,7 @@ sw-finishing-branch (完成分支)
 
 | Skill | 用途 | 触发条件 |
 |-------|------|----------|
-| **sw-brainstorming** | 将想法转化为业务需求和方案决策 | 开始新功能开发 |
+| **sw-requirements-clarification** | 将想法转化为业务需求和方案决策 | 开始新功能开发 |
 | **sw-technical-spec** | 编写结构化的技术规格文档 | 需求已澄清，需要技术设计 |
 | **sw-working-plan** | 创建详细的实现计划 | 技术 Spec 已完成，需要执行计划 |
 | **sw-subagent-development** | 使用子 Agent 执行计划 | 有实现计划，任务相对独立 |
@@ -84,7 +84,7 @@ sw-finishing-branch (完成分支)
 | **sw-task-verification** | 任务验证 | 准备标记任务完成 |
 | **sw-finishing-branch** | 验证、决策、清理分支 | 所有任务完成 |
 | **sw-writing-skills** | 创建和验证新 Skill | 需要创建新技能 |
-| **sw-using-superpowers** | 技能系统引导（核心入口） | 任何对话开始时 |
+| **sw-using-agiledevelopment** | 技能系统引导（核心入口） | 任何对话开始时 |
 
 ---
 
@@ -99,7 +99,7 @@ sw-finishing-branch (完成分支)
 ```json
 {
   "plugin": [
-    "sw-superpower@git+http://192.168.1.100:53000/vaycent/sw-superpower.git#main"
+    "sw-agiledevelopment@git+http://192.168.1.100:53000/vaycent/sw-agiledevelopment.git#main"
   ],
   "permission": {
     "skill": {
@@ -115,25 +115,25 @@ sw-finishing-branch (完成分支)
 
 ```bash
 cd <你的项目>/skills/
-git submodule add https://github.com/vaycentsun/sw-superpower.git
+git submodule add https://github.com/vaycentsun/sw-agiledevelopment.git
 git submodule update --init --recursive
 ```
 
 后续更新：
 
 ```bash
-cd <你的项目>/skills/sw-superpower
+cd <你的项目>/skills/sw-agiledevelopment
 git pull origin main
 cd <你的项目>
-git add skills/sw-superpower
-git commit -m "Update sw-superpower submodule"
+git add skills/sw-agiledevelopment
+git commit -m "Update sw-agiledevelopment submodule"
 ```
 
 或直接克隆（不推荐用于版本控制的项目）：
 
 ```bash
 cd <你的项目>/skills/
-git clone https://github.com/vaycentsun/sw-superpower.git
+git clone https://github.com/vaycentsun/sw-agiledevelopment.git
 ```
 
 重启 OpenCode 或重新加载技能。
@@ -145,12 +145,12 @@ git clone https://github.com/vaycentsun/sw-superpower.git
 ```
 用户: 我要开发一个用户认证功能
 
-Agent: [自动应用 sw-brainstorming Skill]
+Agent: [自动应用 sw-requirements-clarification Skill]
       1. 探索项目上下文...
       2. 提出澄清问题...
       3. 提出 2-3 种方案...
       4. 分节呈现设计...
-      5. 编写 Spec 文档 → docs/sw-superpower/technical-specs/2026-04-18--user-auth.md
+      5. 编写 Spec 文档 → docs/sw-agiledevelopment/technical-specs/2026-04-18--user-auth.md
       6. 调用 sw-working-plan 创建实现计划...
 ```
 

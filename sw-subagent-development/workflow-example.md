@@ -5,7 +5,7 @@
 ```
 你: 我使用子 Agent 驱动开发执行此计划。
 
-[读取计划文件: docs/sw-superpower/plans/2026-04-08--auth-plan.md]
+[读取计划文件: docs/sw-agiledevelopment/plans/2026-04-08--auth-plan.md]
 [提取所有 5 个任务及其完整文本和上下文]
 [创建 TodoWrite 包含所有任务]
 

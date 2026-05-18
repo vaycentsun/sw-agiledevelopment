@@ -1,6 +1,6 @@
 # OpenCode 安装与使用指南
 
-> 在 OpenCode 平台上安装和使用 sw-superpower 的完整指南。
+> 在 OpenCode 平台上安装和使用 sw-agiledevelopment 的完整指南。
 
 ## 安装
 
@@ -10,37 +10,37 @@
 
 ```json
 {
-  "plugin": ["sw-superpower@git+https://github.com/vaycentsun/sw-superpower.git"]
+  "plugin": ["sw-agiledevelopment@git+https://github.com/vaycentsun/sw-agiledevelopment.git"]
 }
 ```
 
 重启 OpenCode。插件会自动通过 Bun 安装并注册所有技能。
 
-**验证安装**：询问 Agent "Tell me about your superpowers"
+**验证安装**：询问 Agent "Tell me about your agile development skills"
 
 ### 方式二：Git Submodule
 
 ```bash
 cd <你的项目>/skills/
-git submodule add https://github.com/vaycentsun/sw-superpower.git
+git submodule add https://github.com/vaycentsun/sw-agiledevelopment.git
 git submodule update --init --recursive
 ```
 
 **后续更新**：
 
 ```bash
-cd <你的项目>/skills/sw-superpower
+cd <你的项目>/skills/sw-agiledevelopment
 git pull origin main
 cd <你的项目>
-git add skills/sw-superpower
-git commit -m "Update sw-superpower submodule"
+git add skills/sw-agiledevelopment
+git commit -m "Update sw-agiledevelopment submodule"
 ```
 
 ### 方式三：直接克隆（不推荐用于版本控制项目）
 
 ```bash
 cd <你的项目>/skills/
-git clone https://github.com/vaycentsun/sw-superpower.git
+git clone https://github.com/vaycentsun/sw-agiledevelopment.git
 ```
 
 重启 OpenCode 或重新加载技能。
@@ -49,7 +49,7 @@ git clone https://github.com/vaycentsun/sw-superpower.git
 
 ## 工具映射
 
-sw-superpower 的 Skill 使用 Claude Code 工具名称。在 OpenCode 中，自动映射为以下等效工具：
+sw-agiledevelopment 的 Skill 使用 Claude Code 工具名称。在 OpenCode 中，自动映射为以下等效工具：
 
 | Claude Code 工具 | OpenCode 等效项 |
 |-----------------|----------------|
@@ -79,7 +79,7 @@ sw-superpower 的 Skill 使用 Claude Code 工具名称。在 OpenCode 中，自
 ### 加载技能
 
 ```
-使用 skill 工具加载 sw-brainstorming
+使用 skill 工具加载 sw-requirements-clarification
 ```
 
 ### 个人技能
@@ -107,7 +107,7 @@ description: Use when [condition] - [what it does]
 
 在项目内创建 `.opencode/skills/` 目录存放项目特定技能。
 
-**技能优先级**：项目技能 > 个人技能 > sw-superpower 技能
+**技能优先级**：项目技能 > 个人技能 > sw-agiledevelopment 技能
 
 ---
 
@@ -118,12 +118,12 @@ description: Use when [condition] - [what it does]
 ```
 用户: 我要开发一个用户认证功能
 
-Agent: [自动应用 sw-brainstorming Skill]
+Agent: [自动应用 sw-requirements-clarification Skill]
       1. 探索项目上下文...
       2. 提出澄清问题...
       3. 提出 2-3 种方案...
       4. 分节呈现设计...
-      5. 编写 business-spec → docs/sw-superpower/business-specs/2026-04-18--user-auth.md
+      5. 编写 business-spec → docs/sw-agiledevelopment/business-specs/2026-04-18--user-auth.md
       6. 调用 sw-technical-spec 编写技术 Spec...
       7. 调用 sw-working-plan 创建实现计划...
 ```
@@ -133,12 +133,12 @@ Agent: [自动应用 sw-brainstorming Skill]
 ```
 开始新功能
     ↓
-sw-brainstorming (头脑风暴与需求分析)
-    ↓ 输出: docs/sw-superpower/business-specs/YYYY-MM-DD--feature.md
+sw-requirements-clarification (需求澄清与分析)
+    ↓ 输出: docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--feature.md
 sw-technical-spec (编写技术规格)
-    ↓ 输出: docs/sw-superpower/technical-specs/YYYY-MM-DD--feature.md
+    ↓ 输出: docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--feature.md
 sw-working-plan (编写实现计划)
-    ↓ 输出: docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
+    ↓ 输出: docs/sw-agiledevelopment/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (子 Agent 驱动开发)
     ├── sw-test-driven-dev (每个任务遵循 TDD)
     └── sw-code-review (任务后审查与反馈处理)
@@ -156,13 +156,13 @@ sw-finishing-branch (完成分支)
 
 ## 更新
 
-sw-superpower 在重启 OpenCode 时自动更新（插件方式）。
+sw-agiledevelopment 在重启 OpenCode 时自动更新（插件方式）。
 
 要固定特定版本，使用分支或标签：
 
 ```json
 {
-  "plugin": ["sw-superpower@git+https://github.com/vaycentsun/sw-superpower.git#v1.0.0"]
+  "plugin": ["sw-agiledevelopment@git+https://github.com/vaycentsun/sw-agiledevelopment.git#v1.0.0"]
 }
 ```
 
@@ -172,7 +172,7 @@ sw-superpower 在重启 OpenCode 时自动更新（插件方式）。
 
 ### 插件未加载
 
-1. 检查 OpenCode 日志：`opencode run --print-logs "hello" 2>&1 | grep -i superpowers`
+1. 检查 OpenCode 日志：`opencode run --print-logs "hello" 2>&1 | grep -i sw-agiledevelopment`
 2. 验证 `opencode.json` 中的插件配置是否正确
 3. 确保 OpenCode 版本足够新
 
@@ -193,5 +193,5 @@ sw-superpower 在重启 OpenCode 时自动更新（插件方式）。
 
 - 主项目文档：[README.md](../README.md)
 - Agent 行为指导：[AGENTS.md](../AGENTS.md)
-- 项目仓库：https://github.com/vaycentsun/sw-superpower
+- 项目仓库：https://github.com/vaycentsun/sw-agiledevelopment
 - 上游框架：[obra/superpowers](https://github.com/obra/superpowers)

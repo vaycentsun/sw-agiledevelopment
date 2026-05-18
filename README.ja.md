@@ -2,9 +2,9 @@
   <a href="./README.md">🇺🇸 English</a> | <a href="./README.zh.md">🇨🇳 中文</a> | <strong>🇯🇵 日本語</strong> | <a href="./README.es.md">🇪🇸 Español</a> | <a href="./README.fr.md">🇫🇷 Français</a>
 </div>
 
-# sw-superpower 🦸
+# sw-agiledevelopment 🦸
 
-> AI コーディングエージェント向けの Superpowers スタイルのスキルセット — ブレインストーミングからコードレビューまでの構造化されたソフトウェアエンジニアリングワークフロー
+> AI コーディングエージェント向けの Agile Development スタイルのスキルセット — 要件分析からコードレビューまでの構造化されたソフトウェアエンジニアリングワークフロー
 
 AI コーディングエージェントが、体系的かつ再現性のある方法で要件分析からコードレビューまでの各ステップを完了するのを支援する、完全なソフトウェアエンジニアリングワークフロースキルセットです。
 
@@ -12,22 +12,22 @@ AI コーディングエージェントが、体系的かつ再現性のある�
 
 ## 📦 概要
 
-`sw-superpower` は [OpenCode](https://opencode.ai) などの AI コーディングプラットフォーム向けに設計された Superpowers スタイルのスキルセットです。熟成されたソフトウェアエンジニアリングの実践（TDD、コードレビュー、体系的なデバッグ）を構造化され再利用可能なエージェントスキルとしてカプセル化しています。
+`sw-agiledevelopment` は [OpenCode](https://opencode.ai) などの AI コーディングプラットフォーム向けに設計された Superpowers スタイルのスキルセットです。熟成されたソフトウェアエンジニアリングの実践（TDD、コードレビュー、体系的なデバッグ）を構造化され再利用可能なエージェントスキルとしてカプセル化しています。
 
 ### 核心理念
 
 - **プロセス駆動**: 各スキルが明確なトリガー条件と実行ワークフローを定義
 - **ルールファースト**: 譲れないルールを最前面に配置
 - **ストレステスト**: TDD を通じてスキルを作成・検証
-- **漸進的デリバリー**: ブレインストーミングからコードデリバリーまでの完全なワークフロー
+- **漸進的デリバリー**: 要件分析からコードデリバリーまでの完全なワークフロー
 
 ---
 
 ## 🗂️ プロジェクト構造
 
 ```
-sw-superpower/
-├── sw-brainstorming/              # ブレインストーミングと要件分析
+sw-agiledevelopment/
+├── sw-requirements-clarification/              # 要件分析と設計
 ├── sw-technical-spec/             # 技術仕様書の作成
 ├── sw-working-plan/              # 実装計画の作成
 ├── sw-subagent-development/       # サブエージェント駆動開発
@@ -38,7 +38,7 @@ sw-superpower/
 ├── sw-execute-plan/            # 計画の実行
 ├── sw-task-verification/  # タスク検証
 ├── sw-finishing-branch/           # 開発ブランチの完了
-├── sw-using-superpowers/          # スキルシステムブートストラップ（コアエントリ）
+├── sw-using-agiledevelopment/          # スキルシステムブートストラップ（コアエントリ）
 └── sw-writing-skills/             # 新しいスキルの作成（メタスキル）
 ```
 
@@ -51,12 +51,12 @@ sw-superpower/
 ```
 新機能の開始
     ↓
-sw-brainstorming (ブレインストーミングと設計)
-    ↓ 出力: docs/sw-superpower/business-specs/YYYY-MM-DD--feature.md
+sw-requirements-clarification (要件分析と設計)
+    ↓ 出力: docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--feature.md
 sw-technical-spec (技術仕様書の作成)
-    ↓ 出力: docs/sw-superpower/technical-specs/YYYY-MM-DD--feature.md
+    ↓ 出力: docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--feature.md
 sw-working-plan (実装計画の作成)
-    ↓ 出力: docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
+    ↓ 出力: docs/sw-agiledevelopment/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (サブエージェント駆動開発)
     ├── sw-test-driven-dev (各タスクの TDD)
     ├── sw-code-review (タスク後のレビュー)
@@ -72,7 +72,7 @@ sw-finishing-branch (ブランチ完了)
 
 | スキル | 目的 | トリガー条件 |
 |-------|------|-------------|
-| **sw-brainstorming** | アイデアを完全な設計と仕様に変換 | 新機能開発の開始 |
+| **sw-requirements-clarification** | アイデアを完全な設計と仕様に変換 | 新機能開発の開始 |
 | **sw-working-plan** | 詳細な実装計画を作成 | 設計が完了し、実行計画が必要 |
 | **sw-subagent-development** | サブエージェントを使用して計画を実行 | 実装計画があり、タスクが独立している |
 | **sw-test-driven-dev** | RED-GREEN-REFACTOR サイクルを強制 | 機能の実装またはバグ修正 |
@@ -83,7 +83,7 @@ sw-finishing-branch (ブランチ完了)
 | **sw-task-verification** | タスク検証 | タスクを完了としてマークする準備完了 |
 | **sw-finishing-branch** | 検証、判断、ブランチのクリーンアップ | すべてのタスクが完了 |
 | **sw-writing-skills** | 新しいスキルを作成・検証 | 新しいスキルの作成が必要 |
-| **sw-using-superpowers** | スキルシステムブートストラップ | すべての会話の開始時 |
+| **sw-using-agiledevelopment** | スキルシステムブートストラップ | すべての会話の開始時 |
 
 ---
 
@@ -98,7 +98,7 @@ sw-finishing-branch (ブランチ完了)
 ```json
 {
   "plugin": [
-    "sw-superpower@git+http://192.168.1.100:53000/vaycent/sw-superpower.git#main"
+    "sw-agiledevelopment@git+http://192.168.1.100:53000/vaycent/sw-agiledevelopment.git#main"
   ],
   "permission": {
     "skill": {
@@ -114,25 +114,25 @@ OpenCode を再起動すると、プラグインが Bun 経由で自動インス
 
 ```bash
 cd <あなたのプロジェクト>/skills/
-git submodule add https://github.com/vaycentsun/sw-superpower.git
+git submodule add https://github.com/vaycentsun/sw-agiledevelopment.git
 git submodule update --init --recursive
 ```
 
 後でサブモジュールを更新する場合：
 
 ```bash
-cd <あなたのプロジェクト>/skills/sw-superpower
+cd <あなたのプロジェクト>/skills/sw-agiledevelopment
 git pull origin main
 cd <あなたのプロジェクト>
-git add skills/sw-superpower
-git commit -m "Update sw-superpower submodule"
+git add skills/sw-agiledevelopment
+git commit -m "Update sw-agiledevelopment submodule"
 ```
 
 または直接クローン（バージョン管理を使用するプロジェクトには推奨されません）：
 
 ```bash
 cd <あなたのプロジェクト>/skills/
-git clone https://github.com/vaycentsun/sw-superpower.git
+git clone https://github.com/vaycentsun/sw-agiledevelopment.git
 ```
 
 OpenCode を再起動するか、スキルをリロードします。
@@ -144,12 +144,12 @@ OpenCode を再起動するか、スキルをリロードします。
 ```
 ユーザー: ユーザー認証機能を開発したい
 
-エージェント: [自動的に sw-brainstorming スキルを適用]
+エージェント: [自動的に sw-requirements-clarification スキルを適用]
       1. プロジェクトコンテキストを探索...
       2. 明確化の質問をする...
       3. 2-3 つのアプローチを提案...
       4. セクションごとに設計を提示...
-      5. 仕様ドキュメントを作成 → docs/sw-superpower/technical-specs/2026-04-18--user-auth.md
+      5. 仕様ドキュメントを作成 → docs/sw-agiledevelopment/technical-specs/2026-04-18--user-auth.md
       6. sw-working-plan を呼び出して実装計画を作成...
 ```
 

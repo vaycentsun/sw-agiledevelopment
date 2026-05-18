@@ -5,7 +5,7 @@ description: "Use when creating new skills, editing existing skills, or verifyin
 
 # Writing Skills - 编写 Skill
 
-创建、编辑和验证 Superpowers 风格的 Skill。
+创建、编辑和验证 Agile Development 风格的 Skill。
 
 ## 核心原则
 
@@ -284,7 +284,7 @@ helper1, helper2, step3, pattern4
 ## Skill 创建完成
 
 **名称**: sw-my-skill
-**位置**: ./skills/sw-superpower/my-skill/SKILL.md
+**位置**: ./skills/sw-agiledevelopment/my-skill/SKILL.md
 
 ### 测试结果
 - 基线测试: ✅ 观察到 5 种失败模式
@@ -310,7 +310,7 @@ helper1, helper2, step3, pattern4
 - 创建好的 Skill 可用于后续工作流
 
 **使用此 Skill 创建:**
-- sw-brainstorming
+- sw-requirements-clarification
 - sw-test-driven-dev
 - sw-subagent-development
 - 其他所有 Skill

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# sw-superpower 的 Git pre-push 钩子
+# sw-agiledevelopment 的 Git pre-push 钩子
 # ==========================================
 #
 # 这是什么？

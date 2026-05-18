@@ -1,5 +1,5 @@
 ---
-name: sw-using-superpowers
+name: sw-using-agiledevelopment
 description: "Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions"
 ---
 
@@ -17,10 +17,10 @@ description: "Use when starting any conversation - establishes how to find and u
 
 ## 指令优先级
 
-Superpowers 技能覆盖默认系统提示行为，但**用户指令始终优先**：
+Agile Development 技能覆盖默认系统提示行为，但**用户指令始终优先**：
 
 1. **用户的明确指令**（CLAUDE.md、GEMINI.md、AGENTS.md、直接请求）—— 最高优先级
-2. **Superpowers 技能** —— 在与默认系统行为冲突时覆盖
+2. **Agile Development 技能** —— 在与默认系统行为冲突时覆盖
 3. **默认系统提示** —— 最低优先级
 
 如果 AGENTS.md 说"不要用 TDD"而某个技能说"始终用 TDD"，遵循用户的指令。用户拥有控制权。
@@ -63,7 +63,7 @@ Superpowers 技能覆盖默认系统提示行为，但**用户指令始终优先
 
 ### 简单任务快速通道
 
-**只有满足以下条件的任务，才能跳过 brainstorming 和 writing-specs，直接调用 `sw-test-driven-dev`：**
+**只有满足以下条件的任务，才能跳过 requirements-clarification 和 writing-specs，直接调用 `sw-test-driven-dev`：**
 
 - 纯配置/环境变更（如 `.env`、CI 配置、依赖版本号）
 - 纯文档/注释更新（README、API 文档、代码注释）
@@ -79,16 +79,16 @@ Superpowers 技能覆盖默认系统提示行为，但**用户指令始终优先
 - 删除或重构现有代码
 - 任何需要 Agent 自行判断"范围大小"的任务
 
-**不满足快速通道条件？** 走完整流程：sw-brainstorming → sw-technical-spec → sw-working-plan → sw-subagent-development。
+**不满足快速通道条件？** 走完整流程：sw-requirements-clarification → sw-technical-spec → sw-working-plan → sw-subagent-development。
 
 ```mermaid
 flowchart TD
     Start1[收到用户消息] --> Check{可能有技能适用？}
-    Start2[即将进入计划模式？] --> Brainstormed{已经头脑风暴过？}
-    Brainstormed -->|否| Simple{简单任务？}
-    Brainstormed -->|是| Check
+    Start2[即将进入计划模式？] --> RequirementsClarified{已经完成需求澄清？}
+    RequirementsClarified -->|否| Simple{简单任务？}
+    RequirementsClarified -->|是| Check
     Simple -->|是| InvokeTDD[直接调用 sw-test-driven-dev]
-    Simple -->|否| CallBrain[调用 sw-brainstorming]
+    Simple -->|否| CallBrain[调用 sw-requirements-clarification]
     CallBrain --> WriteSpec[调用 sw-technical-spec]
     WriteSpec --> CreatePlan[调用 sw-working-plan]
     CreatePlan --> Dev[调用 sw-subagent-development]
@@ -121,7 +121,7 @@ flowchart TD
 | "我先做这一件事" | 在做任何事之前先检查。 |
 | "这感觉很 productive" | 无纪律的行动浪费时间。技能防止这个。 |
 | "我知道那是什么意思" | 知道概念 ≠ 使用技能。调用它。 |
-| "简单任务不需要 brainstorming" | 正确。简单任务走快速通道，直接 TDD。但复杂任务必须 brainstorming。 |
+| "简单任务不需要 requirements-clarification" | 正确。简单任务走快速通道，直接 TDD。但复杂任务必须 requirements-clarification。 |
 
 ## 常见借口表
 
@@ -132,16 +132,16 @@ flowchart TD
 | "先做完这一件事再检查技能" | 在做任何事之前先检查。事后检查 = 已犯错 |
 | "技能检查浪费时间" | 10 秒检查可能节省数小时返工 |
 | "这个场景太特殊，没有对应技能" | 即使 1% 概率适用也要检查。你可能错了 |
-| "简单任务不需要走完整流程" | 正确。快速通道允许跳过 brainstorming，但仍需 TDD |
+| "简单任务不需要走完整流程" | 正确。快速通道允许跳过 requirements-clarification，但仍需 TDD |
 
 ## 技能优先级
 
 当多个技能可能适用时，使用此顺序：
 
-1. **流程技能优先**（brainstorming、debugging）—— 这些决定 HOW 接近任务
+1. **流程技能优先**（requirements-clarification、debugging）—— 这些决定 HOW 接近任务
 2. **实现技能其次**（frontend-design、mcp-builder）—— 这些指导执行
 
-"让我们构建 X" → brainstorming 优先，然后实现技能。
+"让我们构建 X" → requirements-clarification 优先，然后实现技能。
 "修复这个 Bug" → debugging 优先，然后领域特定技能。
 
 ## 技能类型
@@ -158,12 +158,12 @@ flowchart TD
 
 | 中文 | 英文（保留） | 说明 |
 |------|-------------|------|
-| 技能 | **Skill** | 框架核心概念，但 sw-using-superpowers 等少数引导文件中保留英文 |
+| 技能 | **Skill** | 框架核心概念，但 sw-using-agiledevelopment 等少数引导文件中保留英文 |
 | 智能体 | **Agent** | AI 编程助手 |
 | 子智能体 | **Subagent** | 被分派执行任务的 Agent 实例 |
-| 业务规范 | **business-spec** | `docs/sw-superpower/business-specs/` 中的文档 |
-| 技术规范 | **technical-spec** | `docs/sw-superpower/technical-specs/` 中的文档 |
-| 实施计划 | **working-plan** | `docs/sw-superpower/plans/` 中的文档 |
+| 业务规范 | **business-spec** | `docs/sw-agiledevelopment/business-specs/` 中的文档 |
+| 技术规范 | **technical-spec** | `docs/sw-agiledevelopment/technical-specs/` 中的文档 |
+| 实施计划 | **working-plan** | `docs/sw-agiledevelopment/plans/` 中的文档 |
 | 规范（泛指） | **spec** | 泛指 business-spec 或 technical-spec |
 | 待办事项 | **TODO** | 也可写 TODO |
 | 令牌 | **token** | 上下文令牌 |
