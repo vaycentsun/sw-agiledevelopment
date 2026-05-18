@@ -14,32 +14,21 @@
 
 ### 安装
 
-**推荐方式：让 AI Agent 自动安装**
+**OpenCode 插件（推荐）**
 
-直接告诉你的 AI Agent（如 OpenCode）：
+直接告诉你的 AI Agent：
 
 > "从 https://github.com/vaycentsun/sw-agiledevelopment 安装 sw-agiledevelopment 插件，并参考 `.opencode/INSTALL.md` 中的说明进行安装。"
 
 Agent 会自动读取安装指南，配置插件并验证安装。
 
-**手动安装：**
+**Codex 插件安装**
 
-在 `~/.config/opencode/opencode.json` 中添加：
+直接告诉你的 AI Agent：
 
-```json
-{
-  "plugin": [
-    "sw-agiledevelopment@git+https://github.com/vaycentsun/sw-agiledevelopment.git#main"
-  ],
-  "permission": {
-    "skill": {
-      "*": "allow"
-    }
-  }
-}
-```
+> "从 https://github.com/vaycentsun/sw-agiledevelopment 安装 sw-agiledevelopment 插件，并参考 `.codex-plugin/INSTALL.md` 中的说明进行安装。"
 
-重启 OpenCode，插件会自动通过 Bun 安装。
+Agent 会自动读取安装指南，配置插件并验证安装。
 
 ---
 

@@ -14,32 +14,21 @@ A complete set of software engineering workflow skills that help AI coding agent
 
 ### Installation
 
-**Recommended: Ask your AI Agent to install it**
+**OpenCode Plugin (Recommended)**
 
-Tell your AI Agent (e.g. OpenCode):
+Tell your AI Agent:
 
 > "Install the sw-agiledevelopment plugin from https://github.com/vaycentsun/sw-agiledevelopment and follow the instructions in `.opencode/INSTALL.md`."
 
 The Agent will read the install guide, configure the plugin, and verify the setup automatically.
 
-**Manual:**
+**Codex Plugin Installation**
 
-Add to your `~/.config/opencode/opencode.json`:
+Tell your AI Agent:
 
-```json
-{
-  "plugin": [
-    "sw-agiledevelopment@git+https://github.com/vaycentsun/sw-agiledevelopment.git#main"
-  ],
-  "permission": {
-    "skill": {
-      "*": "allow"
-    }
-  }
-}
-```
+> "Install the sw-agiledevelopment plugin from https://github.com/vaycentsun/sw-agiledevelopment and follow the instructions in `.codex-plugin/INSTALL.md`."
 
-Restart OpenCode. The plugin will be auto-installed via Bun.
+The Agent will read the install guide, configure the plugin, and verify the setup automatically.
 
 ---
 

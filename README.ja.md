@@ -14,32 +14,21 @@ AI コーディングエージェントが、体系的かつ再現性のある�
 
 ### インストール
 
-**推奨：AI Agent に自動インストールさせる**
+**OpenCode プラグイン（推奨）**
 
-AI Agent（例：OpenCode）に以下のように伝えてください：
+AI Agent に以下のように伝えてください：
 
 > "https://github.com/vaycentsun/sw-agiledevelopment から sw-agiledevelopment プラグインをインストールし、`.opencode/INSTALL.md` の手順に従ってください。"
 
 Agent がインストールガイドを読み取り、プラグインを設定し、インストールを自動的に検証します。
 
-**手動インストール：**
+**Codex プラグインインストール**
 
-`~/.config/opencode/opencode.json` に追加：
+AI Agent に以下のように伝えてください：
 
-```json
-{
-  "plugin": [
-    "sw-agiledevelopment@git+https://github.com/vaycentsun/sw-agiledevelopment.git#main"
-  ],
-  "permission": {
-    "skill": {
-      "*": "allow"
-    }
-  }
-}
-```
+> "https://github.com/vaycentsun/sw-agiledevelopment から sw-agiledevelopment プラグインをインストールし、`.codex-plugin/INSTALL.md` の手順に従ってください。"
 
-OpenCode を再起動すると、プラグインが Bun 経由で自動インストールされます。
+Agent がインストールガイドを読み取り、プラグインを設定し、インストールを自動的に検証します。
 
 ---
 
