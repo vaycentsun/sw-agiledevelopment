@@ -30,6 +30,14 @@ AI Agent に以下のように伝えてください：
 
 Agent がインストールガイドを読み取り、プラグインを設定し、インストールを自動的に検証します。
 
+**Copilot プラグインインストール**
+
+AI Agent に以下のように伝えてください：
+
+> "https://github.com/vaycentsun/sw-agiledevelopment から sw-agiledevelopment プラグインをインストールし、`.copilot/INSTALL.md` の手順に従ってください。"
+
+Agent がインストールガイドを読み取り、プラグインを設定し、インストールを自動的に検証します。
+
 ---
 
 ## 🗺️ コアワークフロー

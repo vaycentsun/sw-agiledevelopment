@@ -1,0 +1,13 @@
+out/
+node_modules/
+.vscode-test/
+*.vsix
+dist/
+.opencode/
+tests/
+.git/
+.github/
+*.md
+!README.md
+.gitignore
+.DS_Store

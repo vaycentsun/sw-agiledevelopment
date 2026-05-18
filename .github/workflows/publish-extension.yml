@@ -1,0 +1,35 @@
+name: Publish VS Code Extension
+
+on:
+  push:
+    tags:
+      - 'v*'  # 仅在推送版本标签时触发（例如 v1.2.5）
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install VSCE
+        run: npm install -g @vscode/vsce
+
+      - name: Publish to Marketplace
+        run: vsce publish -p ${{ secrets.VSCODE_MARKETPLACE_TOKEN }}
+        
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: sw-agiledevelopment-*.vsix
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

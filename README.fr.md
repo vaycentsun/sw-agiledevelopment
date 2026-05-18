@@ -30,6 +30,14 @@ Dites simplement à votre Agent IA :
 
 L'Agent lira le guide d'installation, configurera le plugin et vérifiera l'installation automatiquement.
 
+**Copilot Plugin Installation**
+
+Dites simplement à votre Agent IA :
+
+> "Installe le plugin sw-agiledevelopment depuis https://github.com/vaycentsun/sw-agiledevelopment et suis les instructions dans `.copilot/INSTALL.md`."
+
+L'Agent lira le guide d'installation, configurera le plugin et vérifiera l'installation automatiquement.
+
 ---
 
 ## 🗺️ Flux de Travail Principal

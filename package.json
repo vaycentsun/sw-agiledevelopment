@@ -1,6 +1,52 @@
 {
   "name": "sw-agiledevelopment",
-  "version": "1.2.4",
+  "displayName": "Agile Development - sw-agiledevelopment",
+  "description": "Software development skills and workflows for coding with structured methodologies",
+  "version": "1.2.5",
   "type": "module",
-  "main": ".opencode/plugins/sw-agiledevelopment.js"
+  "publisher": "vaycent",
+  "license": "MIT",
+  "repository": "https://github.com/vaycent/sw-agiledevelopment",
+  "main": ".opencode/plugins/sw-agiledevelopment.js",
+  "browser": ".vscode/extension.js",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "AI",
+    "Chat",
+    "Formatters"
+  ],
+  "keywords": [
+    "agile",
+    "development",
+    "ai-agents",
+    "skills",
+    "workflow",
+    "coding"
+  ],
+  "activationEvents": [
+    "onChatParticipant:sw-agiledevelopment.agile-dev"
+  ],
+  "contributes": {
+    "chatParticipants": [
+      {
+        "id": "sw-agiledevelopment.agile-dev",
+        "name": "sw-agiledevelopment",
+        "fullName": "Agile Development",
+        "description": "Expert guidance on software development skills: requirements, technical specs, planning, testing, debugging, code review, and more",
+        "isSticky": true,
+        "commands": [
+          {
+            "name": "list",
+            "description": "List all available development skills"
+          },
+          {
+            "name": "skill",
+            "description": "Get detailed guidance on a specific skill"
+          }
+        ]
+      }
+    ]
+  }
 }
