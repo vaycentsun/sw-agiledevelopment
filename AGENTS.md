@@ -10,6 +10,7 @@
 - `.opencode/plugins/sw-agiledevelopment.js` 插件通过两个钩子将技能注入会话：
   - `config` — 将仓库根目录注册到 `config.skills.paths`
   - `experimental.chat.messages.transform` — 在每个会话的第一条用户消息前，插入 `sw-using-agiledevelopment/SKILL.md` 内容
+- `skills/` 目录是 Codex 插件兼容用的符号链接（指向 `sw-*/`）。**始终直接编辑 `sw-*/SKILL.md`**，不要通过 `skills/` 路径修改。
 
 ### 文件路径约定
 - **Business Spec 文件**: `docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--<feature-name>.md`
@@ -39,7 +40,7 @@ bash tests/opencode/run-tests.sh -t test-skill-structure.sh
 ```bash
 ln -s ../../hooks/pre-push .git/hooks/pre-push
 ```
-钩子会强制执行 SKILL.md 约束。**已知 bug：** 代码里检查的是 `> 600` 行。
+钩子会强制执行 SKILL.md 约束。注意：钩子使用 `-gt 600`（601 行以上才失败），而测试套件在 600 行就会报 WARN。建议保持 `< 600` 行以同时通过两者。
 
 ### SKILL文件约束（钩子 + 测试双重验证）
 | 约束 | 详情 |
