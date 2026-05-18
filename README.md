@@ -8,6 +8,8 @@
 
 A complete set of software engineering workflow skills that help AI coding agents complete every step from requirements analysis to code review in a systematic, reproducible way.
 
+**Multi-Platform Support**: This framework natively supports **OpenCode** (plugin, recommended), **Codex** (plugin), and **GitHub Copilot** (skill mode). Choose your preferred AI agent platform and follow the installation guide below.
+
 ---
 
 ## 🚀 Quick Start

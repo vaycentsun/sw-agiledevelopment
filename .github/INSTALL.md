@@ -11,29 +11,35 @@ The sw-agiledevelopment repository provides a set of software development skills
 
 ### Step 1: Copy `copilot-instructions.md`
 
-Copy the Copilot instructions file to the user's project:
+If the user's project already has `.github/copilot-instructions.md`, append the sw-agiledevelopment content to it without overwriting the existing file:
 
 ```bash
-# From: <sw-agiledevelopment-repo>/.github/copilot-instructions.md
-# To:   <user-project-root>/.github/copilot-instructions.md
+# Ensure the .github directory exists
+mkdir -p /path/to/user-project/.github
 
+# Append sw-agiledevelopment content to existing copilot-instructions.md
+cat /path/to/sw-agiledevelopment/.github/copilot-instructions.md \
+   >> /path/to/user-project/.github/copilot-instructions.md
+```
+
+If the user's project does **not** have `.github/copilot-instructions.md` yet, copy it normally:
+
+```bash
+mkdir -p /path/to/user-project/.github
 cp /path/to/sw-agiledevelopment/.github/copilot-instructions.md \
    /path/to/user-project/.github/copilot-instructions.md
 ```
 
-If the user's project does not have a `.github/` directory, create it first:
-
-```bash
-mkdir -p /path/to/user-project/.github
-```
-
 ### Step 2: Copy Skill Directories
 
-Copy **all** `sw-*/` directories (the actual skill source directories) into the user's project under `.sw-agiledevelopment/`.
+First, remove the existing `.sw-agiledevelopment/` directory in the user's project (if any) to ensure a clean copy. Then copy **all** `sw-*/` directories (the actual skill source directories) into the user's project under `.sw-agiledevelopment/`.
 
 **Important**: The `skills/` directory in the sw-agiledevelopment repo contains **symbolic links** pointing to `../sw-*`. You must copy the **source directories** (`sw-*/`), not the `skills/` symlink directory, to avoid broken links in the user's project.
 
 ```bash
+# Remove existing skills directory if it exists
+rm -rf /path/to/user-project/.sw-agiledevelopment
+
 # Create the target directory
 mkdir -p /path/to/user-project/.sw-agiledevelopment
 
@@ -82,6 +88,14 @@ user-project/
 └── README.md
 ```
 
+### Step 4: Add to `.gitignore`
+
+Add `.sw-agiledevelopment/` to the user's `.gitignore` so the copied skill files are not committed to the user's project repository:
+
+```bash
+echo ".sw-agiledevelopment/" >> /path/to/user-project/.gitignore
+```
+
 ## What Each File Does
 
 | File / Directory | Purpose |
@@ -109,4 +123,3 @@ Read the file .sw-agiledevelopment/sw-technical-spec/SKILL.md for the complete s
 
 - Do **not** copy the `skills/` directory from the sw-agiledevelopment repo. It only contains symlinks and will not work in the user's project.
 - The `.sw-agiledevelopment/` directory name is a convention. It keeps the skill files organized and hidden from the user's main project view.
-- If the user already has a `.github/copilot-instructions.md`, ask before overwriting or append the sw-agiledevelopment content to the existing file.
