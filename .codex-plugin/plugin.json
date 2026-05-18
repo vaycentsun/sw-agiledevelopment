@@ -1,0 +1,40 @@
+{
+  "name": "sw-agiledevelopment",
+  "version": "1.2.2",
+  "description": "Agile development workflow skills for AI coding agents.",
+  "author": {
+    "name": "vaycentsun",
+    "email": "vaycentsun@gmail.com",
+    "url": "https://github.com/vaycentsun"
+  },
+  "homepage": "https://github.com/vaycentsun/sw-agiledevelopment",
+  "repository": "https://github.com/vaycentsun/sw-agiledevelopment",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agile",
+    "software-development",
+    "codex"
+  ],
+  "skills": "./",
+  "interface": {
+    "displayName": "sw-agiledevelopment",
+    "shortDescription": "Agile workflow Skills for Codex.",
+    "longDescription": "A structured software engineering Skill set covering requirements clarification, technical specs, planning, TDD, debugging, code review, verification, and branch finishing.",
+    "developerName": "vaycentsun",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/vaycentsun/sw-agiledevelopment",
+    "privacyPolicyURL": "[TODO: privacy policy URL]",
+    "termsOfServiceURL": "[TODO: terms of service URL]",
+    "defaultPrompt": [
+      "Clarify requirements for this feature.",
+      "Create a technical spec and plan.",
+      "Review this branch with the workflow."
+    ],
+    "brandColor": "#2563EB"
+  }
+}
