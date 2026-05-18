@@ -72,6 +72,12 @@ sw-finishing-branch (Achèvement de Branche)
 
 ---
 
+## 📝 TODO
+
+- **TODO**: Intégrer l'analyse visuelle des besoins pour renforcer l'analyse des besoins et la rédaction de documents avant l'étape de requirements-clarification.
+
+---
+
 ## 📋 Aperçu des Compétences
 
 | Compétence | Objectif | Condition de Déclenchement |

@@ -72,6 +72,12 @@ sw-finishing-branch (完成分支)
 
 ---
 
+## 📝 TODO
+
+- **TODO**: 后续将结合可视化需求分析，在 requirements-clarification（需求澄清）阶段前增强需求分析与文档编写。
+
+---
+
 ## 📋 技能一览
 
 | 技能 | 用途 | 触发条件 |

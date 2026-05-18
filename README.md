@@ -72,6 +72,12 @@ sw-finishing-branch
 
 ---
 
+## 📝 TODO
+
+- **TODO**: Integrate visual requirements analysis to enhance requirements analysis and documentation before the requirements-clarification stage.
+
+---
+
 ## 📋 Skills
 
 | Skill | Purpose | Trigger |

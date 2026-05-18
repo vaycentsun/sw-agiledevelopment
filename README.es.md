@@ -72,6 +72,12 @@ sw-finishing-branch (Finalización de Rama)
 
 ---
 
+## 📝 TODO
+
+- **TODO**: Integrar el análisis visual de requisitos para mejorar el análisis de requisitos y la documentación antes de la etapa de requirements-clarification.
+
+---
+
 ## 📋 Resumen de Habilidades
 
 | Habilidad | Propósito | Condición de Activación |

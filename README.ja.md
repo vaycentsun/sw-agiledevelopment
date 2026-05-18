@@ -72,6 +72,12 @@ sw-finishing-branch (ブランチ完了)
 
 ---
 
+## 📝 TODO
+
+- **TODO**: 可視化要件分析を統合し、requirements-clarification（要件分析）段階の前に要件分析と文書作成を強化する。
+
+---
+
 ## 📋 スキル一覧
 
 | スキル | 目的 | トリガー条件 |
