@@ -30,13 +30,17 @@ AI Agent に以下のように伝えてください：
 
 Agent がインストールガイドを読み取り、プラグインを設定し、インストールを自動的に検証します。
 
-**Copilot プラグインインストール**
+**GitHub Copilot（スキルモード）**
 
 AI Agent に以下のように伝えてください：
 
-> "https://github.com/vaycentsun/sw-agiledevelopment から sw-agiledevelopment プラグインをインストールし、`.copilot/INSTALL.md` の手順に従ってください。"
+> "https://github.com/vaycentsun/sw-agiledevelopment から sw-agiledevelopment Copilot skill をインストールし、`.github/INSTALL.md` の手順に従ってください。"
 
-Agent がインストールガイドを読み取り、プラグインを設定し、インストールを自動的に検証します。
+Agent は以下を実行します：
+1. `.github/copilot-instructions.md` をあなたのプロジェクトの `.github/` ディレクトリにコピーします（Copilot はすべての Chat セッションで自動的に読み取ります）
+2. すべての `sw-*/` スキルディレクトリをあなたのプロジェクトの `.sw-agiledevelopment/` ディレクトリにコピーします（詳細な参照用）
+
+Marketplace token や VSIX インストールは不要です。インストール後、Copilot は自動的にアジャイル開発ワークフローに従います。
 
 ---
 
