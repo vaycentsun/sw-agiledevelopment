@@ -14,7 +14,15 @@ AI コーディングエージェントが、体系的かつ再現性のある�
 
 ### インストール
 
-**方法 1: OpenCode プラグイン（推奨）**
+**推奨：AI Agent に自動インストールさせる**
+
+AI Agent（例：OpenCode）に以下のように伝えてください：
+
+> "https://github.com/vaycentsun/sw-agiledevelopment から sw-agiledevelopment プラグインをインストールし、`.opencode/INSTALL.md` の手順に従ってください。"
+
+Agent がインストールガイドを読み取り、プラグインを設定し、インストールを自動的に検証します。
+
+**手動インストール：**
 
 `~/.config/opencode/opencode.json` に追加：
 
@@ -32,16 +40,6 @@ AI コーディングエージェントが、体系的かつ再現性のある�
 ```
 
 OpenCode を再起動すると、プラグインが Bun 経由で自動インストールされます。
-
-**方法 2: Git サブモジュール**
-
-```bash
-cd <あなたのプロジェクト>/skills/
-git submodule add https://github.com/vaycentsun/sw-agiledevelopment.git
-git submodule update --init --recursive
-```
-
-OpenCode を再起動するか、スキルをリロードします。
 
 ---
 
