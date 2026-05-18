@@ -14,32 +14,21 @@ Un conjunto completo de habilidades de flujo de trabajo de ingeniería de softwa
 
 ### Instalación
 
-**Recomendado: Deja que tu Agente de IA lo instale**
+**OpenCode Plugin (Recomendado)**
 
-Simplemente dile a tu Agente de IA (por ejemplo, OpenCode):
+Simplemente dile a tu Agente de IA:
 
 > "Instala el plugin sw-agiledevelopment desde https://github.com/vaycentsun/sw-agiledevelopment y sigue las instrucciones en `.opencode/INSTALL.md`."
 
 El Agente leerá la guía de instalación, configurará el plugin y verificará la instalación automáticamente.
 
-**Manual:**
+**Codex Plugin Installation**
 
-Agrega a tu `~/.config/opencode/opencode.json`:
+Simplemente dile a tu Agente de IA:
 
-```json
-{
-  "plugin": [
-    "sw-agiledevelopment@git+https://github.com/vaycentsun/sw-agiledevelopment.git#main"
-  ],
-  "permission": {
-    "skill": {
-      "*": "allow"
-    }
-  }
-}
-```
+> "Instala el plugin sw-agiledevelopment desde https://github.com/vaycentsun/sw-agiledevelopment y sigue las instrucciones en `.codex-plugin/INSTALL.md`."
 
-Reinicia OpenCode. El plugin se instalará automáticamente vía Bun.
+El Agente leerá la guía de instalación, configurará el plugin y verificará la instalación automáticamente.
 
 ---
 
