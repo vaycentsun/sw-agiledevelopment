@@ -24,7 +24,14 @@ jobs:
         run: npm install -g @vscode/vsce
 
       - name: Publish to Marketplace
-        run: vsce publish -p ${{ secrets.VSCODE_MARKETPLACE_TOKEN }}
+        env:
+          VSCE_PAT: ${{ secrets.VSCODE_MARKETPLACE_TOKEN }}
+        run: |
+          if [ -z "$VSCE_PAT" ]; then
+            echo "Error: VSCODE_MARKETPLACE_TOKEN secret is not set"
+            exit 1
+          fi
+          vsce publish -p "$VSCE_PAT"
         
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
