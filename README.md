@@ -30,13 +30,17 @@ Tell your AI Agent:
 
 The Agent will read the install guide, configure the plugin, and verify the setup automatically.
 
-**Copilot Plugin Installation**
+**GitHub Copilot (Skill Mode)**
 
 Tell your AI Agent:
 
-> "Install the sw-agiledevelopment plugin from https://github.com/vaycentsun/sw-agiledevelopment and follow the instructions in `.copilot/INSTALL.md`."
+> "Install the sw-agiledevelopment Copilot skill from https://github.com/vaycentsun/sw-agiledevelopment and follow the instructions in `.github/INSTALL.md`."
 
-The Agent will read the install guide, configure the plugin, and verify the setup automatically.
+The Agent will:
+1. Copy `.github/copilot-instructions.md` to your project's `.github/` directory (Copilot reads this automatically in every Chat session)
+2. Copy all `sw-*/` skill directories to your project's `.sw-agiledevelopment/` directory (for detailed reference)
+
+No Marketplace token or VSIX installation required. Copilot will automatically follow the agile development workflow once installed.
 
 ---
 

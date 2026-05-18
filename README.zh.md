@@ -30,13 +30,17 @@ Agent 会自动读取安装指南，配置插件并验证安装。
 
 Agent 会自动读取安装指南，配置插件并验证安装。
 
-**Copilot 插件安装**
+**GitHub Copilot (Skill 模式)**
 
 直接告诉你的 AI Agent：
 
-> "从 https://github.com/vaycentsun/sw-agiledevelopment 安装 sw-agiledevelopment 插件，并参考 `.copilot/INSTALL.md` 中的说明进行安装。"
+> "从 https://github.com/vaycentsun/sw-agiledevelopment 安装 sw-agiledevelopment Copilot skill，并参考 `.github/INSTALL.md` 中的说明进行安装。"
 
-Agent 会自动读取安装指南，配置插件并验证安装。
+Agent 会：
+1. 将 `.github/copilot-instructions.md` 复制到你项目的 `.github/` 目录下（Copilot 会在每次 Chat 会话中自动读取）
+2. 将所有 `sw-*/` 技能目录复制到你项目的 `.sw-agiledevelopment/` 目录下（用于详细参考）
+
+无需 Marketplace token 或 VSIX 安装。安装完成后，Copilot 会自动遵循敏捷开发工作流。
 
 ---
 
