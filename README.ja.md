@@ -44,6 +44,18 @@ Agent は以下を実行します：
 
 Marketplace token や VSIX インストールは不要です。インストール後、Copilot は自動的にアジャイル開発ワークフローに従います。
 
+**Android Studio（AI Agent）**
+
+AI Agent に以下のように伝えてください：
+
+> "https://github.com/vaycentsun/sw-agiledevelopment から sw-agiledevelopment フレームワークをインストールし、`.androidstudio/INSTALL.md` の手順に従ってください。"
+
+Agent は以下を実行します：
+1. `.androidstudio/sw-agiledevelopment.md` をあなたのプロジェクトの `.androidstudio/` ディレクトリにコピーします（Android Studio AI Agent はこれを system prompt として読み取ります）
+2. すべての `sw-*/` スキルディレクトリをあなたのプロジェクトの `.sw-agiledevelopment/` ディレクトリにコピーします（詳細な参照用）
+
+プラグインのインストールは不要です。インストール後、Android Studio AI Agent は自動的にアジャイル開発ワークフローに従います。
+
 ---
 
 ## 🗺️ コアワークフロー
@@ -69,6 +81,12 @@ sw-finishing-branch (ブランチ完了)
 **代替パス：**
 - `sw-execute-plan` — 同じセッションで計画をバッチ実行（サブエージェント不使用）
 - `sw-parallel-debugging` — 複数の独立した失敗を並列デバッグ
+
+---
+
+## 📝 TODO
+
+- **TODO**: 可視化要件分析を統合し、requirements-clarification（要件分析）段階の前に要件分析と文書作成を強化する。
 
 ---
 
