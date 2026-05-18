@@ -44,6 +44,18 @@ Agent は以下を実行します：
 
 Marketplace token や VSIX インストールは不要です。インストール後、Copilot は自動的にアジャイル開発ワークフローに従います。
 
+**Android Studio（AI Agent）**
+
+AI Agent に以下のように伝えてください：
+
+> "https://github.com/vaycentsun/sw-agiledevelopment から sw-agiledevelopment フレームワークをインストールし、`.androidstudio/INSTALL.md` の手順に従ってください。"
+
+Agent は以下を実行します：
+1. `.androidstudio/sw-agiledevelopment.md` をあなたのプロジェクトの `.androidstudio/` ディレクトリにコピーします（Android Studio AI Agent はこれを system prompt として読み取ります）
+2. すべての `sw-*/` スキルディレクトリをあなたのプロジェクトの `.sw-agiledevelopment/` ディレクトリにコピーします（詳細な参照用）
+
+プラグインのインストールは不要です。インストール後、Android Studio AI Agent は自動的にアジャイル開発ワークフローに従います。
+
 ---
 
 ## 🗺️ コアワークフロー

@@ -44,6 +44,18 @@ El Agente hará lo siguiente:
 
 No se requiere token de Marketplace ni instalación VSIX. Una vez instalado, Copilot seguirá automáticamente el flujo de trabajo de desarrollo ágil.
 
+**Android Studio (AI Agent)**
+
+Simplemente dile a tu Agente de IA:
+
+> "Instala el framework sw-agiledevelopment desde https://github.com/vaycentsun/sw-agiledevelopment y sigue las instrucciones en `.androidstudio/INSTALL.md`."
+
+El Agente hará lo siguiente:
+1. Copiará `.androidstudio/sw-agiledevelopment.md` al directorio `.androidstudio/` de tu proyecto (el AI Agent de Android Studio lo leerá como system prompt)
+2. Copiará todos los directorios de skills `sw-*/` al directorio `.sw-agiledevelopment/` de tu proyecto (para referencia detallada)
+
+No se requiere instalación de plugin. Una vez instalado, el AI Agent de Android Studio seguirá automáticamente el flujo de trabajo de desarrollo ágil.
+
 ---
 
 ## 🗺️ Flujo de Trabajo Principal
