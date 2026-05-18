@@ -30,6 +30,14 @@ Agent 会自动读取安装指南，配置插件并验证安装。
 
 Agent 会自动读取安装指南，配置插件并验证安装。
 
+**Copilot 插件安装**
+
+直接告诉你的 AI Agent：
+
+> "从 https://github.com/vaycentsun/sw-agiledevelopment 安装 sw-agiledevelopment 插件，并参考 `.copilot/INSTALL.md` 中的说明进行安装。"
+
+Agent 会自动读取安装指南，配置插件并验证安装。
+
 ---
 
 ## 🗺️ 核心工作流

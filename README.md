@@ -30,6 +30,14 @@ Tell your AI Agent:
 
 The Agent will read the install guide, configure the plugin, and verify the setup automatically.
 
+**Copilot Plugin Installation**
+
+Tell your AI Agent:
+
+> "Install the sw-agiledevelopment plugin from https://github.com/vaycentsun/sw-agiledevelopment and follow the instructions in `.copilot/INSTALL.md`."
+
+The Agent will read the install guide, configure the plugin, and verify the setup automatically.
+
 ---
 
 ## 🗺️ Core Workflow
