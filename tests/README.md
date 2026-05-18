@@ -15,7 +15,7 @@ tests/
 └── skill-triggering/                  # 技能触发场景测试
     ├── run-test.sh                    # 触发测试框架
     └── prompts/                       # 测试提示词
-        ├── brainstorming.txt
+        ├── requirements-clarification.txt
         ├── test-driven-development.txt
         ├── systematic-debugging.txt
         └── ...

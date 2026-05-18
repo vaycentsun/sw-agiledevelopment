@@ -4,7 +4,7 @@
 
 # sw-superpower 🦸
 
-> Un conjunto de habilidades estilo Superpowers para agentes de codificación AI — flujos de trabajo de ingeniería de software estructurados desde la lluvia de ideas hasta la revisión de código.
+> Un conjunto de habilidades estilo Superpowers para agentes de codificación AI — flujos de trabajo de ingeniería de software estructurados desde el análisis de requisitos hasta la revisión de código.
 
 Un conjunto completo de habilidades de flujo de trabajo de ingeniería de software que ayuda a los agentes de codificación AI a completar cada paso desde el análisis de requisitos hasta la revisión de código de manera sistemática y reproducible.
 
@@ -19,7 +19,7 @@ Un conjunto completo de habilidades de flujo de trabajo de ingeniería de softwa
 - **Proceso Impulsado**: Cada habilidad define condiciones de activación claras y flujos de trabajo de ejecución
 - **Reglas Primero**: Las reglas innegociables se colocan al frente
 - **Probado Bajo Presión**: Las habilidades se crean y validan a través de TDD
-- **Entrega Incremental**: Flujo de trabajo completo desde la lluvia de ideas hasta la entrega de código
+- **Entrega Incremental**: Flujo de trabajo completo desde el análisis de requisitos hasta la entrega de código
 
 ---
 
@@ -27,7 +27,7 @@ Un conjunto completo de habilidades de flujo de trabajo de ingeniería de softwa
 
 ```
 sw-superpower/
-├── sw-brainstorming/              # Lluvia de ideas y análisis de requisitos
+├── sw-requirements-clarification/              # Análisis y clarificación de requisitos
 ├── sw-technical-spec/             # Escritura de especificaciones técnicas
 ├── sw-working-plan/              # Escritura de planes de implementación
 ├── sw-subagent-development/       # Desarrollo impulsado por subagentes
@@ -51,7 +51,7 @@ El flujo de trabajo completo de desarrollo de software se ejecuta en el siguient
 ```
 Iniciar Nueva Función
     ↓
-sw-brainstorming (Lluvia de Ideas y Diseño)
+sw-requirements-clarification (Análisis de Requisitos y Diseño)
     ↓ Salida: docs/sw-superpower/business-specs/YYYY-MM-DD--feature.md
 sw-technical-spec (Escritura de Especificaciones Técnicas)
     ↓ Salida: docs/sw-superpower/technical-specs/YYYY-MM-DD--feature.md
@@ -72,7 +72,7 @@ sw-finishing-branch (Finalización de Rama)
 
 | Habilidad | Propósito | Condición de Activación |
 |-----------|-----------|-------------------------|
-| **sw-brainstorming** | Transformar ideas en diseño y especificaciones completas | Iniciando desarrollo de nueva función |
+| **sw-requirements-clarification** | Transformar ideas en diseño y especificaciones completas | Iniciando desarrollo de nueva función |
 | **sw-working-plan** | Crear planes de implementación detallados | Diseño completado, se necesita plan de ejecución |
 | **sw-subagent-development** | Ejecutar planes usando subagentes | Tener plan de implementación, las tareas son independientes |
 | **sw-test-driven-dev** | Aplicar ciclo RED-GREEN-REFACTOR | Implementar cualquier función o corregir errores |
@@ -144,7 +144,7 @@ Cuando inicias una nueva función, el agente reconoce automáticamente y aplica 
 ```
 Usuario: Quiero desarrollar una función de autenticación de usuario
 
-Agente: [Aplica automáticamente la Habilidad sw-brainstorming]
+Agente: [Aplica automáticamente la Habilidad sw-requirements-clarification]
       1. Explorar contexto del proyecto...
       2. Hacer preguntas de aclaración...
       3. Proponer 2-3 enfoques...

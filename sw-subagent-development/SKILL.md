@@ -18,7 +18,7 @@ description: "Use when executing implementation plans with independent tasks in 
 ```mermaid
 flowchart TD
     A{有实现计划？} -->|是| B{任务大部分独立？}
-    A -->|否| C[手动执行或先头脑风暴]
+    A -->|否| C[手动执行或先需求澄清]
     B -->|是| D{保持此会话？}
     B -->|否 - 紧密耦合| C
     D -->|是| E[sw-subagent-development]

@@ -42,7 +42,7 @@ description: "Use when technical spec is complete and need to create detailed im
 ```mermaid
 flowchart TD
     A{设计已完成？} -->|是| B{有书面 technical-spec？}
-    A -->|否| C[先执行 sw-brainstorming]
+    A -->|否| C[先执行 sw-requirements-clarification]
     B -->|是| D[sw-working-plan]
     B -->|否| C
 ```
@@ -221,7 +221,7 @@ flowchart TD
 
 **根本性异议回退**：如果用户对计划方向有**根本性异议**（如"这个方案完全不行"、"规范本身有问题"、"需要重新设计"），不要在本计划中反复修改。立即回退到：
 - **spec 缺陷** → 回到 `sw-technical-spec`，重新审查或修改 technical-spec
-- **设计方向错误** → 回到 `sw-brainstorming`，重新提出方案
+- **设计方向错误** → 回到 `sw-requirements-clarification`，重新提出方案
 
 ### 9. 保存计划
 
@@ -250,7 +250,7 @@ flowchart TD
 
 **执行时以文件内容为准，不依赖本会话的对话历史。**
 
-> 如平台支持，在调用 `sw-subagent-development` 前执行上下文压缩，释放头脑风暴和计划阶段的对话历史 token。
+> 如平台支持，在调用 `sw-subagent-development` 前执行上下文压缩，释放需求澄清和计划阶段的对话历史 token。
 
 **交接内容**：
 - 计划文件路径：`docs/sw-superpower/plans/YYYY-MM-DD--<feature>-plan.md`

@@ -9,7 +9,7 @@ description: "Use when business requirements are clarified and need to write a s
 
 ## 何时使用
 
-- 需求已通过 `sw-brainstorming` 澄清并确定方案后
+- 需求已通过 `sw-requirements-clarification` 澄清并确定方案后
 - 需要编写可供工程师直接参考的技术文档时
 - 需要明确接口定义、数据流、错误处理策略时
 
@@ -58,11 +58,11 @@ flowchart TD
 
 在开始前检查以下两项：
 1. **business-spec 是否存在**：`docs/sw-superpower/business-specs/YYYY-MM-DD--<feature>.md` 是否存在？
-2. **需求是否已澄清**：该文档是否已通过 `sw-brainstorming` 完成需求澄清？
+2. **需求是否已澄清**：该文档是否已通过 `sw-requirements-clarification` 完成需求澄清？
 
 如果任一检查未通过：
-- **business-spec 不存在** → 告知用户："未找到 business-spec 文档。请先执行 sw-brainstorming 完成需求澄清阶段。"
-- **需求未澄清** → 告知用户："需求尚未澄清。请返回 sw-brainstorming 完成需求分析流程。"
+- **business-spec 不存在** → 告知用户："未找到 business-spec 文档。请先执行 sw-requirements-clarification 完成需求澄清阶段。"
+- **需求未澄清** → 告知用户："需求尚未澄清。请返回 sw-requirements-clarification 完成需求分析流程。"
 - **两项均通过** → 继续执行第 1 步
 
 ### 1. 读取 business-spec
@@ -154,14 +154,14 @@ Agent 自行快速扫描 spec，**不调用 Subagent**，仅检查以下三类�
 |------|------|
 | **基于业务决策** | 不偏离 business-spec 中已确认的方案和范围 |
 | **具体明确** | 每个接口、数据结构、错误类型都必须明确定义 |
-| **不新增需求** | 不在 technical-spec 中引入头脑风暴阶段未讨论的功能 |
+| **不新增需求** | 不在 technical-spec 中引入需求澄清阶段未讨论的功能 |
 | **快速自检** | 只查致命问题，不追求完美文档 |
 
 ## 红旗 —— 立即停止
 
 | 危险想法 | 真相 |
 |------|------|
-| "business-spec 不清楚，我先按自己的理解写" | business-spec 不清楚 → 回到 sw-brainstorming 重新澄清 |
+| "business-spec 不清楚，我先按自己的理解写" | business-spec 不清楚 → 回到 sw-requirements-clarification 重新澄清 |
 | "跳过规范快速自检" | 快速自检能捕获待办、占位符、内部矛盾。跳过 = 有缺陷的规范进入实现阶段 |
 | "在 spec 里补充业务背景" | business-spec 已包含背景，technical-spec 聚焦技术实现 |
 | "编写规范后立即开始编码" | 必须通过快速自检。编码是唯一出口后的步骤 |
@@ -205,7 +205,7 @@ Agent 自行快速扫描 spec，**不调用 Subagent**，仅检查以下三类�
 
 ## 与其他技能的集成
 
-**前置 Skill**: sw-brainstorming（提供业务需求文档）
+**前置 Skill**: sw-requirements-clarification（提供业务需求文档）
 
 **后续 Skill**: 
 - **sw-working-plan** - 必须调用的下一个技能

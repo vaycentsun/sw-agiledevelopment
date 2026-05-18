@@ -19,7 +19,7 @@
 - **流程驱动**: 每个 Skill 定义明确的触发条件和执行流程
 - **铁律优先**: 不可违反的规则放在最前面
 - **压力测试**: 通过 TDD 方式创建和验证 Skill
-- **渐进交付**: 从头脑风暴到代码交付的完整工作流
+- **渐进交付**: 从需求澄清到代码交付的完整工作流
 
 ---
 
@@ -27,7 +27,7 @@
 
 ```
 sw-superpower/
-├── sw-brainstorming/              # 头脑风暴与需求分析
+├── sw-requirements-clarification/              # 需求澄清与分析
 ├── sw-technical-spec/             # 编写技术规格文档
 ├── sw-working-plan/              # 编写实现计划
 ├── sw-subagent-development/       # 子 Agent 驱动开发
@@ -51,7 +51,7 @@ sw-superpower/
 ```
 开始新功能
     ↓
-sw-brainstorming (头脑风暴与需求分析)
+sw-requirements-clarification (需求澄清与分析)
     ↓ 输出: docs/sw-superpower/business-specs/YYYY-MM-DD--feature.md
 sw-technical-spec (编写技术规格)
     ↓ 输出: docs/sw-superpower/technical-specs/YYYY-MM-DD--feature.md
@@ -72,7 +72,7 @@ sw-finishing-branch (完成分支)
 
 | Skill | 用途 | 触发条件 |
 |-------|------|----------|
-| **sw-brainstorming** | 将想法转化为业务需求和方案决策 | 开始新功能开发 |
+| **sw-requirements-clarification** | 将想法转化为业务需求和方案决策 | 开始新功能开发 |
 | **sw-technical-spec** | 编写结构化的技术规格文档 | 需求已澄清，需要技术设计 |
 | **sw-working-plan** | 创建详细的实现计划 | 技术 Spec 已完成，需要执行计划 |
 | **sw-subagent-development** | 使用子 Agent 执行计划 | 有实现计划，任务相对独立 |
@@ -145,7 +145,7 @@ git clone https://github.com/vaycentsun/sw-superpower.git
 ```
 用户: 我要开发一个用户认证功能
 
-Agent: [自动应用 sw-brainstorming Skill]
+Agent: [自动应用 sw-requirements-clarification Skill]
       1. 探索项目上下文...
       2. 提出澄清问题...
       3. 提出 2-3 种方案...

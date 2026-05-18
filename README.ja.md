@@ -4,7 +4,7 @@
 
 # sw-superpower 🦸
 
-> AI コーディングエージェント向けの Superpowers スタイルのスキルセット — ブレインストーミングからコードレビューまでの構造化されたソフトウェアエンジニアリングワークフロー
+> AI コーディングエージェント向けの Superpowers スタイルのスキルセット — 要件分析からコードレビューまでの構造化されたソフトウェアエンジニアリングワークフロー
 
 AI コーディングエージェントが、体系的かつ再現性のある方法で要件分析からコードレビューまでの各ステップを完了するのを支援する、完全なソフトウェアエンジニアリングワークフロースキルセットです。
 
@@ -19,7 +19,7 @@ AI コーディングエージェントが、体系的かつ再現性のある�
 - **プロセス駆動**: 各スキルが明確なトリガー条件と実行ワークフローを定義
 - **ルールファースト**: 譲れないルールを最前面に配置
 - **ストレステスト**: TDD を通じてスキルを作成・検証
-- **漸進的デリバリー**: ブレインストーミングからコードデリバリーまでの完全なワークフロー
+- **漸進的デリバリー**: 要件分析からコードデリバリーまでの完全なワークフロー
 
 ---
 
@@ -27,7 +27,7 @@ AI コーディングエージェントが、体系的かつ再現性のある�
 
 ```
 sw-superpower/
-├── sw-brainstorming/              # ブレインストーミングと要件分析
+├── sw-requirements-clarification/              # 要件分析と設計
 ├── sw-technical-spec/             # 技術仕様書の作成
 ├── sw-working-plan/              # 実装計画の作成
 ├── sw-subagent-development/       # サブエージェント駆動開発
@@ -51,7 +51,7 @@ sw-superpower/
 ```
 新機能の開始
     ↓
-sw-brainstorming (ブレインストーミングと設計)
+sw-requirements-clarification (要件分析と設計)
     ↓ 出力: docs/sw-superpower/business-specs/YYYY-MM-DD--feature.md
 sw-technical-spec (技術仕様書の作成)
     ↓ 出力: docs/sw-superpower/technical-specs/YYYY-MM-DD--feature.md
@@ -72,7 +72,7 @@ sw-finishing-branch (ブランチ完了)
 
 | スキル | 目的 | トリガー条件 |
 |-------|------|-------------|
-| **sw-brainstorming** | アイデアを完全な設計と仕様に変換 | 新機能開発の開始 |
+| **sw-requirements-clarification** | アイデアを完全な設計と仕様に変換 | 新機能開発の開始 |
 | **sw-working-plan** | 詳細な実装計画を作成 | 設計が完了し、実行計画が必要 |
 | **sw-subagent-development** | サブエージェントを使用して計画を実行 | 実装計画があり、タスクが独立している |
 | **sw-test-driven-dev** | RED-GREEN-REFACTOR サイクルを強制 | 機能の実装またはバグ修正 |
@@ -144,7 +144,7 @@ OpenCode を再起動するか、スキルをリロードします。
 ```
 ユーザー: ユーザー認証機能を開発したい
 
-エージェント: [自動的に sw-brainstorming スキルを適用]
+エージェント: [自動的に sw-requirements-clarification スキルを適用]
       1. プロジェクトコンテキストを探索...
       2. 明確化の質問をする...
       3. 2-3 つのアプローチを提案...

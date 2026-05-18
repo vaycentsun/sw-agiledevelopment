@@ -37,7 +37,7 @@ rm -rf ~/.config/opencode/superpowers
 
 ```
 使用 skill 工具列出所有技能
-使用 skill 工具加载 sw-brainstorming
+使用 skill 工具加载 sw-requirements-clarification
 ```
 
 ## 故障排除

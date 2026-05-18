@@ -23,7 +23,7 @@
 | Business-spec | **business-spec** | `docs/sw-superpower/business-specs/` 中的文档，保留英文 |
 | Technical-spec / Tech-spec | **technical-spec** | `docs/sw-superpower/technical-specs/` 中的文档，保留英文 |
 | Spec / spec | **spec** | 泛指 technical-spec 或 business-spec，保留英文 |
-| Brainstorming | **头脑风暴** | 需求分析阶段，可用"头脑风暴流程" |
+| Brainstorming (旧称) | **需求澄清** | requirements-clarification 阶段 |
 | Working-plan | **working-plan** | `docs/sw-superpower/plans/` 中的文档，保留英文 |
 | Red flag / red flag | **红旗** | 警告信号，章节标题固定为 `## 红旗` |
 | Frontmatter | **Frontmatter** | 保留英文，指 Markdown 文件头部的 `---` 元数据块 |
@@ -108,4 +108,4 @@
 
 ## 更新记录
 
-- **2026-05-12**: 初始版本，基于 sw-test-driven-dev、sw-brainstorming、sw-technical-spec 的优化经验建立
+- **2026-05-12**: 初始版本，基于 sw-test-driven-dev、sw-requirements-clarification、sw-technical-spec 的优化经验建立

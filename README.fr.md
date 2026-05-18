@@ -4,7 +4,7 @@
 
 # sw-superpower 🦸
 
-> Un ensemble de compétences style Superpowers pour agents de codage AI — flux de travail d'ingénierie logicielle structurés du brainstorming à la révision de code.
+> Un ensemble de compétences style Superpowers pour agents de codage AI — flux de travail d'ingénierie logicielle structurés de la clarification des besoins à la révision de code.
 
 Un ensemble complet de compétences de flux de travail d'ingénierie logicielle qui aide les agents de codage AI à accomplir chaque étape de l'analyse des besoins à la révision de code de manière systématique et reproductible.
 
@@ -19,7 +19,7 @@ Un ensemble complet de compétences de flux de travail d'ingénierie logicielle 
 - **Piloté par le Processus** : Chaque compétence définit des conditions de déclenchement claires et des flux de travail d'exécution
 - **Règles d'Abord** : Les règles non négociables sont placées en premier plan
 - **Testé sous Pression** : Les compétences sont créées et validées via TDD
-- **Livraison Incrémentale** : Flux de travail complet du brainstorming à la livraison de code
+- **Livraison Incrémentale** : Flux de travail complet de la clarification des besoins à la livraison de code
 
 ---
 
@@ -27,7 +27,7 @@ Un ensemble complet de compétences de flux de travail d'ingénierie logicielle 
 
 ```
 sw-superpower/
-├── sw-brainstorming/              # Brainstorming et analyse des besoins
+├── sw-requirements-clarification/              # Analyse et clarification des besoins
 ├── sw-technical-spec/             # Rédaction des spécifications techniques
 ├── sw-working-plan/              # Rédaction des plans d'implémentation
 ├── sw-subagent-development/       # Développement piloté par sous-agent
@@ -51,7 +51,7 @@ Le flux de travail complet de développement logiciel s'exécute dans l'ordre su
 ```
 Démarrer Nouvelle Fonctionnalité
     ↓
-sw-brainstorming (Brainstorming et Conception)
+sw-requirements-clarification (Clarification et Conception)
     ↓ Sortie : docs/sw-superpower/business-specs/YYYY-MM-DD--feature.md
 sw-technical-spec (Rédaction des Spécifications Techniques)
     ↓ Sortie : docs/sw-superpower/technical-specs/YYYY-MM-DD--feature.md
@@ -72,7 +72,7 @@ sw-finishing-branch (Achèvement de Branche)
 
 | Compétence | Objectif | Condition de Déclenchement |
 |------------|----------|----------------------------|
-| **sw-brainstorming** | Transformer les idées en conception et spécifications complètes | Démarrage du développement d'une nouvelle fonctionnalité |
+| **sw-requirements-clarification** | Transformer les idées en conception et spécifications complètes | Démarrage du développement d'une nouvelle fonctionnalité |
 | **sw-working-plan** | Créer des plans d'implémentation détaillés | Conception terminée, besoin d'un plan d'exécution |
 | **sw-subagent-development** | Exécuter les plans en utilisant des sous-agents | Avoir un plan d'implémentation, les tâches sont indépendantes |
 | **sw-test-driven-dev** | Appliquer le cycle RED-GREEN-REFACTOR | Implémenter toute fonctionnalité ou corriger des bogues |
@@ -144,7 +144,7 @@ Lorsque vous démarrez une nouvelle fonctionnalité, l'agent reconnaît automati
 ```
 Utilisateur : Je veux développer une fonctionnalité d'authentification utilisateur
 
-Agent : [Applique automatiquement la Compétence sw-brainstorming]
+Agent : [Applique automatiquement la Compétence sw-requirements-clarification]
       1. Explorer le contexte du projet...
       2. Poser des questions de clarification...
       3. Proposer 2-3 approches...

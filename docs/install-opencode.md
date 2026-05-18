@@ -79,7 +79,7 @@ sw-superpower 的 Skill 使用 Claude Code 工具名称。在 OpenCode 中，自
 ### 加载技能
 
 ```
-使用 skill 工具加载 sw-brainstorming
+使用 skill 工具加载 sw-requirements-clarification
 ```
 
 ### 个人技能
@@ -118,7 +118,7 @@ description: Use when [condition] - [what it does]
 ```
 用户: 我要开发一个用户认证功能
 
-Agent: [自动应用 sw-brainstorming Skill]
+Agent: [自动应用 sw-requirements-clarification Skill]
       1. 探索项目上下文...
       2. 提出澄清问题...
       3. 提出 2-3 种方案...
@@ -133,7 +133,7 @@ Agent: [自动应用 sw-brainstorming Skill]
 ```
 开始新功能
     ↓
-sw-brainstorming (头脑风暴与需求分析)
+sw-requirements-clarification (需求澄清与分析)
     ↓ 输出: docs/sw-superpower/business-specs/YYYY-MM-DD--feature.md
 sw-technical-spec (编写技术规格)
     ↓ 输出: docs/sw-superpower/technical-specs/YYYY-MM-DD--feature.md

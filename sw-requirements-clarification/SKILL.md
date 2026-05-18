@@ -1,15 +1,15 @@
 ---
-name: sw-brainstorming
+name: sw-requirements-clarification
 description: "Use when starting software development of new feature in the project, before writing implementation code"
 ---
 
-# 头脑风暴与需求分析
+# 需求澄清
 
 通过与用户的苏格拉底式对话，将模糊的想法转化为清晰的需求和明确的设计决策。
 
 ## 何时跳过此流程
 
-**以下情况属于简单任务，不经过头脑风暴，直接调用 `sw-test-driven-dev`：**
+**以下情况属于简单任务，不经过需求澄清，直接调用 `sw-test-driven-dev`：**
 
 - 改动范围明显很小（Agent 通过快速代码扫描即可确认，如单函数修改、参数调整、局部逻辑修复）
 - 纯 Bug 修复（问题明确、修复方案清晰、且**不涉及**新增组件/接口变更/多模块影响）
@@ -18,9 +18,9 @@ description: "Use when starting software development of new feature in the proje
 - 拼写、格式、命名等表面层的修复
 - 已有明确 technical-spec 或 working-plan 的任务执行
 
-**不确定是否属于简单任务？** 走头脑风暴流程。宁可流程过度，不可跳过设计。
+**不确定是否属于简单任务？** 走需求澄清流程。宁可流程过度，不可跳过设计。
 
-**以下情况必须走头脑风暴，不可走快速通道：**
+**以下情况必须走需求澄清，不可走快速通道：**
 
 | 场景 | 说明 |
 |------|------|
@@ -29,7 +29,7 @@ description: "Use when starting software development of new feature in the proje
 | Bug 影响多个模块 | 修复一处导致其他模块需要适配 |
 | 快速扫描后发现改动范围超预期 | 原本以为只改单函数，实际涉及多处修改 |
 
-**回退规则**：快速扫描后发现改动超出预期 → 立即回退到头脑风暴流程。
+**回退规则**：快速扫描后发现改动超出预期 → 立即回退到需求澄清流程。
 
 ## 核心原则
 
@@ -87,7 +87,7 @@ flowchart TD
 如果项目规模过大：
 1. 帮助用户将大项目分解为若干子项目
 2. 确定各组件的独立性和依赖关系，明确构建顺序
-3. 对第一个子项目执行正常的头脑风暴流程
+3. 对第一个子项目执行正常的需求澄清流程
 4. 每个子项目拥有独立的 business-spec → technical-spec → working-plan → 实现周期
 
 ### 2. 提出澄清问题
@@ -246,7 +246,7 @@ C) 使用外部服务（如 Firebase）
 | "不需要替代方案，我知道最佳方案" | 未呈现替代方案就确定设计 = 未经验证的假设。总是提出 2–3 种方法 |
 | "把多个问题合并问更快" | 一次一个问题。合并会压倒用户，降低回答质量 |
 | "编写 business-spec 后立即开始编码" | 必须先由 sw-technical-spec 编写完整 technical-spec。编码是更后方的步骤 |
-| "简单任务不需要头脑风暴" | 正确。简单任务走快速通道直接 TDD。不确定是否简单？走头脑风暴 |
+| "简单任务不需要需求澄清" | 正确。简单任务走快速通道直接 TDD。不确定是否简单？走需求澄清 |
 
 ## 常见借口与真相
 
@@ -256,7 +256,7 @@ C) 使用外部服务（如 Firebase）
 | "用户不需要看设计过程" | 完整呈现设计是纪律。跳过 = 遗漏关键决策 |
 | "先写代码再补设计" | 设计先行是纪律。代码先行 = 即兴开发 |
 | "问题太多用户会烦" | 每次一个问题比合并问题更快获得清晰答案 |
-| "简单任务不需要头脑风暴" | 正确。简单任务走快速通道直接 TDD |
+| "简单任务不需要需求澄清" | 正确。简单任务走快速通道直接 TDD |
 
 ## YAGNI 原则
 
@@ -275,7 +275,7 @@ C) 使用外部服务（如 Firebase）
 
 **返回摘要格式**：
 ```markdown
-## 头脑风暴完成
+## 需求澄清完成
 
 **business-spec 文件**: `docs/sw-superpower/business-specs/2026-04-08--user-authentication.md`
 **设计状态**: ✅ 已完成

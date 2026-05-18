@@ -4,7 +4,7 @@
 
 # sw-superpower 🦸
 
-> A Superpowers-style skill set for AI coding agents — structured software engineering workflows from brainstorming to code review.
+> A Superpowers-style skill set for AI coding agents — structured software engineering workflows from requirements clarification to code review.
 
 A complete set of software engineering workflow skills that help AI coding agents complete every step from requirements analysis to code review in a systematic, reproducible way.
 
@@ -21,7 +21,7 @@ This is a Chinese-localized adaptation of the [obra/superpowers](https://github.
 - **Process-Driven**: Each skill defines clear trigger conditions and execution workflows
 - **Rules First**: Non-negotiable rules are placed at the forefront
 - **Stress-Tested**: Skills are created and validated through TDD
-- **Incremental Delivery**: Complete workflow from brainstorming to code delivery
+- **Incremental Delivery**: Complete workflow from requirements clarification to code delivery
 
 ---
 
@@ -29,7 +29,7 @@ This is a Chinese-localized adaptation of the [obra/superpowers](https://github.
 
 ```
 sw-superpower/
-├── sw-brainstorming/              # Brainstorming & requirements analysis
+├── sw-requirements-clarification/              # Requirements clarification & analysis
 ├── sw-technical-spec/             # Writing technical specifications
 ├── sw-working-plan/              # Writing implementation plans
 ├── sw-subagent-development/       # Subagent-driven development
@@ -53,7 +53,7 @@ The complete software development workflow executes in the following order:
 ```
 Start New Feature
     ↓
-sw-brainstorming (Brainstorming & Requirements)
+sw-requirements-clarification (Requirements Clarification)
     ↓ Output: docs/sw-superpower/business-specs/YYYY-MM-DD--feature-design.md
 sw-technical-spec (Writing Technical Specifications)
     ↓ Output: docs/sw-superpower/technical-specs/YYYY-MM-DD--feature-design.md
@@ -78,7 +78,7 @@ sw-finishing-branch (Finishing Branch)
 
 | Skill | Purpose | Trigger Condition |
 |-------|---------|-------------------|
-| **sw-brainstorming** | Transform ideas into business requirements and decisions | Starting new feature development |
+| **sw-requirements-clarification** | Transform ideas into business requirements and decisions | Starting new feature development |
 | **sw-technical-spec** | Write structured technical specification | Requirements clarified, need technical design |
 | **sw-working-plan** | Create detailed implementation plans | Technical spec completed, need execution plan |
 | **sw-subagent-development** | Execute plans using subagents | Have implementation plan, tasks are independent |
@@ -134,7 +134,7 @@ When you start a new feature, the agent automatically recognizes and applies the
 ```
 User: I want to develop a user authentication feature
 
-Agent: [Automatically applies sw-brainstorming Skill]
+Agent: [Automatically applies sw-requirements-clarification Skill]
       1. Explore project context...
       2. Ask clarifying questions...
       3. Propose 2-3 approaches...

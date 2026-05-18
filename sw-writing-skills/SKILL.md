@@ -310,7 +310,7 @@ helper1, helper2, step3, pattern4
 - 创建好的 Skill 可用于后续工作流
 
 **使用此 Skill 创建:**
-- sw-brainstorming
+- sw-requirements-clarification
 - sw-test-driven-dev
 - sw-subagent-development
 - 其他所有 Skill
