@@ -70,6 +70,40 @@ else
     echo "  [WARN] Plugin may not reference sw-* directories"
 fi
 
+# Test 7: Codex plugin manifest exists
+CODEX_MANIFEST="$REPO_ROOT/.codex-plugin/plugin.json"
+if [ -f "$CODEX_MANIFEST" ]; then
+    echo "  [PASS] Codex plugin manifest exists"
+else
+    echo "  [FAIL] Codex plugin manifest not found: .codex-plugin/plugin.json"
+    FAILED=1
+fi
+
+# Test 8: Codex plugin exposes skills through the standard skills directory
+if grep -q '"skills": "./skills/"' "$CODEX_MANIFEST"; then
+    echo "  [PASS] Codex plugin uses standard skills path"
+else
+    echo "  [FAIL] Codex plugin should use skills path: ./skills/"
+    FAILED=1
+fi
+
+# Test 9: Codex skills directory resolves each sw-* skill
+MISSING_CODEX_SKILL=0
+for dir in "$REPO_ROOT"/sw-*/; do
+    if [ -d "$dir" ]; then
+        skill_name=$(basename "$dir")
+        if [ ! -f "$REPO_ROOT/skills/$skill_name/SKILL.md" ]; then
+            echo "  [FAIL] Codex skills path missing $skill_name/SKILL.md"
+            MISSING_CODEX_SKILL=1
+            FAILED=1
+        fi
+    fi
+done
+
+if [ "$MISSING_CODEX_SKILL" -eq 0 ] && [ "$SKILL_COUNT" -gt 0 ]; then
+    echo "  [PASS] Codex skills path resolves all sw-* skills"
+fi
+
 if [ "$FAILED" -eq 0 ]; then
     echo ""
     echo "All plugin loading tests passed!"

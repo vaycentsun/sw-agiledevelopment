@@ -15,6 +15,8 @@ Add the `sw-agiledevelopment` Codex plugin marketplace and install the
 - Marketplace path: `.agents/plugins`
 - Marketplace ref: `main`
 - Plugin name: `sw-agiledevelopment`
+- Plugin capabilities: Codex Skills only. This plugin does not expose MCP
+  tools or callable functions.
 
 ## Prerequisites
 
@@ -42,14 +44,7 @@ plugin installation step.
 
 ### 2. Install the plugin
 
-First try the Codex CLI plugin install command:
-
-```bash
-codex plugin install sw-agiledevelopment
-```
-
-If the CLI reports that direct plugin installation is not available, open the
-Codex plugin interface instead:
+Open the Codex plugin interface:
 
 ```bash
 codex plugin
@@ -62,30 +57,24 @@ user to open `/plugins` in Codex and install `sw-agiledevelopment` from the
 
 ### 3. Verify installation
 
-After installation, verify that Codex can see the plugin or marketplace:
+After installation, verify that the CLI exposes the marketplace commands:
 
 ```bash
-codex plugin marketplace list
+codex plugin marketplace --help
 ```
 
-If available, also list installed plugins:
-
-```bash
-codex plugin list
-```
-
-Look for:
-
-- Marketplace: `sw-agiledevelopment` or `vaycentsun/sw-agiledevelopment`
-- Plugin: `sw-agiledevelopment`
+Then start a new Codex session and look for `sw-agiledevelopment` skills in the
+session context. The Codex CLI may not provide `plugin list` or
+`plugin install` subcommands in all versions.
 
 ## Success Message
 
 When complete, tell the user:
 
 ```text
-sw-agiledevelopment has been added to Codex. Start a new Codex session and ask
-it to use the agile development workflow.
+sw-agiledevelopment has been added to Codex. Start a new Codex session so the
+skills appear in the session context, then ask it to use the agile development
+workflow.
 ```
 
 ## Troubleshooting
@@ -101,3 +90,9 @@ codex plugin marketplace add vaycentsun/sw-agiledevelopment --ref main --sparse 
 
 If Codex requires a restart after marketplace installation, ask the user to
 restart Codex, then install `sw-agiledevelopment` from `/plugins`.
+
+If `@sw-agiledevelopment` is recognized as a plugin name but the current
+conversation still has no `sw-agiledevelopment` skills in its available skill
+list, this is usually a session refresh issue. Start a new Codex session after
+installation. The plugin provides Skills such as `sw-requirements-clarification`
+and `sw-test-driven-dev`; it does not provide MCP tools.

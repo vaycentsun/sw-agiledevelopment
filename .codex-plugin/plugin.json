@@ -1,6 +1,6 @@
 {
   "name": "sw-agiledevelopment",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "description": "Agile development workflow skills for AI coding agents.",
   "author": {
     "name": "vaycentsun",
@@ -16,7 +16,7 @@
     "software-development",
     "codex"
   ],
-  "skills": "./",
+  "skills": "./skills/",
   "interface": {
     "displayName": "sw-agiledevelopment",
     "shortDescription": "Agile workflow Skills for Codex.",
