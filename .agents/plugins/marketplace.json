@@ -1,0 +1,21 @@
+{
+  "name": "sw-agiledevelopment",
+  "interface": {
+    "displayName": "sw-agiledevelopment"
+  },
+  "plugins": [
+    {
+      "name": "sw-agiledevelopment",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/vaycentsun/sw-agiledevelopment.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
