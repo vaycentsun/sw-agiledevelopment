@@ -180,7 +180,7 @@ git push -u origin feature/user-auth
 - [x] 新增测试覆盖新功能
 
 ## Spec
-关联: `docs/sw-superpower/technical-specs/2026-04-08--user-auth.md`
+关联: `docs/sw-agiledevelopment/technical-specs/2026-04-08--user-auth.md`
 
 ## 审查清单
 - [x] 代码遵循项目规范
@@ -232,7 +232,7 @@ git branch -D feature/user-auth
 **更新 Spec 文件**：
 
 ```yaml
-# 在 docs/sw-superpower/technical-specs/YYYY-MM-DD--feature.md 中
+# 在 docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--feature.md 中
 
 status: implemented  # 或 merged
 
@@ -250,7 +250,7 @@ completion:
 **归档 Spec**：
 ```bash
 # 如果项目有归档流程
-git mv docs/sw-superpower/technical-specs/active/YYYY-MM-DD--feature.md docs/sw-superpower/technical-specs/archived/
+git mv docs/sw-agiledevelopment/technical-specs/active/YYYY-MM-DD--feature.md docs/sw-agiledevelopment/technical-specs/archived/
 git commit -m "docs: archive completed spec"
 ```
 
@@ -291,7 +291,7 @@ git commit -m "docs: archive completed spec"
 4. 🔄 CI/CD 正在运行 (https://ci.example.com/build/123)
 
 ### 相关资源
-- Spec: `docs/sw-superpower/technical-specs/archived/2026-04-08--user-auth.md`
+- Spec: `docs/sw-agiledevelopment/technical-specs/archived/2026-04-08--user-auth.md`
 - 提交: `abc1234`
 ```
 
@@ -316,7 +316,7 @@ git commit -m "docs: archive completed spec"
 4. 合并到 main
 
 ### 保留资源
-- Spec: `docs/sw-superpower/technical-specs/active/2026-04-08--user-auth.md`
+- Spec: `docs/sw-agiledevelopment/technical-specs/active/2026-04-08--user-auth.md`
 ```
 
 ## 集成

@@ -1,11 +1,11 @@
-# sw-superpower 术语规范
+# sw-agiledevelopment 术语规范
 
-本文档定义 sw-superpower 技能框架中的中英文术语使用规范，确保所有 SKILL.md 文件、Agent 对话和用户文档在术语上保持一致。
+本文档定义 sw-agiledevelopment 技能框架中的中英文术语使用规范，确保所有 SKILL.md 文件、Agent 对话和用户文档在术语上保持一致。
 
 ## 使用原则
 
 1. **技术术语优先保留英文**：行业内广泛认可的测试/开发术语（如 Mock, Spike, YAGNI）保留英文，首次出现时加注中文解释
-2. **框架专属概念使用中文**：sw-superpower 内部概念（如 Skill, Spec）统一翻译为中文，但 `Agent` / `Subagent` 保留英文
+2. **框架专属概念使用中文**：sw-agiledevelopment 内部概念（如 Skill, Spec）统一翻译为中文，但 `Agent` / `Subagent` 保留英文
 3. **首次出现标注全称**：`中文（English）` 或 `英文（中文）`，后续直接使用确定形式
 4. **禁止同一文档内混用**：同一篇 SKILL.md 中，同一个概念不可既用中文又用英文
 
@@ -20,11 +20,11 @@
 | Skill / skill | **技能** | 框架核心概念，统一译为"技能" |
 | Agent / agent | **Agent** | AI 编程助手，保留英文 |
 | Subagent / subagent | **Subagent** | 被分派执行任务的 Agent 实例，保留英文 |
-| Business-spec | **business-spec** | `docs/sw-superpower/business-specs/` 中的文档，保留英文 |
-| Technical-spec / Tech-spec | **technical-spec** | `docs/sw-superpower/technical-specs/` 中的文档，保留英文 |
+| Business-spec | **business-spec** | `docs/sw-agiledevelopment/business-specs/` 中的文档，保留英文 |
+| Technical-spec / Tech-spec | **technical-spec** | `docs/sw-agiledevelopment/technical-specs/` 中的文档，保留英文 |
 | Spec / spec | **spec** | 泛指 technical-spec 或 business-spec，保留英文 |
 | Brainstorming (旧称) | **需求澄清** | requirements-clarification 阶段 |
-| Working-plan | **working-plan** | `docs/sw-superpower/plans/` 中的文档，保留英文 |
+| Working-plan | **working-plan** | `docs/sw-agiledevelopment/plans/` 中的文档，保留英文 |
 | Red flag / red flag | **红旗** | 警告信号，章节标题固定为 `## 红旗` |
 | Frontmatter | **Frontmatter** | 保留英文，指 Markdown 文件头部的 `---` 元数据块 |
 | Pre-push hook | **预推送钩子** | Git 钩子，保留 `pre-push` 指代脚本文件名 |
@@ -69,9 +69,9 @@
 |-------------|---------|------|
 | `sw-*/SKILL.md` | **技能文件** | 每个技能目录下的主文件 |
 | `subagent-prompts/` | **Subagent 提示词目录** | 存放 `-prompt.md` 文件 |
-| `docs/sw-superpower/business-specs/` | **business-specs 目录** | 存放业务需求文档 |
-| `docs/sw-superpower/technical-specs/` | **technical-specs 目录** | 存放技术设计文档 |
-| `docs/sw-superpower/plans/` | **plans 目录** | 存放 working-plan 文档 |
+| `docs/sw-agiledevelopment/business-specs/` | **business-specs 目录** | 存放业务需求文档 |
+| `docs/sw-agiledevelopment/technical-specs/` | **technical-specs 目录** | 存放技术设计文档 |
+| `docs/sw-agiledevelopment/plans/` | **plans 目录** | 存放 working-plan 文档 |
 
 ---
 

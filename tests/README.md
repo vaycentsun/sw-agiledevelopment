@@ -1,6 +1,6 @@
 # 测试套件
 
-> 为 sw-superpower 项目设计的测试套件，适配 OpenCode 平台。
+> 为 sw-agiledevelopment 项目设计的测试套件，适配 OpenCode 平台。
 
 ## 测试目录结构
 
@@ -47,7 +47,7 @@ bash run-tests.sh -v
 ### 1. 插件加载测试 (`test-plugin-loading.sh`)
 
 验证：
-- `.opencode/plugins/sw-superpowers.js` 插件文件存在
+- `.opencode/plugins/sw-agiledevelopment.js` 插件文件存在
 - 插件能正确扫描 skills 目录
 - 所有 Skill 目录结构符合规范
 
@@ -63,7 +63,7 @@ bash run-tests.sh -v
 ### 3. 工具映射测试 (`test-tool-mapping.sh`)
 
 验证：
-- `sw-using-superpowers/references/` 目录存在
+- `sw-using-agiledevelopment/references/` 目录存在
 - 工具映射文件完整（copilot-tools.md、codex-tools.md、gemini-tools.md）
 - OpenCode 工具映射包含所有常用工具
 

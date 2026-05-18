@@ -1,4 +1,4 @@
-# 安装 sw-superpower（OpenCode 版）
+# 安装 sw-agiledevelopment（OpenCode 版）
 
 ## 前置条件
 
@@ -6,11 +6,11 @@
 
 ## 安装前的环境清理
 
-若之前安装过旧版的sw-superpower，请先清理旧配置：
+若之前安装过旧版的sw-agiledevelopment，请先清理旧配置：
 
 ```bash
 # 删除该插件的旧缓存
-rm -rf ~/.cache/opencode/packages/sw-superpower@git+http
+rm -rf ~/.cache/opencode/packages/sw-agiledevelopment@git+http
 # 移除克隆的仓库
 rm -rf ~/.config/opencode/superpowers
 ```
@@ -23,13 +23,13 @@ rm -rf ~/.config/opencode/superpowers
 
 ```json
 {
-  "plugin": ["sw-superpower@git+https://github.com/vaycentsun/sw-superpower.git"]
+  "plugin": ["sw-agiledevelopment@git+https://github.com/vaycentsun/sw-agiledevelopment.git"]
 }
 ```
 
 重启 OpenCode。插件会自动通过 Bun 安装并注册所有技能。
 
-**验证安装**：询问 Agent "Tell me about your sw-superpowers"
+**验证安装**：询问 Agent "Tell me about your agile development skills"
 
 ## 使用方法
 
@@ -44,7 +44,7 @@ rm -rf ~/.config/opencode/superpowers
 
 ### 插件未加载
 
-1. 检查日志：`opencode run --print-logs "hello" 2>&1 | grep -i sw-superpowers`
+1. 检查日志：`opencode run --print-logs "hello" 2>&1 | grep -i sw-agiledevelopment`
 2. 验证 `opencode.json` 中的插件配置是否正确
 3. 确保 OpenCode 版本足够新
 

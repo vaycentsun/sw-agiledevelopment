@@ -2,9 +2,9 @@
   <strong>🇺🇸 English</strong> | <a href="./README.zh.md">🇨🇳 中文</a> | <a href="./README.ja.md">🇯🇵 日本語</a> | <a href="./README.es.md">🇪🇸 Español</a> | <a href="./README.fr.md">🇫🇷 Français</a>
 </div>
 
-# sw-superpower 🦸
+# sw-agiledevelopment 🦸
 
-> A Superpowers-style skill set for AI coding agents — structured software engineering workflows from requirements clarification to code review.
+> An Agile Development-style skill set for AI coding agents — structured software engineering workflows from requirements clarification to code review.
 
 A complete set of software engineering workflow skills that help AI coding agents complete every step from requirements analysis to code review in a systematic, reproducible way.
 
@@ -12,7 +12,7 @@ A complete set of software engineering workflow skills that help AI coding agent
 
 ## 📦 Overview
 
-`sw-superpower` is a Superpowers-style skill set designed for [OpenCode](https://opencode.ai) and other AI coding agents. It encapsulates mature software engineering practices (TDD, code review, systematic debugging) into structured, reusable agent skills.
+`sw-agiledevelopment` is a Superpowers-style skill set designed for [OpenCode](https://opencode.ai) and other AI coding agents. It encapsulates mature software engineering practices (TDD, code review, systematic debugging) into structured, reusable agent skills.
 
 This is a Chinese-localized adaptation of the [obra/superpowers](https://github.com/obra/superpowers) framework, preserving its complete methodology while adapting content for Chinese-speaking developers.
 
@@ -28,7 +28,7 @@ This is a Chinese-localized adaptation of the [obra/superpowers](https://github.
 ## 🗂️ Project Structure
 
 ```
-sw-superpower/
+sw-agiledevelopment/
 ├── sw-requirements-clarification/              # Requirements clarification & analysis
 ├── sw-technical-spec/             # Writing technical specifications
 ├── sw-working-plan/              # Writing implementation plans
@@ -40,7 +40,7 @@ sw-superpower/
 ├── sw-finishing-branch/           # Finishing development branch
 ├── sw-parallel-debugging/  # Parallel debugging
 ├── sw-execute-plan/            # Executing plans (same session)
-├── sw-using-superpowers/          # Skill system bootstrap (core entry)
+├── sw-using-agiledevelopment/          # Skill system bootstrap (core entry)
 └── sw-writing-skills/             # Writing new skills (meta skill)
 ```
 
@@ -54,11 +54,11 @@ The complete software development workflow executes in the following order:
 Start New Feature
     ↓
 sw-requirements-clarification (Requirements Clarification)
-    ↓ Output: docs/sw-superpower/business-specs/YYYY-MM-DD--feature-design.md
+    ↓ Output: docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--feature-design.md
 sw-technical-spec (Writing Technical Specifications)
-    ↓ Output: docs/sw-superpower/technical-specs/YYYY-MM-DD--feature-design.md
+    ↓ Output: docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--feature-design.md
 sw-working-plan (Writing Implementation Plan)
-    ↓ Output: docs/sw-superpower/plans/YYYY-MM-DD--feature-plan.md
+    ↓ Output: docs/sw-agiledevelopment/plans/YYYY-MM-DD--feature-plan.md
 sw-subagent-development (Subagent-Driven Development)
     ├── sw-test-driven-dev (TDD for each task)
     ├── sw-code-review (Review after tasks & handle feedback)
@@ -90,7 +90,7 @@ sw-finishing-branch (Finishing Branch)
 | **sw-task-verification** | Task verification | Ready to mark task as complete |
 | **sw-finishing-branch** | Verify, decide, and clean up branch | All tasks completed |
 | **sw-writing-skills** | Create and validate new skills | Need to create a new skill |
-| **sw-using-superpowers** | Skill system bootstrap | Every conversation start |
+| **sw-using-agiledevelopment** | Skill system bootstrap | Every conversation start |
 
 ---
 
@@ -105,7 +105,7 @@ Add to your `~/.config/opencode/opencode.json`:
 ```json
 {
   "plugin": [
-    "sw-superpower@git+http://192.168.1.100:53000/vaycent/sw-superpower.git#main"
+    "sw-agiledevelopment@git+http://192.168.1.100:53000/vaycent/sw-agiledevelopment.git#main"
   ],
   "permission": {
     "skill": {
@@ -121,7 +121,7 @@ Restart OpenCode. The plugin will be auto-installed via Bun.
 
 ```bash
 cd <your-project>/skills/
-git submodule add https://github.com/vaycentsun/sw-superpower.git
+git submodule add https://github.com/vaycentsun/sw-agiledevelopment.git
 git submodule update --init --recursive
 ```
 
@@ -139,7 +139,7 @@ Agent: [Automatically applies sw-requirements-clarification Skill]
       2. Ask clarifying questions...
       3. Propose 2-3 approaches...
       4. Present design in sections...
-      5. Write spec document → docs/sw-superpower/technical-specs/2026-04-18--user-auth-design.md
+      5. Write spec document → docs/sw-agiledevelopment/technical-specs/2026-04-18--user-auth-design.md
       6. Invoke sw-working-plan to create implementation plan...
 ```
 
@@ -260,7 +260,7 @@ docs: update <section> in sw-<skill-name>
 
 - Based on the [Superpowers](https://github.com/obra/superpowers) skill format by Jesse Vincent
 - Inspired by mature software engineering practices
-- Chinese localization by sw-superpower contributors
+- Chinese localization by sw-agiledevelopment contributors
 
 ---
 

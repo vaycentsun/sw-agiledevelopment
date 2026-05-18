@@ -1,6 +1,6 @@
 {
-  "name": "sw-superpower",
+  "name": "sw-agiledevelopment",
   "version": "1.1.1",
   "type": "module",
-  "main": ".opencode/plugins/sw-superpowers.js"
+  "main": ".opencode/plugins/sw-agiledevelopment.js"
 }

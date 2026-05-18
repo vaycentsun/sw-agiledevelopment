@@ -53,7 +53,7 @@ description: "Use when starting software development of new feature in the proje
 - [ ] **提出澄清问题** — 每次只问一个问题，聚焦目的、约束与成功标准
 - [ ] **提出 2–3 种方案** — 包含各方案的权衡分析与你的推荐
 - [ ] **分节呈现设计** — 根据复杂度调整每节长度，自动推进到下一节
-- [ ] **编写 business-spec** — 保存到 `docs/sw-superpower/business-specs/YYYY-MM-DD--<name>.md`
+- [ ] **编写 business-spec** — 保存到 `docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--<name>.md`
 - [ ] **展示方案摘要** — 向用户呈现关键决策要点，随后自动进入下一步
 - [ ] **自动调用 sw-technical-spec** — 编写 technical-spec
 
@@ -67,7 +67,7 @@ flowchart TD
     Approaches --> Present[4. 分节呈现设计<br/>逐节推进]
     Present --> AllSectionsDone{所有节已完成？}
     AllSectionsDone -->|否，继续下一节| Present
-    AllSectionsDone -->|是| WriteBusinessSpec[5. 编写 business-spec<br/>保存到 docs/sw-superpower/business-specs/]
+    AllSectionsDone -->|是| WriteBusinessSpec[5. 编写 business-spec<br/>保存到 docs/sw-agiledevelopment/business-specs/]
     WriteBusinessSpec --> ShowSummary[6. 展示方案摘要]
     ShowSummary --> InvokeTechnical([7. 调用 sw-technical-spec<br/>唯一出口])
 ```
@@ -148,7 +148,7 @@ C) 使用外部服务（如 Firebase）
 ### 5. 编写 business-spec 文档
 
 **文档规范**：
-- 将需求澄清结果保存到 `docs/sw-superpower/business-specs/YYYY-MM-DD--<feature-name>.md`
+- 将需求澄清结果保存到 `docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--<feature-name>.md`
 - 内容轻量，聚焦业务层面：目标、非目标、方案决策、关键组件草案、验收标准初稿
 - 不展开详细的技术架构、数据流设计、错误处理方案（留给 `sw-technical-spec`）
 - 编写完成后提交到 Git
@@ -206,7 +206,7 @@ C) 使用外部服务（如 Firebase）
 
 文档编写完成后，向用户展示方案摘要，然后**自动调用 `sw-technical-spec`**：
 
-> "需求已澄清并保存到 `docs/sw-superpower/business-specs/YYYY-MM-DD--<name>.md`。以下是方案摘要：
+> "需求已澄清并保存到 `docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--<name>.md`。以下是方案摘要：
 > - [目标概述]
 > - [选定方案及原因]
 > - [关键组件草案]
@@ -271,13 +271,13 @@ C) 使用外部服务（如 Firebase）
 
 ## 输出示例
 
-**business-spec 文件路径**: `docs/sw-superpower/business-specs/2026-04-08--user-authentication.md`
+**business-spec 文件路径**: `docs/sw-agiledevelopment/business-specs/2026-04-08--user-authentication.md`
 
 **返回摘要格式**：
 ```markdown
 ## 需求澄清完成
 
-**business-spec 文件**: `docs/sw-superpower/business-specs/2026-04-08--user-authentication.md`
+**business-spec 文件**: `docs/sw-agiledevelopment/business-specs/2026-04-08--user-authentication.md`
 **设计状态**: ✅ 已完成
 **主要决策**:
 - 目标：为内部运营团队提供统一身份认证

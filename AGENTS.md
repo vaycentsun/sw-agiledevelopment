@@ -1,4 +1,4 @@
-# sw-superpower — Agent 上下文
+# sw-agiledevelopment — Agent 上下文
 
 > **这是什么仓库：** 一个为 AI Coding Agent（如OpenCode） 设计的软件研发技能框架。"源代码"是 `sw-*/` 目录下的 SKILL.md 文件，不是一个传统的代码项目。
 
@@ -7,21 +7,21 @@
 ### 这是一个技能框架，不是应用
 - "源码"是 `sw-*/` 目录下的 SKILL.md 文件。没有 `npm test`，没有构建步骤，也没有传统的应用入口。
 - `package.json` 的存在只是为了 OpenCode 能通过 `git+` URL 安装插件。**不要**往里面添加依赖或脚本。
-- `.opencode/plugins/sw-superpowers.js` 插件通过两个钩子将技能注入会话：
+- `.opencode/plugins/sw-agiledevelopment.js` 插件通过两个钩子将技能注入会话：
   - `config` — 将仓库根目录注册到 `config.skills.paths`，让 OpenCode 发现 `sw-*/SKILL.md` 文件。
-  - `experimental.chat.messages.transform` — 在每个会话的第一条用户消息前，插入 `sw-using-superpowers/SKILL.md` 内容（加上工具映射）。
+  - `experimental.chat.messages.transform` — 在每个会话的第一条用户消息前，插入 `sw-using-agiledevelopment/SKILL.md` 内容（加上工具映射）。
 
 ### 文件路径约定
-- **Business Spec 文件**: `docs/sw-superpower/business-specs/YYYY-MM-DD--<feature-name>.md`
-- **Technical Spec 文件**: `docs/sw-superpower/technical-specs/YYYY-MM-DD--<feature-name>.md`
-- **计划文件**: `docs/sw-superpower/plans/YYYY-MM-DD--<feature-name>-plan.md`
+- **Business Spec 文件**: `docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--<feature-name>.md`
+- **Technical Spec 文件**: `docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--<feature-name>.md`
+- **计划文件**: `docs/sw-agiledevelopment/plans/YYYY-MM-DD--<feature-name>-plan.md`
 - **Skill 目录**: `sw-<skill-name>/`
 - **子 Agent 提示词**: `subagent-prompts/<name>-prompt.md`
 
 ### 指令优先级（框架设计）
 本项目的技能覆盖默认系统提示，但**用户指令始终优先**：
 1. 用户的明确指令（OPENCODE.md、CLAUDE.md、GEMINI.md、AGENTS.md、直接请求）—— 最高优先级
-2. sw-superpowers 技能 —— 与默认行为冲突时覆盖
+2. sw-agiledevelopment 技能 —— 与默认行为冲突时覆盖
 3. 默认系统提示 —— 最低优先级
 
 如果你编辑包含硬规则的技能（如"始终使用 TDD"），**不要**弱化它们。这个框架的设计就是对工作流纪律保持严格。
@@ -57,14 +57,14 @@ name: sw-example
 description: "Use when [specific trigger condition]"
 ---
 ```
-**重要：** 插件的 frontmatter 解析器是一个简单的基于冒号的解析器（见 `.opencode/plugins/sw-superpowers.js`）。**不要**使用复杂 YAML 特性，如多行字符串或嵌套对象。
+**重要：** 插件的 frontmatter 解析器是一个简单的基于冒号的解析器（见 `.opencode/plugins/sw-agiledevelopment.js`）。**不要**使用复杂 YAML 特性，如多行字符串或嵌套对象。
 
 ## 架构
 
 ```
-sw-superpower/
+sw-agiledevelopment/
 ├── sw-*/                  # 14 个技能目录，每个含 SKILL.md（+ 可选的 subagent-prompts/）
-├── .opencode/plugins/      # OpenCode 插件：sw-superpowers.js（自动注册技能 + 注入引导内容）
+├── .opencode/plugins/      # OpenCode 插件：sw-agiledevelopment.js（自动注册技能 + 注入引导内容）
 ├── tests/opencode/         # Bash 测试套件（3 个测试：插件加载、技能结构、工具映射）
 ├── hooks/                  # Git 钩子（pre-push 验证）
 ├── docs/                   # 面向人类的文档
@@ -73,8 +73,8 @@ sw-superpower/
 
 ## 插件工作原理
 1. **Config 钩子**：将仓库根目录加入 `config.skills.paths`，让 OpenCode 发现 `sw-*/SKILL.md` 文件。
-2. **Transform 钩子**：在每个会话的第一条用户消息中，前置插入 `sw-using-superpowers/SKILL.md` 内容（加上 OpenCode 工具映射）作为用户消息的一部分。
-3. **效果**：Agent 自动看到 "You have superpowers" 上下文，无需手动加载技能。
+2. **Transform 钩子**：在每个会话的第一条用户消息中，前置插入 `sw-using-agiledevelopment/SKILL.md` 内容（加上 OpenCode 工具映射）作为用户消息的一部分。
+3. **效果**：Agent 自动看到 "You have been granted agile development capabilities." 上下文，无需手动加载技能。
 
 ## 安装方式
 
@@ -82,7 +82,7 @@ sw-superpower/
 添加到 `~/.config/opencode/opencode.json`：
 ```json
 {
-  "plugin": ["sw-superpower@git+http://192.168.1.100:53000/vaycent/sw-superpower.git#main"],
+  "plugin": ["sw-agiledevelopment@git+http://192.168.1.100:53000/vaycent/sw-agiledevelopment.git#main"],
   "permission": { "skill": { "*": "allow" } }
 }
 ```
@@ -91,7 +91,7 @@ sw-superpower/
 **Git submodule（项目级）**
 ```bash
 cd <项目>/skills/
-git submodule add http://192.168.1.100:53000/vaycent/sw-superpower.git
+git submodule add http://192.168.1.100:53000/vaycent/sw-agiledevelopment.git
 ```
 
 ## 添加或编辑技能时
@@ -107,6 +107,6 @@ git submodule add http://192.168.1.100:53000/vaycent/sw-superpower.git
 
 ## 相关文档
 - `docs/install-opencode.md` —— 面向人类的 OpenCode 安装指南
-- `docs/terminology.md` —— sw-superpower 术语规范（中英文术语统一对照表）
+- `docs/terminology.md` —— sw-agiledevelopment 术语规范（中英文术语统一对照表）
 - `sw-writing-skills/SKILL.md` —— 编写新技能的元技能
 - `tests/README.md` —— 测试套件文档

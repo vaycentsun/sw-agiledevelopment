@@ -18,7 +18,7 @@ description: "Use when technical spec is complete and need to create detailed im
 - [ ] **编写详细计划** — 每个任务包含确切文件路径、完整代码、验证步骤
 - [ ] **深度自检** — 执行整合自检清单：完整性、规范对齐、任务分解、可构建性、验收标准覆盖、粒度、明确性、可验证性、顺序合理性
 - [ ] **展示计划摘要** — 向用户展示计划概览，自动保存文件
-- [ ] **保存计划** — 保存到 `docs/sw-superpower/plans/`，提交 Git 前每次询问用户
+- [ ] **保存计划** — 保存到 `docs/sw-agiledevelopment/plans/`，提交 Git 前每次询问用户
 - [ ] **自动调用 sw-subagent-development** — 交接计划文件路径和依赖摘要
 
 ## 核心原则
@@ -72,7 +72,7 @@ flowchart TD
 ### 0. 入口检查
 
 在开始前检查以下两项：
-1. **technical-spec 文件是否存在**：`docs/sw-superpower/technical-specs/YYYY-MM-DD--<feature>.md` 是否存在？
+1. **technical-spec 文件是否存在**：`docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--<feature>.md` 是否存在？
 2. **设计是否已完成**：该 technical-spec 是否已通过 `sw-technical-spec` 的快速自检？
 
 如果任一检查未通过：
@@ -82,7 +82,7 @@ flowchart TD
 
 ### 1. 读取 technical-spec 文件
 
-读取 `docs/sw-superpower/technical-specs/YYYY-MM-DD--<feature>.md` 文件，理解以下内容：
+读取 `docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--<feature>.md` 文件，理解以下内容：
 - 设计概述
 - 组件和接口
 - 数据流
@@ -225,13 +225,13 @@ flowchart TD
 
 ### 9. 保存计划
 
-保存到 `docs/sw-superpower/plans/YYYY-MM-DD--<feature>-plan.md`
+保存到 `docs/sw-agiledevelopment/plans/YYYY-MM-DD--<feature>-plan.md`
 
 **Git 提交（铁律）**：
 > **严禁一次性授权自动提交。每次 `git commit` 前都必须单独询问用户。**
 
 提交前询问模板：
-> "计划文件已保存到 `docs/sw-superpower/plans/YYYY-MM-DD--<feature>-plan.md`。
+> "计划文件已保存到 `docs/sw-agiledevelopment/plans/YYYY-MM-DD--<feature>-plan.md`。
 > 准备执行 `git commit`，变更摘要：新增 working-plan 文件。
 > 是否允许提交？"
 
@@ -244,17 +244,17 @@ flowchart TD
 **上下文压缩（交接前）**：
 
 设计阶段已结束，所有关键信息已写入文件：
-- 业务需求：`docs/sw-superpower/business-specs/YYYY-MM-DD--<feature>.md`
-- 技术设计：`docs/sw-superpower/technical-specs/YYYY-MM-DD--<feature>.md`
-- working-plan：`docs/sw-superpower/plans/YYYY-MM-DD--<feature>-plan.md`
+- 业务需求：`docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--<feature>.md`
+- 技术设计：`docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--<feature>.md`
+- working-plan：`docs/sw-agiledevelopment/plans/YYYY-MM-DD--<feature>-plan.md`
 
 **执行时以文件内容为准，不依赖本会话的对话历史。**
 
 > 如平台支持，在调用 `sw-subagent-development` 前执行上下文压缩，释放需求澄清和计划阶段的对话历史 token。
 
 **交接内容**：
-- 计划文件路径：`docs/sw-superpower/plans/YYYY-MM-DD--<feature>-plan.md`
-- 规范文件路径：`docs/sw-superpower/technical-specs/YYYY-MM-DD--<feature>.md`
+- 计划文件路径：`docs/sw-agiledevelopment/plans/YYYY-MM-DD--<feature>-plan.md`
+- 规范文件路径：`docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--<feature>.md`
 - 任务总数和依赖关系摘要
 
 **大规模计划**：如果任务数超过 20，建议分批调用 Subagent（每批 5–10 个无依赖或同层依赖的任务），避免单个 Subagent 上下文溢出。
@@ -431,13 +431,13 @@ def login(username: str, password: str) -> User | None
 
 ## 输出示例
 
-**计划文件**: `docs/sw-superpower/plans/2026-04-08--auth-plan.md`
+**计划文件**: `docs/sw-agiledevelopment/plans/2026-04-08--auth-plan.md`
 
 **返回摘要格式**：
 ```markdown
 ## working-plan 完成
 
-**计划文件**: `docs/sw-superpower/plans/2026-04-08--auth-plan.md`
+**计划文件**: `docs/sw-agiledevelopment/plans/2026-04-08--auth-plan.md`
 **任务数**: 8
 **预计时间**: 40 分钟
 

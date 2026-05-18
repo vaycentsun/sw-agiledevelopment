@@ -10,7 +10,7 @@
 
 ## 分派时机
 
-Spec 文档写入 `docs/sw-superpower/specs/` 后，作为 Spec 自检的第一层被调用。在 Agent 完成第二层业务逻辑自检之前执行。
+Spec 文档写入 `docs/sw-agiledevelopment/specs/` 后，作为 Spec 自检的第一层被调用。在 Agent 完成第二层业务逻辑自检之前执行。
 
 ## 输入
 

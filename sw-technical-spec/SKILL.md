@@ -31,9 +31,9 @@ description: "Use when business requirements are clarified and need to write a s
 
 必须按顺序完成以下任务：
 
-- [ ] **读取 business-spec** — 从 `docs/sw-superpower/business-specs/` 读取需求澄清结果
+- [ ] **读取 business-spec** — 从 `docs/sw-agiledevelopment/business-specs/` 读取需求澄清结果
 - [ ] **扩展技术细节** — 基于业务决策补充架构、组件、接口、数据流、错误处理
-- [ ] **编写 technical-spec** — 保存到 `docs/sw-superpower/technical-specs/YYYY-MM-DD--<name>.md`
+- [ ] **编写 technical-spec** — 保存到 `docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--<name>.md`
 - [ ] **technical-spec 快速自检** — 检查 TODO、占位符、内部矛盾
 - [ ] **展示 spec 摘要** — 向用户展示 spec 要点，随后自动进入下一步
 - [ ] **自动调用 sw-working-plan** — 创建实现计划
@@ -42,9 +42,9 @@ description: "Use when business requirements are clarified and need to write a s
 
 ```mermaid
 flowchart TD
-    Start([开始]) --> ReadBusiness[1. 读取 business-spec<br/>从 docs/sw-superpower/business-specs/]
+    Start([开始]) --> ReadBusiness[1. 读取 business-spec<br/>从 docs/sw-agiledevelopment/business-specs/]
     ReadBusiness --> Expand[2. 扩展技术细节<br/>架构、组件、接口、数据流]
-    Expand --> WriteSpec[3. 编写 technical-spec<br/>保存到 docs/sw-superpower/technical-specs/]
+    Expand --> WriteSpec[3. 编写 technical-spec<br/>保存到 docs/sw-agiledevelopment/technical-specs/]
     WriteSpec --> QuickReview[4. 快速自检<br/>检查待办、占位符、内部矛盾]
     QuickReview -->|发现问题| Fix[修复问题]
     Fix --> QuickReview
@@ -57,7 +57,7 @@ flowchart TD
 ### 0. 入口检查
 
 在开始前检查以下两项：
-1. **business-spec 是否存在**：`docs/sw-superpower/business-specs/YYYY-MM-DD--<feature>.md` 是否存在？
+1. **business-spec 是否存在**：`docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--<feature>.md` 是否存在？
 2. **需求是否已澄清**：该文档是否已通过 `sw-requirements-clarification` 完成需求澄清？
 
 如果任一检查未通过：
@@ -67,7 +67,7 @@ flowchart TD
 
 ### 1. 读取 business-spec
 
-读取 `docs/sw-superpower/business-specs/YYYY-MM-DD--<feature>.md`，理解以下内容：
+读取 `docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--<feature>.md`，理解以下内容：
 - 业务目标和背景
 - 选定的方案及原因
 - 关键组件和接口草案
@@ -102,7 +102,7 @@ flowchart TD
 ### 3. 编写 technical-spec
 
 **文档规范**：
-- 将完整技术设计保存到 `docs/sw-superpower/technical-specs/YYYY-MM-DD--<feature-name>.md`
+- 将完整技术设计保存到 `docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--<feature-name>.md`
 - 遵循 technical-spec 文档结构（参考 subagent-prompts/spec-writer-prompt.md）
 - 编写完成后提交到 Git
 
@@ -129,7 +129,7 @@ Agent 自行快速扫描 spec，**不调用 Subagent**，仅检查以下三类�
 
 快速自检通过后，向用户展示规范摘要，然后**自动调用 `sw-working-plan`**：
 
-> "technical-spec 已编写并提交到 `docs/sw-superpower/technical-specs/YYYY-MM-DD--<name>.md`。以下是 spec 要点摘要：
+> "technical-spec 已编写并提交到 `docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--<name>.md`。以下是 spec 要点摘要：
 > - [设计概述一句话]
 > - [关键组件]
 > - [主要接口]
@@ -187,13 +187,13 @@ Agent 自行快速扫描 spec，**不调用 Subagent**，仅检查以下三类�
 
 ## 输出示例
 
-**规范文件路径**: `docs/sw-superpower/technical-specs/2026-04-08--user-authentication.md`
+**规范文件路径**: `docs/sw-agiledevelopment/technical-specs/2026-04-08--user-authentication.md`
 
 **返回摘要格式**：
 ```markdown
 ## technical-spec 完成
 
-**规范文件**: `docs/sw-superpower/technical-specs/2026-04-08--user-authentication.md`
+**规范文件**: `docs/sw-agiledevelopment/technical-specs/2026-04-08--user-authentication.md`
 **设计状态**: ✅ 已完成
 **主要决策**:
 - 使用 JWT 进行身份验证

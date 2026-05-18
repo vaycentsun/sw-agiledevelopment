@@ -10,7 +10,7 @@
 
 ## 输入
 
-- business-spec 文档（`docs/sw-superpower/business-specs/`）
+- business-spec 文档（`docs/sw-agiledevelopment/business-specs/`）
 - 项目上下文信息（技术栈、现有架构等）
 
 ## 任务
@@ -132,7 +132,7 @@ description: "Use when implementing {{brief-description}} in project"
 ```markdown
 ## Spec 编写完成
 
-**文件路径**: `docs/sw-superpower/technical-specs/YYYY-MM-DD--<name>.md`
+**文件路径**: `docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--<name>.md`
 **状态**: ✅ 已完成
 **主要内容**:
 - {{要点 1}}

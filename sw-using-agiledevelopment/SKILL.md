@@ -1,5 +1,5 @@
 ---
-name: sw-using-superpowers
+name: sw-using-agiledevelopment
 description: "Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions"
 ---
 
@@ -17,10 +17,10 @@ description: "Use when starting any conversation - establishes how to find and u
 
 ## 指令优先级
 
-Superpowers 技能覆盖默认系统提示行为，但**用户指令始终优先**：
+Agile Development 技能覆盖默认系统提示行为，但**用户指令始终优先**：
 
 1. **用户的明确指令**（CLAUDE.md、GEMINI.md、AGENTS.md、直接请求）—— 最高优先级
-2. **Superpowers 技能** —— 在与默认系统行为冲突时覆盖
+2. **Agile Development 技能** —— 在与默认系统行为冲突时覆盖
 3. **默认系统提示** —— 最低优先级
 
 如果 AGENTS.md 说"不要用 TDD"而某个技能说"始终用 TDD"，遵循用户的指令。用户拥有控制权。
@@ -158,12 +158,12 @@ flowchart TD
 
 | 中文 | 英文（保留） | 说明 |
 |------|-------------|------|
-| 技能 | **Skill** | 框架核心概念，但 sw-using-superpowers 等少数引导文件中保留英文 |
+| 技能 | **Skill** | 框架核心概念，但 sw-using-agiledevelopment 等少数引导文件中保留英文 |
 | 智能体 | **Agent** | AI 编程助手 |
 | 子智能体 | **Subagent** | 被分派执行任务的 Agent 实例 |
-| 业务规范 | **business-spec** | `docs/sw-superpower/business-specs/` 中的文档 |
-| 技术规范 | **technical-spec** | `docs/sw-superpower/technical-specs/` 中的文档 |
-| 实施计划 | **working-plan** | `docs/sw-superpower/plans/` 中的文档 |
+| 业务规范 | **business-spec** | `docs/sw-agiledevelopment/business-specs/` 中的文档 |
+| 技术规范 | **technical-spec** | `docs/sw-agiledevelopment/technical-specs/` 中的文档 |
+| 实施计划 | **working-plan** | `docs/sw-agiledevelopment/plans/` 中的文档 |
 | 规范（泛指） | **spec** | 泛指 business-spec 或 technical-spec |
 | 待办事项 | **TODO** | 也可写 TODO |
 | 令牌 | **token** | 上下文令牌 |
