@@ -30,6 +30,11 @@ All notable changes to the sw-agiledevelopment VS Code extension will be documen
 2. Click Install
 3. Use `@sw-agiledevelopment /list` in Copilot Chat
 
+## [1.2.6] - 2026-05-18
+
+### Changed
+- Upgrade Node.js version to 20 in publish workflow
+
 ## [Unreleased]
 
 ### Planned Features
