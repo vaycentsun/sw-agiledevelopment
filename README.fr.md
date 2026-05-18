@@ -8,6 +8,8 @@
 
 Un ensemble complet de compétences de flux de travail d'ingénierie logicielle qui aide les agents de codage AI à accomplir chaque étape de l'analyse des besoins à la révision de code de manière systématique et reproductible.
 
+**Support Multi-Plateforme**: Ce framework est nativement compatible avec **OpenCode** (plugin, recommandé), **Codex** (plugin) et **GitHub Copilot** (mode skill). Choisissez votre plateforme d'agent IA préférée et suivez le guide d'installation ci-dessous.
+
 ---
 
 ## 🚀 Démarrage Rapide

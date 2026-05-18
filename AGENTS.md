@@ -12,12 +12,14 @@
   - `experimental.chat.messages.transform` — 在每个会话的第一条用户消息前，插入 `sw-using-agiledevelopment/SKILL.md` 内容
 - `skills/` 目录是 Codex 插件兼容用的符号链接（指向 `sw-*/`）。**始终直接编辑 `sw-*/SKILL.md`**，不要通过 `skills/` 路径修改。
 
-### 文件路径约定
+### 文件路径约定（按需创建）
 - **Business Spec 文件**: `docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--<feature-name>.md`
 - **Technical Spec 文件**: `docs/sw-agiledevelopment/technical-specs/YYYY-MM-DD--<feature-name>.md`
 - **计划文件**: `docs/sw-agiledevelopment/plans/YYYY-MM-DD--<feature-name>-plan.md`
 - **Skill 目录**: `sw-<skill-name>/`
 - **子 Agent 提示词**: `subagent-prompts/<name>-prompt.md`
+
+> 注意：`docs/sw-agiledevelopment/` 和 `subagent-prompts/` 目前可能不存在，它们是技能定义的约定路径，使用时按需创建。
 
 ### 指令优先级
 本项目的技能覆盖默认系统提示，但**用户指令始终优先**：
@@ -67,6 +69,13 @@ description: "Use when [specific trigger condition]"
 4. 提交前运行 `bash tests/opencode/run-tests.sh`。
 5. 确保 `git push` 通过 pre-push 钩子。
 6. 如果技能超出行数限制，在同一个 `sw-*/` 目录内拆成多个 `.md` 文件。
+
+## 版本号管理
+`VERSION` 文件是唯一的版本来源。不要手动编辑 `package.json` 中的版本号：
+```bash
+./scripts/bump-version.sh <新版本号>
+```
+这会同步更新 `VERSION`、`package.json` 和 `docs/install-opencode.md`。
 
 ## 忽略的文件
 - `.opencode/node_modules/`、`.opencode/package*.json` —— 插件开发依赖，不是项目源码。
