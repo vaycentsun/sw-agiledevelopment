@@ -56,6 +56,14 @@ Agent 会：
 
 无需安装插件。安装完成后，Android Studio AI Agent 会自动遵循敏捷开发工作流。
 
+**通义灵码（AI Agent）**
+
+直接告诉你的 AI Agent：
+
+> "从 https://github.com/vaycentsun/sw-agiledevelopment 安装 sw-agiledevelopment lingma agent，并参考 `.lingma/INSTALL.md` 中的说明进行安装。"
+
+Agent 会自动读取安装指南，配置 agent 并验证安装。
+
 ---
 
 ## 🗺️ 核心工作流

@@ -56,6 +56,14 @@ El Agente hará lo siguiente:
 
 No se requiere instalación de plugin. Una vez instalado, el AI Agent de Android Studio seguirá automáticamente el flujo de trabajo de desarrollo ágil.
 
+**Tongyi Lingma (Agente de IA)**
+
+Simplemente dile a tu Agente de IA:
+
+> "Instala el agente lingma sw-agiledevelopment desde https://github.com/vaycentsun/sw-agiledevelopment y sigue las instrucciones en `.lingma/INSTALL.md`."
+
+El Agente leerá la guía de instalación, configurará el agente y verificará la instalación automáticamente.
+
 ---
 
 ## 🗺️ Flujo de Trabajo Principal
