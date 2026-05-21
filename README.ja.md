@@ -56,6 +56,14 @@ Agent は以下を実行します：
 
 プラグインのインストールは不要です。インストール後、Android Studio AI Agent は自動的にアジャイル開発ワークフローに従います。
 
+**通义灵码（Tongyi Lingma / AI Agent）**
+
+AI Agent に以下のように伝えてください：
+
+> "https://github.com/vaycentsun/sw-agiledevelopment から sw-agiledevelopment lingma agent をインストールし、`.lingma/INSTALL.md` の手順に従ってください。"
+
+Agent がインストールガイドを読み取り、agent を設定し、インストールを自動的に検証します。
+
 ---
 
 ## 🗺️ コアワークフロー
