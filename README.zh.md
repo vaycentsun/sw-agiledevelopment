@@ -8,7 +8,7 @@
 
 一套完整的软件开发工作流技能，帮助 AI 编程 Agent 以系统化、可复现的方式完成从需求分析到代码审查的每个环节。
 
-**多平台支持**：本框架原生支持 **OpenCode**（插件，推荐）、**Codex**（插件）和 **GitHub Copilot**（Skill 模式）。选择你偏好的 AI Agent 平台，按照下方的安装指南进行安装即可。
+**多平台支持**：本框架原生支持 **OpenCode**（插件，推荐）、**Codex**（插件）、**GitHub Copilot**（Skill 模式）和 **ZCode**（插件）。选择你偏好的 AI Agent 平台，按照下方的安装指南进行安装即可。
 
 ---
 
@@ -63,6 +63,14 @@ Agent 会：
 > "从 https://github.com/vaycentsun/sw-agiledevelopment 安装 sw-agiledevelopment lingma agent，并参考 `.lingma/INSTALL.md` 中的说明进行安装。"
 
 Agent 会自动读取安装指南，配置 agent 并验证安装。
+
+**ZCode 插件**
+
+直接告诉你的 AI Agent：
+
+> "从 https://github.com/vaycentsun/sw-agiledevelopment 安装 sw-agiledevelopment ZCode 插件，并参考 `.zcode/INSTALL.md` 中的说明进行安装。"
+
+Agent 会自动读取安装指南，通过 marketplace 或文件系统方式注册插件，并验证 SessionStart bootstrap 钩子是否在每次新会话中注入敏捷工作流。
 
 ---
 

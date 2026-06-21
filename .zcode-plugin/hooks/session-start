@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+# SessionStart hook for sw-agiledevelopment ZCode plugin.
+#
+# 在每次会话启动/清空/压缩时，把 sw-using-agiledevelopment 引导内容
+# 注入会话上下文，等价于 OpenCode 版 sw-agiledevelopment.js 的 transform 注入。
+
+set -euo pipefail
+
+# Determine plugin root directory.
+# In this repo the plugin manifest lives at .zcode-plugin/plugin.json, but the
+# skills/ directory (the actual skill source, shared with Codex) lives at the
+# repository root — two levels up from this hooks/ script.
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+REPO_ROOT="$(cd "${PLUGIN_ROOT}/.." && pwd)"
+
+# Path to the bootstrap skill (via the skills/ symlink dir at repo root,
+# which also serves Codex).
+SKILL_FILE="${REPO_ROOT}/skills/sw-using-agiledevelopment/SKILL.md"
+
+if [ ! -f "$SKILL_FILE" ]; then
+  # Bootstrap skill missing — exit silently so the plugin does not break the session.
+  exit 0
+fi
+
+# Read the full skill content.
+full_content="$(cat "$SKILL_FILE")"
+
+# Strip YAML frontmatter (--- ... ---) so only the body is injected,
+# matching the OpenCode plugin's extractAndStripFrontmatter behavior.
+strip_frontmatter() {
+  local content="$1"
+  # Match leading "---\n<frontmatter>\n---\n<body>"
+  if printf '%s' "$content" | head -1 | grep -q '^---[[:space:]]*$'; then
+    # Drop the first line (opening ---), then cut everything up to and
+    # including the next line that is exactly --- (closing delimiter).
+    printf '%s' "$content" | tail -n +2 | awk '
+      BEGIN { in_fm = 1 }
+      in_fm && /^---[[:space:]]*$/ { in_fm = 0; next }
+      { if (!in_fm) print }
+    '
+  else
+    printf '%s' "$content"
+  fi
+}
+
+body="$(strip_frontmatter "$full_content")"
+
+# ZCode tool mapping appended after the bootstrap body (mirrors the
+# OpenCode plugin's tool-mapping block, adapted to ZCode's native tools).
+read -r -d '' tool_mapping <<'EOF' || true
+
+**ZCode 工具映射：**
+当技能引用你没有的工具时，替换为 ZCode 等效项：
+- `TodoWrite` → ZCode 的 `TodoWrite` 工具
+- `Task` 工具带子 Agent → 使用 ZCode 的子 Agent（`Agent` 工具，`subagent_type: "Explore"` 等）
+- `Skill` 工具 → ZCode 原生 `Skill` 工具
+- `Read`、`Write`、`Edit`、`Bash` → 你的原生工具
+
+使用 ZCode 原生 `Skill` 工具列出和加载技能。
+EOF
+
+bootstrap="**IMPORTANT: 下面的 sw-using-agiledevelopment 技能内容已经加载，你正在遵循它。不要再用 Skill 工具加载 \"sw-using-agiledevelopment\"——那是冗余操作。**
+
+${body}
+${tool_mapping}"
+
+# Escape string for JSON embedding using bash parameter substitution.
+escape_for_json() {
+    local s="$1"
+    s="${s//\\/\\\\}"
+    s="${s//\"/\\\"}"
+    s="${s//$'\n'/\\n}"
+    s="${s//$'\r'/\\r}"
+    s="${s//$'\t'/\\t}"
+    printf '%s' "$s"
+}
+
+bootstrap_escaped=$(escape_for_json "$bootstrap")
+session_context="<EXTREMELY_IMPORTANT>\nYou have been granted agile development capabilities.\n\n${bootstrap_escaped}\n</EXTREMELY_IMPORTANT>"
+
+# Output context injection as JSON.
+# Cursor hooks expect additional_context (snake_case).
+# Claude Code hooks expect hookSpecificOutput.additionalContext (nested).
+# Copilot CLI (v1.0.11+) and others expect additionalContext (top-level, SDK standard).
+# Claude Code reads BOTH additional_context and hookSpecificOutput without
+# deduplication, so we must emit only the field the current platform consumes.
+#
+# Uses printf instead of heredoc to work around bash 5.3+ heredoc hang.
+if [ -n "${CURSOR_PLUGIN_ROOT:-}" ]; then
+  # Cursor sets CURSOR_PLUGIN_ROOT (may also set CLAUDE_PLUGIN_ROOT)
+  printf '{\n  "additional_context": "%s"\n}\n' "$session_context"
+elif [ -n "${CLAUDE_PLUGIN_ROOT:-}" ] && [ -z "${COPILOT_CLI:-}" ]; then
+  # Claude Code / ZCode sets CLAUDE_PLUGIN_ROOT without COPILOT_CLI
+  printf '{\n  "hookSpecificOutput": {\n    "hookEventName": "SessionStart",\n    "additionalContext": "%s"\n  }\n}\n' "$session_context"
+else
+  # Copilot CLI (sets COPILOT_CLI=1) or unknown platform — SDK standard format
+  printf '{\n  "additionalContext": "%s"\n}\n' "$session_context"
+fi
+
+exit 0
