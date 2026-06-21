@@ -7,13 +7,13 @@
 set -euo pipefail
 
 # Determine plugin root directory.
-# In this repo the plugin manifest lives at .zcode/plugin/plugin.json (the ZCode
-# adapter lives under .zcode/), but the skills/ directory (the actual skill
-# source, shared with Codex) lives at the repository root — three levels up from
-# this hooks/ script (.zcode/plugin/hooks → plugin → .zcode → repo root).
+# In this repo the plugin manifest lives at .zcode-plugin/plugin.json (the ZCode
+# adapter lives under .zcode-plugin/), and the skills/ directory (the actual
+# skill source, shared with Codex) lives at the repository root — two levels up
+# from this hooks/ script (.zcode-plugin/hooks → .zcode-plugin → repo root).
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
-REPO_ROOT="$(cd "${PLUGIN_ROOT}/../.." && pwd)"
+REPO_ROOT="$(cd "${PLUGIN_ROOT}/.." && pwd)"
 
 # Path to the bootstrap skill (via the skills/ symlink dir at repo root,
 # which also serves Codex).
