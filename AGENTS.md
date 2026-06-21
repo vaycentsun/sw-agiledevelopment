@@ -11,7 +11,7 @@
   - `config` — 将仓库根目录注册到 `config.skills.paths`
   - `experimental.chat.messages.transform` — 在每个会话的第一条用户消息前，插入 `sw-using-agiledevelopment/SKILL.md` 内容
 - `skills/` 目录是 Codex 插件兼容用的符号链接（指向 `sw-*/`）。**始终直接编辑 `sw-*/SKILL.md`**，不要通过 `skills/` 路径修改。
-- `.zcode-plugin/` 是 ZCode 全局插件适配。`plugin.json` 的 `"skills": "skills"` 复用同一份 `skills/` 符号链接目录；`hooks/hooks.json` 注册一个 `SessionStart` 钩子，在每次 startup/clear/compact 时由 `hooks/session-start` 脚本读取 `sw-using-agiledevelopment/SKILL.md` 并以 `hookSpecificOutput.additionalContext` JSON 注入会话——这是 ZCode 版的 bootstrap 注入，等价于 OpenCode 版的 `messages.transform`。安装见 `.zcode/INSTALL.md`。
+- `.zcode-plugin/` 是 ZCode 全局插件适配（目录名带连字符，符合 ZCode 插件规范，loader 在插件根下扫描 `.zcode-plugin/plugin.json`）。`plugin.json` 的 `"skills": "skills"` 复用同一份 `skills/` 符号链接目录；`hooks/hooks.json` 注册一个 `SessionStart` 钩子，在每次 startup/clear/compact 时由 `hooks/session-start` 脚本读取 `sw-using-agiledevelopment/SKILL.md` 并以 `hookSpecificOutput.additionalContext` JSON 注入会话——这是 ZCode 版的 bootstrap 注入，等价于 OpenCode 版的 `messages.transform`。安装见 `.zcode-plugin/INSTALL.md`。
 
 ### 文件路径约定（按需创建）
 - **Business Spec 文件**: `docs/sw-agiledevelopment/business-specs/YYYY-MM-DD--<feature-name>.md`
