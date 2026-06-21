@@ -22,10 +22,10 @@ start.
 
 ## How the plugin is structured
 
-The plugin manifest lives at `.zcode-plugin/plugin.json` and declares
+The plugin manifest lives at `plugin/plugin.json` and declares
 `"skills": "skills"`, pointing at the repository-root `skills/` directory (a set
 of symlinks to the real `sw-*/` source directories). A `SessionStart` hook in
-`.zcode-plugin/hooks/` reads `sw-using-agiledevelopment/SKILL.md` and injects it
+`plugin/hooks/` reads `sw-using-agiledevelopment/SKILL.md` and injects it
 into each new session — this is what makes the agile workflow reliably activate.
 
 ## Prerequisites
@@ -96,22 +96,22 @@ with the value from the cloned repo's `VERSION` file, e.g. `1.3.2`, and
 ```
 
 > Note: the plugin is consumed directly from the clone path. The repository root
-> **is** the plugin root (it contains `.zcode-plugin/plugin.json`). Do not point
-> `cachePath` at `.zcode-plugin/` — point it at the repository root.
+> **is** the plugin root (it contains `plugin/plugin.json`). Do not point
+> `cachePath` at `plugin/` — point it at the repository root.
 
 ## Verify installation
 
 1. Confirm the plugin manifest is reachable:
 
 ```bash
-cat "$HOME/.zcode/cli/plugins/cache/sw-agiledevelopment-src/sw-agiledevelopment/.zcode-plugin/plugin.json"
+cat "$HOME/.zcode/cli/plugins/cache/sw-agiledevelopment-src/sw-agiledevelopment/plugin/plugin.json"
 ```
 
 2. Confirm the SessionStart hook runs and emits valid JSON context:
 
 ```bash
-CLAUDE_PLUGIN_ROOT="$HOME/.zcode/cli/plugins/cache/sw-agiledevelopment-src/sw-agiledevelopment/.zcode-plugin" \
-  bash "$HOME/.zcode/cli/plugins/cache/sw-agiledevelopment-src/sw-agiledevelopment/.zcode-plugin/hooks/session-start" \
+CLAUDE_PLUGIN_ROOT="$HOME/.zcode/cli/plugins/cache/sw-agiledevelopment-src/sw-agiledevelopment/plugin" \
+  bash "$HOME/.zcode/cli/plugins/cache/sw-agiledevelopment-src/sw-agiledevelopment/plugin/hooks/session-start" \
   | python3 -m json.tool > /dev/null && echo "hook OK"
 ```
 

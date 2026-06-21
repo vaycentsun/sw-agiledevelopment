@@ -7,7 +7,7 @@
 set -euo pipefail
 
 # Determine plugin root directory.
-# In this repo the plugin manifest lives at .zcode-plugin/plugin.json, but the
+# In this repo the plugin manifest lives at plugin/plugin.json, but the
 # skills/ directory (the actual skill source, shared with Codex) lives at the
 # repository root — two levels up from this hooks/ script.
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
