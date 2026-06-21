@@ -8,7 +8,7 @@
 
 AI コーディングエージェントが、体系的かつ再現性のある方法で要件分析からコードレビューまでの各ステップを完了するのを支援する、完全なソフトウェアエンジニアリングワークフロースキルセットです。
 
-**マルチプラットフォーム対応**：本フレームワークは **OpenCode**（プラグイン、推奨）、**Codex**（プラグイン）、**GitHub Copilot**（スキルモード）をネイティブにサポートしています。お好みの AI Agent プラットフォームを選び、以下のインストールガイドに従ってください。
+**マルチプラットフォーム対応**：本フレームワークは **OpenCode**（プラグイン、推奨）、**Codex**（プラグイン）、**GitHub Copilot**（スキルモード）、**ZCode**（プラグイン）をネイティブにサポートしています。お好みの AI Agent プラットフォームを選び、以下のインストールガイドに従ってください。
 
 ---
 
@@ -63,6 +63,14 @@ AI Agent に以下のように伝えてください：
 > "https://github.com/vaycentsun/sw-agiledevelopment から sw-agiledevelopment lingma agent をインストールし、`.lingma/INSTALL.md` の手順に従ってください。"
 
 Agent がインストールガイドを読み取り、agent を設定し、インストールを自動的に検証します。
+
+**ZCode プラグイン**
+
+AI Agent に以下のように伝えてください：
+
+> "https://github.com/vaycentsun/sw-agiledevelopment から sw-agiledevelopment ZCode プラグインをインストールし、`.zcode/INSTALL.md` の手順に従ってください。"
+
+Agent がインストールガイドを読み取り、marketplace またはファイルシステム経由でプラグインを登録し、SessionStart ブートストラップフックが新しいセッションごとにアジャイルワークフローを注入することを検証します。
 
 ---
 

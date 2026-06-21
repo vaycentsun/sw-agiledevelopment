@@ -8,7 +8,7 @@
 
 Un ensemble complet de compétences de flux de travail d'ingénierie logicielle qui aide les agents de codage AI à accomplir chaque étape de l'analyse des besoins à la révision de code de manière systématique et reproductible.
 
-**Support Multi-Plateforme**: Ce framework est nativement compatible avec **OpenCode** (plugin, recommandé), **Codex** (plugin) et **GitHub Copilot** (mode skill). Choisissez votre plateforme d'agent IA préférée et suivez le guide d'installation ci-dessous.
+**Support Multi-Plateforme**: Ce framework est nativement compatible avec **OpenCode** (plugin, recommandé), **Codex** (plugin), **GitHub Copilot** (mode skill) et **ZCode** (plugin). Choisissez votre plateforme d'agent IA préférée et suivez le guide d'installation ci-dessous.
 
 ---
 
@@ -63,6 +63,18 @@ Dites simplement à votre Agent IA :
 > "Installe l'agent lingma sw-agiledevelopment depuis https://github.com/vaycentsun/sw-agiledevelopment et suis les instructions dans `.lingma/INSTALL.md`."
 
 L'Agent lira le guide d'installation, configurera l'agent et vérifiera l'installation automatiquement.
+
+**ZCode (Plugin)**
+
+Dites simplement à votre Agent IA :
+
+> "Installe le plugin sw-agiledevelopment pour ZCode depuis https://github.com/vaycentsun/sw-agiledevelopment et suis les instructions dans `.zcode/INSTALL.md`."
+
+L'Agent lira le guide d'installation, enregistrera le plugin (via marketplace ou installation par système de fichiers) et vérifiera que le hook de bootstrap SessionStart injecte le flux de travail agile dans chaque nouvelle session.
+
+---
+
+## 🗺️ Flux de Travail Principal
 
 ---
 

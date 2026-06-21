@@ -8,7 +8,7 @@
 
 A complete set of software engineering workflow skills that help AI coding agents complete every step from requirements analysis to code review in a systematic, reproducible way.
 
-**Multi-Platform Support**: This framework natively supports **OpenCode** (plugin, recommended), **Codex** (plugin), and **GitHub Copilot** (skill mode). Choose your preferred AI agent platform and follow the installation guide below.
+**Multi-Platform Support**: This framework natively supports **OpenCode** (plugin, recommended), **Codex** (plugin), **GitHub Copilot** (skill mode), and **ZCode** (plugin). Choose your preferred AI agent platform and follow the installation guide below.
 
 ---
 
@@ -63,6 +63,14 @@ Tell your AI Agent:
 > "Install the sw-agiledevelopment lingma agent from https://github.com/vaycentsun/sw-agiledevelopment and follow the instructions in `.lingma/INSTALL.md`."
 
 The Agent will read the install guide, configure the agent, and verify the setup automatically.
+
+**ZCode Plugin**
+
+Tell your AI Agent:
+
+> "Install the sw-agiledevelopment ZCode plugin from https://github.com/vaycentsun/sw-agiledevelopment and follow the instructions in `.zcode/INSTALL.md`."
+
+The Agent will read the install guide, register the plugin (via marketplace or filesystem install), and verify that the SessionStart bootstrap hook injects the agile workflow into every new session.
 
 ---
 
