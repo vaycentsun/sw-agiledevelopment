@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-06-25
+
 ### Changed
 - Standardized all `## 红旗` section headers in skills to `## 红旗 - ...` format.
 - Replaced hardcoded `/tmp/sw-agiledevelopment-check` paths in `.lingma/sw-agile-developer.md` with a generic placeholder.
