@@ -8,11 +8,12 @@
 #   它会检查所有 sw-* 技能文件是否符合规范，检查不通过会阻止 push。
 #
 # 检查哪些内容？
-#   1. 每个 sw-*/ 目录都必须有 SKILL.md
+#   1. 每个 sw-* 技能目录都必须有 SKILL.md
 #   2. SKILL.md 不能超过 600 行（超出需拆分）
 #   3. SKILL.md 必须有 YAML frontmatter（--- 开头）
 #   4. SKILL.md 必须有「红旗」章节（禁止行为警示）
 #   5. SKILL.md 必须有常见借口表（防止 Agent 逃避）
+#   6. SKILL.md 的 description 字段必须符合 CSO（Claude Search Optimization）规则
 #
 # 如何激活？（首次使用需执行一次）
 #   在项目根目录执行：
@@ -95,6 +96,14 @@ for skill_file in "$REPO_ROOT"/sw-*/SKILL.md; do
         fi
     fi
 done
+
+# 测试 6：description 字段符合 CSO 规则
+if [ -x "$REPO_ROOT/scripts/validate-skill-descriptions.sh" ]; then
+    if ! bash "$REPO_ROOT/scripts/validate-skill-descriptions.sh" > /dev/null 2>&1; then
+        bash "$REPO_ROOT/scripts/validate-skill-descriptions.sh"
+        FAILED=1
+    fi
+fi
 
 if [ "$FAILED" -eq 0 ]; then
     echo "  [通过] 所有 pre-push 验证通过"

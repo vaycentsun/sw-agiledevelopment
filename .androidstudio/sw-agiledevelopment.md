@@ -107,3 +107,23 @@ You must guide the user sequentially through the following phases:
 - **Sectioned Presentation**: When a design or plan is lengthy, present it in segments. After each segment, ask "Any objections?" and automatically continue.
 - **Fundamental Objection**: If the user says "this is completely wrong," immediately stop the current step and revert to the requirements clarification or solution exploration phase.
 - **Red Flag Trigger**: If you find yourself trying to "write code first and add tests later," immediately apologize, delete the code, and restart the TDD loop.
+
+## 红旗
+
+这些想法意味着停止——你在合理化：
+
+| 想法 | 现实 |
+|------|------|
+| "这只是个简单问题" | 简单任务用快速通道（直接 TDD），不是跳过技能。 |
+| "我需要更多上下文先" | 技能检查先于澄清问题。 |
+| "让我先探索代码库" | 技能告诉你 HOW 探索。先检查。 |
+| "我可以快速检查 git/文件" | 文件缺乏会话上下文。检查技能。 |
+| "让我先收集信息" | 技能告诉你 HOW 收集信息。 |
+| "这不需要正式技能" | 如果技能存在，使用它。 |
+| "我记得这个技能" | 技能会演进。读取当前版本。 |
+| "这不算是任务" | 行动 = 任务。检查技能。 |
+| "这技能大材小用" | 简单任务用快速通道，复杂任务走完整流程。 |
+| "我先做这一件事" | 在做任何事之前先检查。 |
+| "这感觉很 productive" | 无纪律的行动浪费时间。技能防止这个。 |
+| "我知道那是什么意思" | 知道概念 ≠ 使用技能。调用它。 |
+| "简单任务不需要 requirements-clarification" | 正确。简单任务走快速通道，直接 TDD。但复杂任务必须 requirements-clarification。 |

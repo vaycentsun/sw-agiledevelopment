@@ -1,6 +1,6 @@
 ---
 name: sw-using-agiledevelopment
-description: "Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions"
+description: "Use when starting any conversation to determine which skills apply before responding"
 ---
 
 <SUBAGENT-STOP>
@@ -103,7 +103,7 @@ flowchart TD
     Todo --> Follow
 ```
 
-## 红旗
+## 红旗 - 停止并检查技能
 
 这些想法意味着停止——你在合理化：
 

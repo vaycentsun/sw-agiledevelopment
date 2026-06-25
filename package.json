@@ -8,7 +8,6 @@
   "license": "MIT",
   "repository": "https://github.com/vaycent/sw-agiledevelopment",
   "main": ".opencode/plugins/sw-agiledevelopment.js",
-  "browser": ".vscode/extension.js",
   "engines": {
     "vscode": "^1.90.0"
   },

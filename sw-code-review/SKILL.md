@@ -1,6 +1,6 @@
 ---
 name: sw-code-review
-description: "Use during software development workflow to automatically request and handle code review at task completion and before merging"
+description: "Use when requesting code review for completed work or when receiving code review feedback"
 ---
 
 # 代码审查

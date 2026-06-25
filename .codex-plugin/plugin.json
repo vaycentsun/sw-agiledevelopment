@@ -1,6 +1,6 @@
 {
   "name": "sw-agiledevelopment",
-  "version": "1.2.4",
+  "version": "1.3.2",
   "description": "Agile development workflow skills for AI coding agents.",
   "author": {
     "name": "vaycentsun",
@@ -28,8 +28,6 @@
       "Write"
     ],
     "websiteURL": "https://github.com/vaycentsun/sw-agiledevelopment",
-    "privacyPolicyURL": "[TODO: privacy policy URL]",
-    "termsOfServiceURL": "[TODO: terms of service URL]",
     "defaultPrompt": [
       "Clarify requirements for this feature.",
       "Create a technical spec and plan.",

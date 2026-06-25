@@ -1,6 +1,6 @@
 ---
 name: sw-task-verification
-description: "Use after code review passes to verify the task actually works and meets requirements before marking it complete"
+description: "Use when verifying that a task actually works and meets requirements before marking it complete"
 ---
 
 # Task Verification - 任务验证

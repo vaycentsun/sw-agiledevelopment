@@ -86,6 +86,33 @@ if [ -f "$PROJECT_ROOT/docs/install-opencode.md" ]; then
     echo "   ✅ docs/install-opencode.md"
 fi
 
+# -----------------------------------------------------------------------------
+# 4. 更新 .codex-plugin/plugin.json（Codex 插件清单）
+# -----------------------------------------------------------------------------
+if [ -f "$PROJECT_ROOT/.codex-plugin/plugin.json" ]; then
+    sed -i.bak "s/\"version\": \"$CURRENT_VERSION\"/\"version\": \"$NEW_VERSION\"/" "$PROJECT_ROOT/.codex-plugin/plugin.json"
+    rm -f "$PROJECT_ROOT/.codex-plugin/plugin.json.bak"
+    echo "   ✅ .codex-plugin/plugin.json"
+fi
+
+# -----------------------------------------------------------------------------
+# 5. 更新 CHANGELOG.md（添加新版本条目）
+# -----------------------------------------------------------------------------
+if [ -f "$PROJECT_ROOT/CHANGELOG.md" ]; then
+    TODAY=$(date +%Y-%m-%d)
+    awk -v ver="$NEW_VERSION" -v today="$TODAY" '
+        /^## \[Unreleased\]$/ {
+            print
+            print ""
+            print "## [" ver "] - " today
+            next
+        }
+        { print }
+    ' "$PROJECT_ROOT/CHANGELOG.md" > "$PROJECT_ROOT/CHANGELOG.md.tmp"
+    mv "$PROJECT_ROOT/CHANGELOG.md.tmp" "$PROJECT_ROOT/CHANGELOG.md"
+    echo "   ✅ CHANGELOG.md"
+fi
+
 echo ""
 echo "🎉 版本号同步完成!"
 echo ""
@@ -94,7 +121,7 @@ echo ""
 echo "   1. 检查 git diff 确认变更无误"
 echo "      git diff"
 echo ""
-echo "   2. 更新 CHANGELOG.md 添加 [$NEW_VERSION] 条目"
+echo "   2. 检查 CHANGELOG.md 中的 [Unreleased] 条目，将已完成的变更移动到 [$NEW_VERSION] 下"
 echo ""
 echo "   3. 提交变更"
 echo "      git add ."
