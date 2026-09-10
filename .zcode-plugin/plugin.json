@@ -1,6 +1,6 @@
 {
   "name": "sw-agiledevelopment",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Agile development workflow skills for AI coding agents.",
   "author": {
     "name": "vaycentsun",
@@ -16,6 +16,20 @@
     "software-development",
     "zcode"
   ],
-  "skills": "skills",
+  "skills": [
+    "sw-code-review",
+    "sw-execute-plan",
+    "sw-finishing-branch",
+    "sw-parallel-debugging",
+    "sw-requirements-clarification",
+    "sw-subagent-development",
+    "sw-systematic-debugging",
+    "sw-task-verification",
+    "sw-technical-spec",
+    "sw-test-driven-dev",
+    "sw-using-agiledevelopment",
+    "sw-working-plan",
+    "sw-writing-skills"
+  ],
   "hooks": ".zcode-plugin/hooks/hooks.json"
 }

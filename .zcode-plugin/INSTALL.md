@@ -16,7 +16,7 @@ start.
 - Marketplace source: `vaycentsun/sw-agiledevelopment` (the repository root
   carries a ZCode `marketplace.json`; the plugin itself is the repo root)
 - Plugin name: `sw-agiledevelopment`
-- Plugin version: see the `VERSION` file (currently `1.4.0`)
+- Plugin version: see the `VERSION` file (currently `1.4.1`)
 - Plugin capabilities: **ZCode Skills only**. This plugin does not expose MCP
   tools or callable functions. It injects a bootstrap context via a `SessionStart`
   hook.
@@ -25,9 +25,12 @@ start.
 
 The plugin manifest lives at `.zcode-plugin/plugin.json` and declares:
 
-- `"skills": "skills"` — the repository-root `skills/` directory (a set of
-  symlinks to the real `sw-*/` source directories, so all agent platforms share
-  one copy of the content);
+- `"skills": ["sw-code-review", ...]` — the 13 real `sw-*/` skill directories
+  at the repository root, listed explicitly. **Do not** point this at the
+  repository-root `skills/` directory: that directory is a set of symlinks to
+  the real `sw-*/` sources (shared with other agent platforms), and ZCode does
+  not follow symlinks when scanning plugin skill roots — declaring it silently
+  yields zero skills (`plugin_skill_root_empty`);
 - `"hooks": ".zcode-plugin/hooks/hooks.json"` — a `SessionStart` hook that reads
   `sw-using-agiledevelopment/SKILL.md` and injects it into each new session.
   This is what makes the agile workflow reliably activate.
@@ -102,9 +105,9 @@ python3 -c "import json; m=json.load(open('.zcode-plugin/plugin.json')); print(m
 bash .zcode-plugin/hooks/session-start | python3 -m json.tool > /dev/null && echo "hook OK"
 ```
 
-This should print `hook OK`. If it prints nothing or errors, the skills path or
-symlinks are wrong — re-check that the clone is intact and
-`skills/sw-using-agiledevelopment/SKILL.md` resolves.
+This should print `hook OK`. If it prints nothing or errors, re-check that the
+clone is intact and `sw-using-agiledevelopment/SKILL.md` exists at the
+repository root.
 
 3. Or run the full structural check from the repository root:
 
@@ -140,9 +143,14 @@ development workflow.
   confirm the `SessionStart` hook is listed and runnable; verify `bash` is
   available and `.zcode-plugin/hooks/` contains `hooks.json`, `run-hook.cmd`,
   and `session-start`.
-- **`session-start` exits with empty output:** confirm `skills/` resolves to the
-  real `sw-using-agiledevelopment/` directory. The hook reads
-  `${REPO_ROOT}/skills/sw-using-agiledevelopment/SKILL.md`.
+- **`session-start` exits with empty output:** confirm the real
+  `sw-using-agiledevelopment/` directory exists at the repository root. The hook
+  reads `${REPO_ROOT}/sw-using-agiledevelopment/SKILL.md`.
+- **Plugin is listed and enabled but contributes zero skills** (`skillCount: 0`
+  in `zcode plugins list --json`, or a `plugin_skill_root_empty` diagnostic):
+  the manifest's `skills` entry points at a symlink directory. ZCode skips
+  symlinks when scanning plugin skill roots — declare the real `sw-*/`
+  directories instead (fixed since 1.4.2).
 - **`@sw-agiledevelopment` is recognized but skills are absent in the current
   session:** this is usually a session-refresh issue. Start a new ZCode session
   after installation. The plugin provides Skills such as
@@ -150,5 +158,7 @@ development workflow.
   MCP tools.
 - **Windows:** the `skills/` directory uses symlinks, which require Git for
   Windows to be installed with symlink support (or Developer Mode enabled).
-  Without it, git checks the symlinks out as plain text files and skill
-  discovery fails. macOS and Linux are unaffected.
+  Since 1.4.2 ZCode no longer resolves skills or the SessionStart hook through
+  that symlink farm, so ZCode installs are unaffected either way; the symlinks
+  remain only for other agent platforms (e.g. Codex) that share the same
+  `sw-*/` sources. macOS and Linux are unaffected.

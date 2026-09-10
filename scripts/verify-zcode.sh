@@ -74,8 +74,46 @@ else
     FAILED=1
 fi
 
+# Every skills directory declared in plugin.json must be a real directory
+# containing SKILL.md. ZCode does not follow symlinks when scanning plugin
+# skill roots, so declaring the skills/ symlink farm here would silently
+# yield zero skills — guard against that regression explicitly.
+if [ -f "$manifest" ] && command -v python3 >/dev/null 2>&1; then
+    declared=$(python3 -c "
+import json
+s = json.load(open('$manifest')).get('skills')
+s = [s] if isinstance(s, str) else (s or [])
+print('\n'.join(x for x in s if isinstance(x, str)))
+" 2>/dev/null || echo "")
+    if [ -z "$declared" ]; then
+        echo "  [FAIL] plugin.json does not declare any skills directories"
+        FAILED=1
+    else
+        declared_bad=0
+        declared_count=0
+        while IFS= read -r rel; do
+            [ -z "$rel" ] && continue
+            declared_count=$((declared_count + 1))
+            if [ -L "$REPO_ROOT/$rel" ]; then
+                echo "  [FAIL] declared skills dir '$rel' is a symlink (ZCode skips symlinks when scanning plugin skill roots)"
+                FAILED=1
+                declared_bad=1
+            elif [ ! -f "$REPO_ROOT/$rel/SKILL.md" ]; then
+                echo "  [FAIL] declared skills dir '$rel' missing SKILL.md"
+                FAILED=1
+                declared_bad=1
+            fi
+        done <<< "$declared"
+        if [ "$declared_bad" -eq 0 ]; then
+            echo "  [PASS] all $declared_count declared skills dirs are real directories with SKILL.md"
+        fi
+    fi
+fi
+
+# The skills/ symlink farm is no longer used by ZCode, but Codex
+# (.codex-plugin/plugin.json -> ./skills/) still relies on it.
 if [ -d "$REPO_ROOT/skills" ]; then
-    echo "  [PASS] skills/ directory exists"
+    echo "  [PASS] skills/ directory exists (Codex symlink farm)"
 else
     echo "  [FAIL] skills/ directory missing"
     FAILED=1
@@ -85,7 +123,7 @@ for skill_dir in "$REPO_ROOT"/sw-*/; do
     skill_name=$(basename "$skill_dir")
     symlink="$REPO_ROOT/skills/$skill_name"
     if [ ! -L "$symlink" ]; then
-        echo "  [FAIL] skills/$skill_name is not a symlink"
+        echo "  [FAIL] skills/$skill_name is not a symlink (needed by Codex)"
         FAILED=1
     fi
 done

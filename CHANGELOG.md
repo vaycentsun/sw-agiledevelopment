@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.2] - 2026-09-10
+
+### Fixed
+- ZCode plugin no longer declares the `skills/` symlink farm as its skills root: ZCode skips symlinks when scanning plugin skill roots, so installations silently contributed zero skills (`plugin_skill_root_empty`). `.zcode-plugin/plugin.json` now lists the 13 real `sw-*/` directories explicitly.
+- `.zcode-plugin/hooks/session-start` now reads the bootstrap from the real `sw-using-agiledevelopment/` directory instead of resolving it through the `skills/` symlink farm, removing the remaining ZCode dependency on symlinks (also fixes the hook on Windows checkouts without symlink support).
+
+### Changed
+- `scripts/verify-zcode.sh` now validates that every skills directory declared in `.zcode-plugin/plugin.json` is a real directory containing `SKILL.md`, guarding against the symlink regression.
+- Updated `.zcode-plugin/INSTALL.md` to document the explicit skills declaration and the symlink behavior of ZCode's plugin skill scanner.
+
 ## [1.4.1] - 2026-09-09
 
 ### Added

@@ -15,9 +15,11 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 REPO_ROOT="$(cd "${PLUGIN_ROOT}/.." && pwd)"
 
-# Path to the bootstrap skill (via the skills/ symlink dir at repo root,
-# which also serves Codex).
-SKILL_FILE="${REPO_ROOT}/skills/sw-using-agiledevelopment/SKILL.md"
+# Path to the bootstrap skill. Read the real directory at the repository root
+# directly instead of the skills/ symlink farm: ZCode does not follow symlinks
+# when resolving plugin components, and on Windows git may check symlinks out
+# as plain text files — the real directory works on every platform.
+SKILL_FILE="${REPO_ROOT}/sw-using-agiledevelopment/SKILL.md"
 
 if [ ! -f "$SKILL_FILE" ]; then
   # Bootstrap skill missing — exit silently so the plugin does not break the session.
