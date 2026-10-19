@@ -8,7 +8,7 @@
 
 A complete set of software engineering workflow skills that help AI coding agents complete every step from requirements analysis to code review in a systematic, reproducible way.
 
-**Multi-Platform Support**: This framework natively supports **OpenCode** (plugin, recommended), **Codex** (plugin), **GitHub Copilot** (skill mode), and **ZCode** (plugin). Choose your preferred AI agent platform and follow the installation guide below.
+**Multi-Platform Support**: This framework natively supports **OpenCode** (plugin, recommended), **Codex** (plugin), **DeepSeek Harness** (native skills), **GitHub Copilot** (skill mode), and **ZCode** (plugin). Choose your preferred AI agent platform and follow the installation guide below.
 
 ---
 
@@ -73,6 +73,22 @@ Or tell your AI Agent:
 > "Install the sw-agiledevelopment ZCode plugin from https://github.com/vaycentsun/sw-agiledevelopment and follow the instructions in `.zcode-plugin/INSTALL.md`."
 
 The Agent will read the install guide, register the plugin (via marketplace or filesystem install), and verify that the SessionStart bootstrap hook injects the agile workflow into every new session.
+
+**DeepSeek Harness (Native Skills)**
+
+Tell your AI Agent:
+
+> "Install sw-agiledevelopment for DeepSeek Harness from https://github.com/vaycentsun/sw-agiledevelopment and follow the instructions in `.dsh/INSTALL.md`."
+
+Or run the one-step installer:
+
+```bash
+git clone https://github.com/vaycentsun/sw-agiledevelopment.git \
+  "$HOME/.dsh/sw-agiledevelopment"
+bash "$HOME/.dsh/sw-agiledevelopment/scripts/install-dsh.sh"
+```
+
+The installer links all 13 `sw-*` skills into `~/.dsh/skills/` and adds a managed bootstrap block to `~/.dsh/AGENTS.md`. DSH watches the skill directory, so new sessions pick up the skills without restarting; the `AGENTS.md` bootstrap is read at the start of each new session. `dsh plugin add` is not used because DSH skills are filesystem-discovered, not plugins.
 
 ---
 

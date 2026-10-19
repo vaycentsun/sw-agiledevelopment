@@ -7,7 +7,7 @@
 ### 这是一个技能框架，不是应用
 - 没有 `npm test`，没有构建步骤，没有传统应用入口。
 - `package.json` 仅用于 OpenCode 通过 `git+` URL 安装插件。**不要**往里面添加依赖或脚本。
-- `sw-*/SKILL.md` 是唯一需要人工维护的技能源码；`skills/` 是 Codex / ZCode 兼容用的符号链接目录，**始终直接编辑 `sw-*/SKILL.md`**，不要通过 `skills/` 路径修改。
+- `sw-*/SKILL.md` 是唯一需要人工维护的技能源码；`skills/` 是 Codex 兼容用的符号链接目录，`.dsh/skills/` 是 DeepSeek Harness 项目级技能根（同样是指向 `sw-*/` 的符号链接）。**始终直接编辑 `sw-*/SKILL.md`**，不要通过 `skills/` 或 `.dsh/skills/` 路径修改。
 
 ### 平台适配方式
 | 平台 | 入口文件 | 引导注入方式 |
@@ -15,6 +15,7 @@
 | OpenCode | `.opencode/plugins/sw-agiledevelopment.js` | `config` 钩子注册技能路径；`experimental.chat.messages.transform` 在第一条用户消息前注入 `sw-using-agiledevelopment/SKILL.md` |
 | ZCode | `.zcode-plugin/plugin.json` | `SessionStart` 钩子（`.zcode-plugin/hooks/session-start`）读取 `skills/sw-using-agiledevelopment/SKILL.md` 并注入 |
 | Codex | `.codex-plugin/plugin.json` | 插件市场安装后发现 `skills/` 目录下的技能 |
+| DeepSeek Harness (DSH) | `.dsh/`（`.dsh/skills/` + `.dsh/bootstrap.md`） | DSH 原生扫描 `<projectRoot>/.dsh/skills` 和 `<dshHome>/skills`；`scripts/install-dsh.sh` 把 `sw-*` 链接到 `~/.dsh/skills/`，并把 `.dsh/bootstrap.md` 写入 `~/.dsh/AGENTS.md` 的受管区块 |
 | GitHub Copilot | `.github/copilot-instructions.md` | 复制到目标项目的 `.github/`；技能详情参考 `.sw-agiledevelopment/sw-*/SKILL.md` |
 | Android Studio / Tongyi Lingma | `.androidstudio/sw-agiledevelopment.md` / `.lingma/sw-agile-developer.md` | 系统提示注入 |
 
@@ -67,6 +68,7 @@ bash scripts/validate-skill-descriptions.sh   # 校验所有 skill 的 descripti
 bash scripts/verify-opencode.sh               # 验证 OpenCode 插件结构
 bash scripts/verify-zcode.sh                  # 验证 ZCode 插件结构与 SessionStart hook
 bash scripts/verify-codex.sh                  # 验证 Codex 插件清单
+bash scripts/verify-dsh.sh                    # 验证 DeepSeek Harness 技能根、安装脚本与引导
 bash scripts/verify-copilot.sh                # 验证 Copilot 指令文件
 bash scripts/verify-lingma.sh                 # 验证 Lingma Agent 引导文件
 bash scripts/verify-androidstudio.sh          # 验证 Android Studio 引导文件
@@ -85,4 +87,4 @@ bash scripts/verify-androidstudio.sh          # 验证 Android Studio 引导文�
 ## 关键参考文档
 - `docs/terminology.md` —— 所有 `SKILL.md` 必须遵循的中英文术语规范
 - `sw-writing-skills/SKILL.md` —— 编写新技能的元技能
-- `.opencode/INSTALL.md`、`.zcode-plugin/INSTALL.md`、`.codex-plugin/INSTALL.md`、`.github/INSTALL.md` —— 各平台安装指南
+- `.opencode/INSTALL.md`、`.zcode-plugin/INSTALL.md`、`.codex-plugin/INSTALL.md`、`.dsh/INSTALL.md`、`.github/INSTALL.md` —— 各平台安装指南

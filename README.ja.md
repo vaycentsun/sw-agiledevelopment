@@ -8,7 +8,7 @@
 
 AI コーディングエージェントが、体系的かつ再現性のある方法で要件分析からコードレビューまでの各ステップを完了するのを支援する、完全なソフトウェアエンジニアリングワークフロースキルセットです。
 
-**マルチプラットフォーム対応**：本フレームワークは **OpenCode**（プラグイン、推奨）、**Codex**（プラグイン）、**GitHub Copilot**（スキルモード）、**ZCode**（プラグイン）をネイティブにサポートしています。お好みの AI Agent プラットフォームを選び、以下のインストールガイドに従ってください。
+**マルチプラットフォーム対応**：本フレームワークは **OpenCode**（プラグイン、推奨）、**Codex**（プラグイン）、**DeepSeek Harness**（ネイティブスキル）、**GitHub Copilot**（スキルモード）、**ZCode**（プラグイン）をネイティブにサポートしています。お好みの AI Agent プラットフォームを選び、以下のインストールガイドに従ってください。
 
 ---
 
@@ -71,6 +71,22 @@ AI Agent に以下のように伝えてください：
 > "https://github.com/vaycentsun/sw-agiledevelopment から sw-agiledevelopment ZCode プラグインをインストールし、`.zcode/INSTALL.md` の手順に従ってください。"
 
 Agent がインストールガイドを読み取り、marketplace またはファイルシステム経由でプラグインを登録し、SessionStart ブートストラップフックが新しいセッションごとにアジャイルワークフローを注入することを検証します。
+
+**DeepSeek Harness（ネイティブスキル）**
+
+AI Agent に以下のように伝えてください：
+
+> "https://github.com/vaycentsun/sw-agiledevelopment から sw-agiledevelopment の DeepSeek Harness スキルをインストールし、`.dsh/INSTALL.md` の手順に従ってください。"
+
+またはワンコマンドでインストールできます：
+
+```bash
+git clone https://github.com/vaycentsun/sw-agiledevelopment.git \
+  "$HOME/.dsh/sw-agiledevelopment"
+bash "$HOME/.dsh/sw-agiledevelopment/scripts/install-dsh.sh"
+```
+
+インストーラーは 13 個の `sw-*` スキルを `~/.dsh/skills/` にリンクし、管理されたブートストラップブロックを `~/.dsh/AGENTS.md` に追加します。DSH はスキルディレクトリを監視するため、新しいセッションでは再起動なしでスキルが認識されます。`AGENTS.md` のブートストラップは各新規セッションの開始時に読み込まれます。DSH のスキルはファイルシステム検出であり、プラグインではないため `dsh plugin add` は使用しません。
 
 ---
 

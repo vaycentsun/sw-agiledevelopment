@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-10-19
+
+### Added
+- DeepSeek Harness (DSH) channel: `.dsh/skills/` project-level symlink farm, `.dsh/bootstrap.md` bootstrap, `.dsh/INSTALL.md` install guide, `scripts/install-dsh.sh`, and `scripts/verify-dsh.sh`.
+- `scripts/install-dsh.sh` links all `sw-*` skills into `$DSH_HOME/skills`, writes a managed bootstrap block to `$DSH_HOME/AGENTS.md`, verifies every link, and supports `--source`, `--copy`, `--no-bootstrap`, `--force`, and `--uninstall`.
+- `sw-using-agiledevelopment/references/dsh-tools.md` documents DSH tool mappings (`skill`, `subagent`, `workflow`, `todo_write`, and file tools).
+
+### Changed
+- `sw-using-agiledevelopment/SKILL.md` documents how to load skills in DSH and adds a DSH tool mapping table.
+- README files now list DeepSeek Harness as a supported platform and document the one-step installer.
+- `AGENTS.md` documents the DSH channel entry points and `scripts/verify-dsh.sh`.
+
 ## [1.4.2] - 2026-09-10
 
 ### Fixed

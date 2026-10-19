@@ -8,7 +8,7 @@
 
 Un ensemble complet de compétences de flux de travail d'ingénierie logicielle qui aide les agents de codage AI à accomplir chaque étape de l'analyse des besoins à la révision de code de manière systématique et reproductible.
 
-**Support Multi-Plateforme**: Ce framework est nativement compatible avec **OpenCode** (plugin, recommandé), **Codex** (plugin), **GitHub Copilot** (mode skill) et **ZCode** (plugin). Choisissez votre plateforme d'agent IA préférée et suivez le guide d'installation ci-dessous.
+**Support Multi-Plateforme**: Ce framework est nativement compatible avec **OpenCode** (plugin, recommandé), **Codex** (plugin), **DeepSeek Harness** (skills natifs), **GitHub Copilot** (mode skill) et **ZCode** (plugin). Choisissez votre plateforme d'agent IA préférée et suivez le guide d'installation ci-dessous.
 
 ---
 
@@ -71,6 +71,22 @@ Dites simplement à votre Agent IA :
 > "Installe le plugin sw-agiledevelopment pour ZCode depuis https://github.com/vaycentsun/sw-agiledevelopment et suis les instructions dans `.zcode/INSTALL.md`."
 
 L'Agent lira le guide d'installation, enregistrera le plugin (via marketplace ou installation par système de fichiers) et vérifiera que le hook de bootstrap SessionStart injecte le flux de travail agile dans chaque nouvelle session.
+
+**DeepSeek Harness (Skills natifs)**
+
+Dites simplement à votre Agent IA :
+
+> "Installe les skills sw-agiledevelopment pour DeepSeek Harness depuis https://github.com/vaycentsun/sw-agiledevelopment et suis les instructions dans `.dsh/INSTALL.md`."
+
+Ou lancez l'installateur en une commande :
+
+```bash
+git clone https://github.com/vaycentsun/sw-agiledevelopment.git \
+  "$HOME/.dsh/sw-agiledevelopment"
+bash "$HOME/.dsh/sw-agiledevelopment/scripts/install-dsh.sh"
+```
+
+L'installateur lie les 13 skills `sw-*` dans `~/.dsh/skills/` et ajoute un bloc de bootstrap géré à `~/.dsh/AGENTS.md`. DSH surveille le répertoire des skills, donc les nouvelles sessions les détectent sans redémarrage ; le bootstrap d'`AGENTS.md` est lu au début de chaque nouvelle session. `dsh plugin add` n'est pas utilisé car les skills DSH sont découvertes via le système de fichiers, ce ne sont pas des plugins.
 
 ---
 

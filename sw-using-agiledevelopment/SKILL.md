@@ -33,11 +33,25 @@ Agile Development 技能覆盖默认系统提示行为，但**用户指令始终
 
 **在 Gemini CLI 中：** 技能通过 `activate_skill` 工具激活。Gemini 在会话开始时加载技能元数据，并在需要时激活完整内容。
 
+**在 DeepSeek Harness（DSH）中：** 使用原生 `skill` 工具。DSH 会在会话开始时注入可用技能目录；调用 `skill` 加载技能正文后直接遵循，不要用 `read` 工具读取 `SKILL.md`。用户也可以用 `/sw-using-agiledevelopment` 直接调用。
+
 **在其他环境中：** 查看你平台的文档以了解如何加载技能。
 
 ## 平台适配
 
-技能使用 Claude Code 工具名称。非 CC 平台：参见 `references/copilot-tools.md`（Copilot CLI）、`references/codex-tools.md`（Codex）以了解工具等效项。Gemini CLI 用户通过 GEMINI.md 自动获得工具映射。
+技能使用 Claude Code 工具名称。非 CC 平台：参见 `references/copilot-tools.md`（Copilot CLI）、`references/codex-tools.md`（Codex）、`references/dsh-tools.md`（DeepSeek Harness）以了解工具等效项。Gemini CLI 用户通过 GEMINI.md 自动获得工具映射。
+
+**DeepSeek Harness 用户：** DSH 原生支持 `skill`、`subagent`、`workflow`、`todo_write` 等工具，主要映射如下（完整列表见 `references/dsh-tools.md`）：
+
+| Claude Code 工具 | DSH 等效项 |
+|-----------------|-----------|
+| `Skill` 工具 | 原生 `skill` 工具 |
+| `Read` / `Write` / `Edit` | `read` / `write` / `edit` |
+| `Bash` | `bash` |
+| `Grep` / `Glob` | `grep` / `glob` |
+| `TodoWrite` | `todo_write` |
+| `Task` 工具配子 Agent | `subagent` 或 `subagent_fork`；大量并行任务使用 `workflow` |
+| `WebFetch` / `WebSearch` | `web_fetch` / `web_search` |
 
 **OpenCode 用户：** 当技能引用你没有的工具时，替换为 OpenCode 等效项：
 
